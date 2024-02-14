@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 using namespace std;
 
 /*
@@ -24,17 +25,24 @@ using namespace std;
     2 3
     Andrius ads 7.23 4.81 2.92 4.21
     Ugnius sad 4.23 5.91 4.50 9
+
+
+    292 421 491 723
+    423 450 591 9.0
+    452 735
+    481 450
 */
 struct nameGrade
 {
   string Name, LastName;
-  float HomeWorkResults = 0, ExamGrade;
+  float HomeWorkResults = 0, ExamGrade, Medianaa;
 };
 
 int main()
 {
   int StudentAmount, HomeWorkAmount;
-  float Temporary;
+  bool medianOrAverage;
+  float Temporary = 0, B[HomeWorkAmount + 1];
   // cout<<"Student and homework amounts:\n";
   cin >> StudentAmount >> HomeWorkAmount;
   nameGrade A[StudentAmount];
@@ -44,19 +52,45 @@ int main()
     cin >> A[i].Name >> A[i].LastName;
     for (int j = 0; j < HomeWorkAmount; j++)
     {
-      cin >> Temporary;
-      A[i].HomeWorkResults += Temporary;
-      //cout << A[i].HomeWorkResults << endl;
+      cin >> B[j];
+      A[i].HomeWorkResults += B[j];
+      // cout << A[i].HomeWorkResults << endl;
     }
-    A[i].HomeWorkResults /= HomeWorkAmount;
     //  cout<<"Exam results:\n";
     cin >> A[i].ExamGrade;
-    Temporary = 0;
+    B[HomeWorkAmount] = A[i].ExamGrade;
+    sort(B, B + HomeWorkAmount);
+  //  cout<<HomeWorkAmount<<" "<<+1<<" "<<HomeWorkAmount%2<<endl;
+    if (HomeWorkAmount+1 % 2 == 0)
+    {
+      A[i].Medianaa = (B[HomeWorkAmount / 2] + B[(HomeWorkAmount / 2) + 1]) / 2;
+      cout<<"Median"<<A[i].Medianaa<<endl;
+    }
+    else
+    {
+      A[i].Medianaa = B[HomeWorkAmount / 2];
+    }
+    A[i].HomeWorkResults /= HomeWorkAmount;
   }
-  cout << setw(15) << "Pavardė" << setw(15) << "Vardas" << setw(25) << "Galutinis(vid.)\n"<<"--------------------------------------------------\n";
-  for (int i = 0; i < StudentAmount; i++)
+  cout << "For median input 0, for average input 1 ";
+  cin >> medianOrAverage;
+  if (medianOrAverage == 1)
   {
-    Temporary = (A[i].HomeWorkResults * 0.4) + (A[i].ExamGrade * 0.6);
-    cout << setw(15) << A[i].LastName << setw(15) << A[i].Name << setw(15) << fixed << setprecision(2) << Temporary << endl;
+    cout << setw(15) << "Pavardė" << setw(15) << "Vardas" << setw(25) << "Galutinis(vid.)\n"
+         << "--------------------------------------------------\n";
+    for (int i = 0; i < StudentAmount; i++)
+    {
+      Temporary = (A[i].HomeWorkResults * 0.4) + (A[i].ExamGrade * 0.6);
+      cout << setw(15) << A[i].LastName << setw(15) << A[i].Name << setw(15) << fixed << setprecision(2) << Temporary << endl;
+    }
+  }
+  else
+  {
+    cout << setw(15) << "Pavardė" << setw(15) << "Vardas" << setw(25) << "Galutinis(med.)\n"
+         << "--------------------------------------------------\n";
+    for (int i = 0; i < StudentAmount; i++)
+    {
+      cout << setw(15) << A[i].LastName << setw(15) << A[i].Name << setw(15) << fixed << setprecision(2) << A[i].Medianaa << endl;
+    }
   }
 }
