@@ -55,16 +55,28 @@ void readData(nameGrade& student) {
     cin >> student.exam;
 }
 
-double calculateFinalAverage (){
-
+double calculateFinalAverage(nameGrade& student) {
+    double sum = 0;
+    for (int i = 0; i < student.n; ++i) {
+        sum += student.homework[i];
+    }
+    double average = sum / student.n;
+    return 0.4 * average + 0.6 * student.exam;
 }
 
-double calculateFinalMedian (){
-
+double calculateFinalMedian(nameGrade& student) {
+    sort(student.homework, student.homework + student.n);
+    double median;
+    if (student.n % 2 == 0) {
+        median = (student.homework[student.n / 2 - 1] + student.homework[student.n / 2]) / 2.0;
+    } else {
+        median = student.homework[student.n / 2];
+    }
+    return 0.4 * median + 0.6 * student.exam;
 }
 
-void deleteStudentData(){
-  
+void deleteStudentData(nameGrade& student){
+
 }
 
 void printResults(nameGrade& student, bool useAverage) {
