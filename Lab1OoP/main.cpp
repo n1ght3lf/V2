@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 /*
@@ -17,29 +18,45 @@ using namespace std;
     first subrelease v.pradinė
     --------------------------
     branch v0.1 (continue later)
+
+
+    galutinis = 0,4*vidurkis + 0,6*egzaminas
+    2 3
+    Andrius ads 7.23 4.81 2.92 4.21
+    Ugnius sad 4.23 5.91 4.50 9
 */
 struct nameGrade
 {
   string Name, LastName;
-  float HomeWorkResults, ExamGrade;
+  float HomeWorkResults = 0, ExamGrade;
 };
 
 int main()
 {
   int StudentAmount, HomeWorkAmount;
-  cout<<"Student and homework amounts:\n";
+  float Temporary;
+  // cout<<"Student and homework amounts:\n";
   cin >> StudentAmount >> HomeWorkAmount;
   nameGrade A[StudentAmount];
   for (int i = 0; i < StudentAmount; i++)
   {
-    cout<< "Name, last name and all homework results:\n";
+    // cout<< "Name, last name and all homework results:\n";
     cin >> A[i].Name >> A[i].LastName;
-    for (int i = 0; i < HomeWorkAmount; i++)
+    for (int j = 0; j < HomeWorkAmount; j++)
     {
-      cin >> A[i].HomeWorkResults;
+      cin >> Temporary;
+      A[i].HomeWorkResults += Temporary;
+      //cout << A[i].HomeWorkResults << endl;
     }
-    cout<<"Exam results:";
+    A[i].HomeWorkResults /= HomeWorkAmount;
+    //  cout<<"Exam results:\n";
     cin >> A[i].ExamGrade;
+    Temporary = 0;
   }
-  
+  cout << setw(15) << "Pavardė" << setw(15) << "Vardas" << setw(25) << "Galutinis(vid.)\n"<<"--------------------------------------------------\n";
+  for (int i = 0; i < StudentAmount; i++)
+  {
+    Temporary = (A[i].HomeWorkResults * 0.4) + (A[i].ExamGrade * 0.6);
+    cout << setw(15) << A[i].LastName << setw(15) << A[i].Name << setw(15) << fixed << setprecision(2) << Temporary << endl;
+  }
 }
