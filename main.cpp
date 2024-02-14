@@ -87,9 +87,6 @@ void generateRandomGrades(nameGrade& student) {
     cout << "Grades: " << grades << endl;
 }
 
-
-
-
 void generateRandomNames(nameGrade& student) {
     random_device rd;
     mt19937 gen(rd());
