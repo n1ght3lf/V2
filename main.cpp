@@ -55,11 +55,62 @@ void readData(nameGrade& student) {
     cin >> student.exam;
 }
 
-int main(){
-  nameGrade* students = new nameGrade[1];
+double calculateFinalAverage (){
 
 }
 
+double calculateFinalMedian (){
+
+}
+
+void deleteStudentData(){
+  
+}
+
+void printResults(nameGrade& student, bool useAverage) {
+    cout << student.name << " " << student.surname << " ";
+    if (useAverage) {
+        student.final = calculateFinalAverage(student);
+        cout << fixed << setprecision(2) << student.final << endl;
+    } else {
+        student.final = calculateFinalMedian(student);
+        cout << fixed << setprecision(2) << student.final << endl;
+    }
+}
+
+int main() {
+    nameGrade* students = new nameGrade[1];
+    int m = 0;
+    while (true) {
+        nameGrade newStudent;
+        readData(newStudent);
+        if (newStudent.name == "0") break;
+        
+        nameGrade* newStudentsArray = new nameGrade[m + 1];
+        for (int i = 0; i < m; ++i) {
+            newStudentsArray[i] = students[i];
+        }
+        newStudentsArray[m] = newStudent;
+        delete[] students;
+        students = newStudentsArray;
+        ++m;
+    }
+    
+    for (int i = 0; i < m; ++i) {
+        bool useAverage;
+        cout << "Use average? (0/1): ";
+        cin >> useAverage;
+        printResults(students[i], useAverage);
+    }
+    
+    for (int i = 0; i < m; ++i) {
+        deleteStudentData(students[i]);
+    }
+    
+    delete[] students;
+    
+    return 0;
+}
 /*
 int main()
 {
