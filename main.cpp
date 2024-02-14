@@ -2,7 +2,13 @@
 #include <iomanip>
 #include <algorithm>
 #include <string>
+#include <random>
 using namespace std;
+
+const string maleNames[] = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
+const string maleLastNames[] = {"Adomaitis", "Petrauskas", "Butkus", "Stankevičius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankūnas"};
+const string femaleNames[] = {"Donata", "Dorotėja", "Rugilė", "Rūta", "Skaistė"};
+const string femaleLastNames[] = {"Petrauskaitė", "Urbonaitė", "Jakubauskaitė", "Jankūnaitė", "Degutytė", "Ivanauskaitė", "Varnaitė"};
 
 struct nameGrade {
     string name;
@@ -56,6 +62,55 @@ void readData(nameGrade& student) {
     }
 }
 
+void generateRandomGrades(nameGrade& student) {
+    cout << "Enter student's name: ";
+    cin.ignore();
+    getline(cin, student.name);
+    cout << "Enter student's surname: ";
+    getline(cin, student.surname);
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<double> dis(0.0, 10.0);
+    uniform_int_distribution<int> disCount(1, 1000);
+    int size = disCount(gen); 
+    student.homework = new double[size];
+    string grades;
+    for (int i = 0; i < size; ++i) {
+        double grade = dis(gen);
+        student.homework[i] = grade;
+        grades += to_string(grade) + " ";
+    }
+    student.n = size;
+    student.exam = dis(gen);
+    grades += "Exam: " + to_string(student.exam);
+    cout << "Name: " << student.name << " " << student.surname << endl;
+    cout << "Grades: " << grades << endl;
+}
+
+
+
+
+void generateRandomNames(nameGrade& student) {
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dis(0, 5);
+    int maleIndex = dis(gen);
+    int femaleIndex = dis(gen);
+    int maleLastNameIndex = dis(gen);
+    int femaleLastNameIndex = dis(gen);
+    if (dis(gen) % 2 == 0) {
+        student.name = maleNames[maleIndex];
+        student.surname = maleLastNames[maleLastNameIndex];
+    } else {
+        student.name = femaleNames[femaleIndex];
+        student.surname = femaleLastNames[femaleLastNameIndex];
+    }
+}
+
+void deleteStudentData(nameGrade& student) {
+    delete[] student.homework;
+    student.homework = nullptr;
+}
 
 double calculateFinalAverage(nameGrade& student) {
     double sum = 0;
@@ -77,11 +132,6 @@ double calculateFinalMedian(nameGrade& student) {
     return 0.4 * median + 0.6 * student.exam;
 }
 
-void deleteStudentData(nameGrade& student) {
-    delete[] student.homework;
-    student.homework = nullptr;
-}
-
 void printResults(nameGrade& student, bool useAverage) {
     cout << student.name << " " << student.surname << " ";
     if (useAverage) {
@@ -97,8 +147,19 @@ int main() {
     nameGrade* students = new nameGrade[1];
     int m = 0;
     while (true) {
+        cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Exit" << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 4) break;
         nameGrade newStudent;
-        readData(newStudent);
+        if (choice == 1) {
+            readData(newStudent);
+        } else if (choice == 2) {
+            generateRandomGrades(newStudent);
+        } else if (choice == 3) {
+            generateRandomNames(newStudent);
+            generateRandomGrades(newStudent);
+        }
         if (newStudent.name == "0") break;
         
         nameGrade* newStudentsArray = new nameGrade[m + 1];
