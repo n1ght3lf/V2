@@ -27,16 +27,19 @@ struct nameGrade
 int main()
 {
   int StudentAmount, HomeWorkAmount;
-  cin >> "Student Amount:" >> StudentAmount >> "Homework amount:" >> HomeWorkAmount;
+  cout<<"Student and homework amounts:\n";
+  cin >> StudentAmount >> HomeWorkAmount;
   nameGrade A[StudentAmount];
   for (int i = 0; i < StudentAmount; i++)
   {
-    cin >> "Name:" >> A[i].Name >> "Last Name:" >> A[i].LastName >> "All hw results:";
+    cout<< "Name, last name and all homework results:\n";
+    cin >> A[i].Name >> A[i].LastName;
     for (int i = 0; i < HomeWorkAmount; i++)
     {
       cin >> A[i].HomeWorkResults;
     }
-    cin >> "Exam results:" >> A[i].ExamGrade;
+    cout<<"Exam results:";
+    cin >> A[i].ExamGrade;
   }
   
 }
