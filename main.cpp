@@ -77,8 +77,6 @@ void generateRandomGrades(nameGrade& student, bool inputName) {
     }
     student.exam = dis(gen);
     grades += "Exam: " + to_string(student.exam);
-    cout << "Name: " << student.name << " " << student.surname << endl;
-    cout << "Grades: " << grades << endl;
 }
 
 void generateRandomNames(nameGrade& student) {
@@ -163,7 +161,6 @@ int main() {
                     for (int i = 0; i < numHomework; ++i) {
                         int grade;
                         iss >> grade;
-                        cout<<grade<<" ";
                         newStudent.homework.push_back(grade);
                     }
                     iss >> newStudent.exam;
