@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "iomanip": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "random": "cpp"
     }
 }
