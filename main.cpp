@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <locale>
+//#include <chrono>
 using namespace std;
 
 const vector<string> maleNames = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
@@ -190,11 +191,15 @@ int main()
     vector<nameGrade> students;
     bool fileOutput = false;
 
+//    chrono::steady_clock::time_point start, end;
+//    chrono::duration<double> elapsed_seconds;
+
     while (true)
     {
         cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Input from file\n5 - Exit" << endl;
         int choice;
         cin >> choice;
+//        start = chrono::steady_clock::now();
         if (choice == 5)
             break;
         nameGrade newStudent;
@@ -248,10 +253,18 @@ int main()
         students.push_back(newStudent);
     }
 
+//    end = chrono::steady_clock::now();
+//    elapsed_seconds = end - start;
+//    cout << "Time taken for inputting through files: " << elapsed_seconds.count() << "s" << endl;
+
     cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
     int sortChoice;
     cin >> sortChoice;
     sortStudents(students, sortChoice);
+
+//    end = chrono::steady_clock::now();
+//    elapsed_seconds = end - start;
+//    cout << "Time taken for sorting: " << elapsed_seconds.count() << "s" << endl;
 
     bool outputChoice;
     cout << "Choose the output destination (0 for file, 1 for screen): ";
@@ -259,7 +272,7 @@ int main()
     if (outputChoice == 0)
     {
         fileOutput = true;
-        ofstream outputFile("klasiokaiOut.txt");
+        ofstream outputFile("kursiokaiOut.txt");
         if (!outputFile.is_open())
         {
             cout << "Unable to open file." << endl;
@@ -286,6 +299,10 @@ int main()
             printResults(students[i]);
         }
     }
+
+//    end = chrono::steady_clock::now();
+//   elapsed_seconds = end - start;
+//    cout << "Time taken for outputting: " << elapsed_seconds.count() << "s" << endl;
 
     for (size_t i = 0; i < students.size(); ++i)
     {
