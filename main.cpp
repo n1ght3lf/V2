@@ -14,8 +14,8 @@ const vector<string> femaleLastNames = {"Petrauskaitė", "Urbonaitė", "Jakubaus
 struct nameGrade {
     string name;
     string surname;
-    vector<double> homework;
-    double exam;
+    vector<int> homework;
+    int exam;
     double final;
 };
 
@@ -27,7 +27,6 @@ void readData(nameGrade& student) {
     cout << "Enter student's surname: ";
     getline(cin, student.surname);
     cout << "Enter homework results, 11 to finish: ";
-    int size = 1; // Initial array size
     int i = 0;
     while (true) {
         double input;
@@ -37,12 +36,16 @@ void readData(nameGrade& student) {
             cout << "Enter a grade between 0 and 10 or 11 to cancel." << endl;
             continue;
         }
-        student.homework.push_back(input);
+        // Round the input to the nearest integer
+        int grade = static_cast<int>(round(input));
+        student.homework.push_back(grade);
         ++i;
     }
     while (true) {
         cout << "Enter exam result: ";
-        cin >> student.exam;
+        double examInput;
+        cin >> examInput;
+        student.exam = static_cast<int>(round(examInput));
         if (student.exam < 0 || student.exam > 10) {
             cout << "Enter a result between 0 and 10." << endl;
             continue;
@@ -61,12 +64,12 @@ void generateRandomGrades(nameGrade& student, bool inputName) {
     }
     random_device rd;
     mt19937 gen(rd());
-    uniform_real_distribution<double> dis(0.0, 10.0);
+    uniform_int_distribution<int> dis(0, 10);
     uniform_int_distribution<int> disCount(1, 1000);
     int size = disCount(gen); 
     string grades;
     for (int i = 0; i < size; ++i) {
-        double grade = dis(gen);
+        int grade = dis(gen);
         student.homework.push_back(grade);
         grades += to_string(grade) + " ";
     }
@@ -107,7 +110,7 @@ double calculateFinalAverage(nameGrade& student) {
 }
 
 double calculateFinalMedian(nameGrade& student) {
-    vector<double> temp = student.homework;
+    vector<int> temp = student.homework;
     sort(temp.begin(), temp.end());
     double median;
     if (temp.size() % 2 == 0) {
