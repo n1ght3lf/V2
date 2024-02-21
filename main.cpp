@@ -6,12 +6,13 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <locale>
 using namespace std;
 
 const vector<string> maleNames = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
-const vector<string> maleLastNames = {"Adomaitis", "Petrauskas", "Butkus", "Stankevičius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankūnas"};
-const vector<string> femaleNames = {"Donata", "Dorotėja", "Rugilė", "Rūta", "Skaistė"};
-const vector<string> femaleLastNames = {"Petrauskaitė", "Urbonaitė", "Jakubauskaitė", "Jankūnaitė", "Degutytė", "Ivanauskaitė", "Varnaitė"};
+const vector<string> maleLastNames = {"Adomaitis", "Petrauskas", "Butkus", "Stankevicius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankunas"};
+const vector<string> femaleNames = {"Donata", "Doroteja", "Rugile", "Ruta", "Skaiste"};
+const vector<string> femaleLastNames = {"Petrauskaite", "Urbonaite", "Jakubauskaite", "Jankunaite", "Degutyte", "Ivanauskaite", "Varnaite"};
 
 struct nameGrade {
     string name;
@@ -121,18 +122,12 @@ double calculateFinalMedian(nameGrade& student) {
     return 0.4 * median + 0.6 * student.exam;
 }
 
-void printResults(nameGrade& student, bool useAverage) {
-    cout << student.name << " " << student.surname << " ";
-    if (useAverage) {
-        student.final = calculateFinalAverage(student);
-        cout << fixed << setprecision(2) << student.final << endl;
-    } else {
-        student.final = calculateFinalMedian(student);
-        cout << fixed << setprecision(2) << student.final << endl;
-    }
+void printResults(nameGrade& student) {
+    cout << fixed << setprecision(2) << setw(20) << left << student.name << setw(20) << left << student.surname << setw(20) << left << calculateFinalAverage(student) << setw(20) << left << calculateFinalMedian(student) << endl;
 }
 
 int main() {
+    setlocale(LC_ALL, "Lithuanian");
     vector<nameGrade> students;
     bool fileInput = false;
     while (true) {
@@ -177,12 +172,11 @@ int main() {
         students.push_back(newStudent);
     }
     
-    bool useAverage;
-    cout << "Use average? (0/1): ";
-    cin >> useAverage;
+    cout << fixed << setprecision(2) << setw(20)<< left<< "Vardas" << setw(20)<<left<< "Pavardė" << setw(20)<<left << "Galutinis(Vid.)" << setw(20)<<left << "Galutinis(Med.)" << endl;
+    cout << "--------------------------------------------------------------------------" << endl;
     
     for (size_t i = 0; i < students.size(); ++i) {
-        printResults(students[i], useAverage);
+        printResults(students[i]);
     }
     
     for (size_t i = 0; i < students.size(); ++i) {
