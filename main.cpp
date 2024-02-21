@@ -45,7 +45,6 @@ void readData(nameGrade &student)
             cout << "Enter a grade between 0 and 10 or 11 to cancel." << endl;
             continue;
         }
-        // Round the input to the nearest integer
         int grade = static_cast<int>(round(input));
         student.homework.push_back(grade);
         ++i;
@@ -117,7 +116,7 @@ void deleteStudentData(nameGrade &student)
     student.homework.clear();
 }
 
-double calculateFinalAverage(nameGrade &student)
+double calculateFinalAverage(const nameGrade &student)
 {
     double sum = 0;
     for (size_t i = 0; i < student.homework.size(); ++i)
@@ -128,7 +127,7 @@ double calculateFinalAverage(nameGrade &student)
     return 0.4 * average + 0.6 * student.exam;
 }
 
-double calculateFinalMedian(nameGrade &student)
+double calculateFinalMedian(const nameGrade &student)
 {
     vector<int> temp = student.homework;
     sort(temp.begin(), temp.end());
@@ -144,9 +143,45 @@ double calculateFinalMedian(nameGrade &student)
     return 0.4 * median + 0.6 * student.exam;
 }
 
-void printResults(nameGrade &student)
+void printResults(const nameGrade &student)
 {
     cout << fixed << setprecision(2) << setw(20) << left << student.name << setw(20) << left << student.surname << setw(20) << left << calculateFinalAverage(student) << setw(20) << left << calculateFinalMedian(student) << endl;
+}
+
+void sortStudents(vector<nameGrade> &students, int sortChoice)
+{
+    do
+    {
+        switch (sortChoice)
+        {
+        case 1:
+            sort(students.begin(), students.end(), [](const nameGrade &a, const nameGrade &b) {
+                return a.name < b.name;
+            });
+            break;
+        case 2:
+            sort(students.begin(), students.end(), [](const nameGrade &a, const nameGrade &b) {
+                return a.surname < b.surname;
+            });
+            break;
+        case 3:
+            sort(students.begin(), students.end(), [](const nameGrade &a, const nameGrade &b) {
+                return calculateFinalAverage(a) < calculateFinalAverage(b);
+            });
+            break;
+        case 4:
+            sort(students.begin(), students.end(), [](const nameGrade &a, const nameGrade &b) {
+                return calculateFinalMedian(a) < calculateFinalMedian(b);
+            });
+            break;
+        default:
+            cout << "Invalid choice." << endl;
+            cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
+            cin >> sortChoice;
+            continue;
+        }
+        break; 
+    } while (true);
 }
 
 int main()
@@ -212,6 +247,11 @@ int main()
             break;
         students.push_back(newStudent);
     }
+
+    cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
+    int sortChoice;
+    cin >> sortChoice;
+    sortStudents(students, sortChoice);
 
     bool outputChoice;
     cout << "Choose the output destination (0 for file, 1 for screen): ";
