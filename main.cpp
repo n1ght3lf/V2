@@ -3,20 +3,20 @@
 #include <algorithm>
 #include <string>
 #include <random>
+#include <vector>
 using namespace std;
 
-const string maleNames[] = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
-const string maleLastNames[] = {"Adomaitis", "Petrauskas", "Butkus", "Stankevičius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankūnas"};
-const string femaleNames[] = {"Donata", "Dorotėja", "Rugilė", "Rūta", "Skaistė"};
-const string femaleLastNames[] = {"Petrauskaitė", "Urbonaitė", "Jakubauskaitė", "Jankūnaitė", "Degutytė", "Ivanauskaitė", "Varnaitė"};
+const vector<string> maleNames = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
+const vector<string> maleLastNames = {"Adomaitis", "Petrauskas", "Butkus", "Stankevičius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankūnas"};
+const vector<string> femaleNames = {"Donata", "Dorotėja", "Rugilė", "Rūta", "Skaistė"};
+const vector<string> femaleLastNames = {"Petrauskaitė", "Urbonaitė", "Jakubauskaitė", "Jankūnaitė", "Degutytė", "Ivanauskaitė", "Varnaitė"};
 
 struct nameGrade {
     string name;
     string surname;
-    double* homework;
+    vector<double> homework;
     double exam;
     double final;
-    int n = 0; // number of homework assignments
 };
 
 void readData(nameGrade& student) {
@@ -28,7 +28,6 @@ void readData(nameGrade& student) {
     getline(cin, student.surname);
     cout << "Enter homework results, 11 to finish: ";
     int size = 1; // Initial array size
-    student.homework = new double[size];
     int i = 0;
     while (true) {
         double input;
@@ -38,19 +37,9 @@ void readData(nameGrade& student) {
             cout << "Enter a grade between 0 and 10 or 11 to cancel." << endl;
             continue;
         }
-        if (i == size) {
-            size *= 2;
-            double* newHomework = new double[size];
-            for (int j = 0; j < i; ++j) {
-                newHomework[j] = student.homework[j];
-            }
-            delete[] student.homework;
-            student.homework = newHomework;
-        }
-        student.homework[i] = input;
+        student.homework.push_back(input);
         ++i;
     }
-    student.n = i;
     while (true) {
         cout << "Enter exam result: ";
         cin >> student.exam;
@@ -62,25 +51,25 @@ void readData(nameGrade& student) {
     }
 }
 
-void generateRandomGrades(nameGrade& student) {
-    cout << "Enter student's name: ";
-    cin.ignore();
-    getline(cin, student.name);
-    cout << "Enter student's surname: ";
-    getline(cin, student.surname);
+void generateRandomGrades(nameGrade& student, bool inputName) {
+    if (inputName) {
+        cout << "Enter student's name: ";
+        cin.ignore();
+        getline(cin, student.name);
+        cout << "Enter student's surname: ";
+        getline(cin, student.surname);
+    }
     random_device rd;
     mt19937 gen(rd());
     uniform_real_distribution<double> dis(0.0, 10.0);
     uniform_int_distribution<int> disCount(1, 1000);
     int size = disCount(gen); 
-    student.homework = new double[size];
     string grades;
     for (int i = 0; i < size; ++i) {
         double grade = dis(gen);
-        student.homework[i] = grade;
+        student.homework.push_back(grade);
         grades += to_string(grade) + " ";
     }
-    student.n = size;
     student.exam = dis(gen);
     grades += "Exam: " + to_string(student.exam);
     cout << "Name: " << student.name << " " << student.surname << endl;
@@ -105,26 +94,26 @@ void generateRandomNames(nameGrade& student) {
 }
 
 void deleteStudentData(nameGrade& student) {
-    delete[] student.homework;
-    student.homework = nullptr;
+    student.homework.clear();
 }
 
 double calculateFinalAverage(nameGrade& student) {
     double sum = 0;
-    for (int i = 0; i < student.n; ++i) {
+    for (size_t i = 0; i < student.homework.size(); ++i) {
         sum += student.homework[i];
     }
-    double average = sum / student.n;
+    double average = sum / student.homework.size();
     return 0.4 * average + 0.6 * student.exam;
 }
 
 double calculateFinalMedian(nameGrade& student) {
-    sort(student.homework, student.homework + student.n);
+    vector<double> temp = student.homework;
+    sort(temp.begin(), temp.end());
     double median;
-    if (student.n % 2 == 0) {
-        median = (student.homework[student.n / 2 - 1] + student.homework[student.n / 2]) / 2.0;
+    if (temp.size() % 2 == 0) {
+        median = (temp[temp.size() / 2 - 1] + temp[temp.size() / 2]) / 2.0;
     } else {
-        median = student.homework[student.n / 2];
+        median = temp[temp.size() / 2];
     }
     return 0.4 * median + 0.6 * student.exam;
 }
@@ -141,8 +130,7 @@ void printResults(nameGrade& student, bool useAverage) {
 }
 
 int main() {
-    nameGrade* students = new nameGrade[1];
-    int m = 0;
+    vector<nameGrade> students;
     while (true) {
         cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Exit" << endl;
         int choice;
@@ -152,35 +140,25 @@ int main() {
         if (choice == 1) {
             readData(newStudent);
         } else if (choice == 2) {
-            generateRandomGrades(newStudent);
+            generateRandomGrades(newStudent, true);
         } else if (choice == 3) {
             generateRandomNames(newStudent);
-            generateRandomGrades(newStudent);
+            generateRandomGrades(newStudent, false);
         }
         if (newStudent.name == "0") break;
-        
-        nameGrade* newStudentsArray = new nameGrade[m + 1];
-        for (int i = 0; i < m; ++i) {
-            newStudentsArray[i] = students[i];
-        }
-        newStudentsArray[m] = newStudent;
-        delete[] students;
-        students = newStudentsArray;
-        ++m;
+        students.push_back(newStudent);
     }
     
-    for (int i = 0; i < m; ++i) {
+    for (size_t i = 0; i < students.size(); ++i) {
         bool useAverage;
         cout << "Use average? (0/1): ";
         cin >> useAverage;
         printResults(students[i], useAverage);
     }
     
-    for (int i = 0; i < m; ++i) {
+    for (size_t i = 0; i < students.size(); ++i) {
         deleteStudentData(students[i]);
     }
-    
-    delete[] students;
     
     return 0;
 }
