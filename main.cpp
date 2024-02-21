@@ -4,6 +4,8 @@
 #include <string>
 #include <random>
 #include <vector>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 const vector<string> maleNames = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
@@ -134,11 +136,12 @@ void printResults(nameGrade& student, bool useAverage) {
 
 int main() {
     vector<nameGrade> students;
+    bool fileInput = false;
     while (true) {
-        cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Exit" << endl;
+        cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Input from file\n5 - Exit" << endl;
         int choice;
         cin >> choice;
-        if (choice == 4) break;
+        if (choice == 5) break;
         nameGrade newStudent;
         if (choice == 1) {
             readData(newStudent);
@@ -147,15 +150,41 @@ int main() {
         } else if (choice == 3) {
             generateRandomNames(newStudent);
             generateRandomGrades(newStudent, false);
+        } else if (choice == 4) {
+            ifstream file("kursiokai.txt");
+            if (file.is_open()) {
+                string firstLine;
+                getline(file, firstLine);
+                int numHomework = count(firstLine.begin(), firstLine.end(), 'N');
+                while (getline(file, firstLine)) {
+                    istringstream iss(firstLine);
+                    nameGrade newStudent;
+                    iss >> newStudent.name >> newStudent.surname;
+                    for (int i = 0; i < numHomework; ++i) {
+                        int grade;
+                        iss >> grade;
+                        cout<<grade<<" ";
+                        newStudent.homework.push_back(grade);
+                    }
+                    iss >> newStudent.exam;
+                    students.push_back(newStudent);
+                }
+                file.close();
+                fileInput = true;
+            } else {
+                cout << "Unable to open file." << endl;
+            }
         }
+        if (fileInput) break;
         if (newStudent.name == "0") break;
         students.push_back(newStudent);
     }
     
+    bool useAverage;
+    cout << "Use average? (0/1): ";
+    cin >> useAverage;
+    
     for (size_t i = 0; i < students.size(); ++i) {
-        bool useAverage;
-        cout << "Use average? (0/1): ";
-        cin >> useAverage;
         printResults(students[i], useAverage);
     }
     
