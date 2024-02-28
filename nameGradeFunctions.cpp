@@ -79,11 +79,14 @@ void generateRandomNames(nameGrade &student)
 {
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<int> dis(0, 5);
+    uniform_int_distribution<int> dis(0, maleNames.size() - 1); 
+    uniform_int_distribution<int> disLastName(0, maleLastNames.size() - 1); 
     int maleIndex = dis(gen);
+    int maleLastNameIndex = disLastName(gen);
+    dis = uniform_int_distribution<int>(0, femaleNames.size() - 1); 
+    disLastName = uniform_int_distribution<int>(0, femaleLastNames.size() - 1); 
     int femaleIndex = dis(gen);
-    int maleLastNameIndex = dis(gen);
-    int femaleLastNameIndex = dis(gen);
+    int femaleLastNameIndex = disLastName(gen);
     if (dis(gen) % 2 == 0)
     {
         student.name = maleNames[maleIndex];
