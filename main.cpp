@@ -320,6 +320,7 @@ int main()
     sortStudents(students, sortChoice);
 
     end = chrono::high_resolution_clock::now();
+    total=0;
     total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
     cout<<"Time taken for sorting: "<<total<<endl;
 
@@ -359,6 +360,7 @@ int main()
     }
 
     end = chrono::high_resolution_clock::now();
+    total=0;
     total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
     cout<<"Time taken for output: "<<total<<endl;
 
