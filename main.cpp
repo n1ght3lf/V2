@@ -57,6 +57,12 @@ int main()
             cout << "Meniu:\n1 - Įvesti duomenis ranka\n2 - Sugeneruoti atsitiktinius pažymius\n3 - Sugeneruoti atsitiktinius pažymius ir vardus\n4 - Įvestis iš failo\n5 - Išeiti\n6 - Testavimas" << endl;
             int choice;
             cin >> choice;
+            if (cin.fail()){
+                cout<<"Netinkama įvestis \n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
             if (choice == 5)
                 break;
             else if (choice == 6)
@@ -170,9 +176,18 @@ int main()
             }
         }
 
-        cout << "Rūšiuoti pagal:\n1 - Vardą\n2 - Pavardę\n3 - Pažymių vidurkį\n4 - Pažymių medianą" << endl;
         int sortChoice;
-        cin >> sortChoice;
+        while(true){
+            cout << "Rūšiuoti pagal:\n1 - Vardą\n2 - Pavardę\n3 - Pažymių vidurkį\n4 - Pažymių medianą" << endl;
+            cin >> sortChoice;
+            if (cin.fail()){
+                cout<<"Netinkama įvestis \n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            break;
+        }
         begin = chrono::high_resolution_clock::now();
         
         sortStudents(students, sortChoice);
@@ -183,8 +198,17 @@ int main()
         cout<<"Užtrukta laiko rūšiavimui: "<<total<<endl;
 
         bool outputChoice;
-        cout << "Pasirinkite išvesties vietą (0 - failas, 1 - ekranas): ";
-        cin >> outputChoice;
+        while(true){
+            cout << "Pasirinkite išvesties vietą (0 - failas, 1 - ekranas): ";
+            cin >> outputChoice;
+            if (cin.fail()){
+                cout<<"Netinkama įvestis \n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            }
+            break;
+        }
         begin = chrono::high_resolution_clock::now();
         if (outputChoice == 0)
         {
