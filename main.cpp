@@ -8,21 +8,10 @@
 #include <sstream>
 #include <locale>
 #include <chrono>
+#include "nameConstants.h"
+#include "nameGrade.h"
 using namespace std;
 
-const vector<string> maleNames = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
-const vector<string> maleLastNames = {"Adomaitis", "Petrauskas", "Butkus", "Stankevicius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankunas"};
-const vector<string> femaleNames = {"Donata", "Doroteja", "Rugile", "Ruta", "Skaiste"};
-const vector<string> femaleLastNames = {"Petrauskaite", "Urbonaite", "Jakubauskaite", "Jankunaite", "Degutyte", "Ivanauskaite", "Varnaite"};
-
-struct nameGrade
-{
-    string name;
-    string surname;
-    vector<int> homework;
-    int exam;
-    double final;
-};
 
 void readData(nameGrade &student)
 {
