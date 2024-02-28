@@ -190,9 +190,9 @@ int main()
     setlocale(LC_ALL, "Lithuanian");
     vector<nameGrade> students;
     bool fileOutput = false;
-
-    chrono::steady_clock::time_point start, end;
-    chrono::duration<double> elapsed_seconds;
+    double total = 0;
+    auto begin = chrono::high_resolution_clock::now();
+    auto end = chrono::high_resolution_clock::now();
 
     while (true)
     {
@@ -225,6 +225,7 @@ int main()
             ifstream file(filename);
             if (file.is_open())
             {
+                begin = chrono::high_resolution_clock::now();
                 string firstLine;
                 getline(file, firstLine);
                 int numHomework = count(firstLine.begin(), firstLine.end(), 'N');
@@ -244,6 +245,9 @@ int main()
                 }
                 file.close();
                 fileOutput = true;
+                end = chrono::high_resolution_clock::now();
+                total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+                cout<<"Time taken for input: "<<total<<endl;
             }
             else
             {
@@ -268,7 +272,7 @@ int main()
             }
             else if (choice == 4)
             {
-                start = chrono::steady_clock::now();
+                begin = chrono::high_resolution_clock::now();
                 ifstream file("kursiokai.txt");
                 if (file.is_open())
                 {
@@ -291,6 +295,9 @@ int main()
                     }
                     file.close();
                     fileOutput = true;
+                    end = chrono::high_resolution_clock::now();
+                    total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+                    cout<<"Time taken for input: "<<total<<endl;
                 }
                 else
                 {
@@ -305,22 +312,21 @@ int main()
         }
     }
 
-    end = chrono::steady_clock::now();
-    elapsed_seconds = end - start;
-    cout << "Time taken for inputting: " << elapsed_seconds.count() << "s" << endl;
-
     cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
     int sortChoice;
     cin >> sortChoice;
+    begin = chrono::high_resolution_clock::now();
+    
     sortStudents(students, sortChoice);
 
-    end = chrono::steady_clock::now();
-    elapsed_seconds = end - start;
-    cout << "Time taken for sorting: " << elapsed_seconds.count() << "s" << endl;
+    end = chrono::high_resolution_clock::now();
+    total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+    cout<<"Time taken for sorting: "<<total<<endl;
 
     bool outputChoice;
     cout << "Choose the output destination (0 for file, 1 for screen): ";
     cin >> outputChoice;
+    begin = chrono::high_resolution_clock::now();
     if (outputChoice == 0)
     {
         fileOutput = true;
@@ -352,9 +358,9 @@ int main()
         }
     }
 
-    end = chrono::steady_clock::now();
-    elapsed_seconds = end - start;
-    cout << "Time taken for outputting: " << elapsed_seconds.count() << "s" << endl;
+    end = chrono::high_resolution_clock::now();
+    total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+    cout<<"Time taken for output: "<<total<<endl;
 
     for (size_t i = 0; i < students.size(); ++i)
     {
