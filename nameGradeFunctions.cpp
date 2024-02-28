@@ -10,33 +10,25 @@ using namespace std;
 
 void readData(nameGrade &student)
 {
-    cout << "Enter student's name (enter '0' to finish): ";
+    cout << "Įveskite studento vardą (įveskite '0' jei norite baigti): ";
     cin.ignore();
     getline(cin, student.name);
     if (student.name == "0")
         return;
-    cout << "Enter student's surname: ";
+    cout << "Įveskite studento pavardę: ";
     getline(cin, student.surname);
 
-    bool hasHomework = false;
-    cout << "Enter homework results, 11 to finish: ";
+    cout << "Įveskite namų darbų rezultatus, 11 - baigti: ";
     int i = 0;
     while (true)
     {
         double input;
         cin >> input;
         if (input == 11)
-        {
-            if (!hasHomework)
-            {
-                cout << "At least one homework result is required." << endl;
-                continue;
-            }
             break;
-        }
         if (input < 0 || input > 10 || cin.fail())
         {
-            cout << "Invalid input. Enter a grade between 0 and 10 or 11 to cancel." << endl;
+            cout << "Netinkama įvestis. Įveskite pažymį tarp 0 ir 10 arba 11, jei norite nutraukti." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
@@ -44,17 +36,16 @@ void readData(nameGrade &student)
         int grade = static_cast<int>(round(input));
         student.homework.push_back(grade);
         ++i;
-        hasHomework = true;
     }
 
     while (true)
     {
-        cout << "Enter exam result: ";
+        cout << "Įveskite egzamino rezultatą: ";
         double examInput;
         cin >> examInput;
         if (examInput < 0 || examInput > 10 || cin.fail())
         {
-            cout << "Invalid input. Enter a result between 0 and 10." << endl;
+            cout << "Netinkama įvestis. Įveskite pažymį tarp 0 ir 10." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
@@ -64,15 +55,14 @@ void readData(nameGrade &student)
     }
 }
 
-
 void generateRandomGrades(nameGrade &student, bool inputName)
 {
     if (inputName)
     {
-        cout << "Enter student's name: ";
+        cout << "Įveskite studento vardą: ";
         cin.ignore();
         getline(cin, student.name);
-        cout << "Enter student's surname: ";
+        cout << "Įveskite studento pavardę: ";
         getline(cin, student.surname);
     }
     random_device rd;
@@ -88,7 +78,7 @@ void generateRandomGrades(nameGrade &student, bool inputName)
         grades += to_string(grade) + " ";
     }
     student.exam = dis(gen);
-    grades += "Exam: " + to_string(student.exam);
+    grades += "Egzaminas: " + to_string(student.exam);
 }
 
 void generateRandomNames(nameGrade &student)
@@ -114,6 +104,7 @@ void generateRandomNames(nameGrade &student)
         student.surname = femaleLastNames[femaleLastNameIndex];
     }
 }
+
 
 void deleteStudentData(nameGrade &student)
 {
@@ -179,8 +170,8 @@ void sortStudents(vector<nameGrade> &students, int sortChoice)
             });
             break;
         default:
-            cout << "Invalid choice." << endl;
-            cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
+            cout << "Netinkama įvestis." << endl;
+            cout << "Rūšiuoti pagal :\n1 - Vardą\n2 - Pavardę\n3 - Pažymių vidurkį\n4 - Pažymių medianą" << endl;
             cin >> sortChoice;
             continue;
         }

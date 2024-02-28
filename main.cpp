@@ -21,7 +21,6 @@ int main()
 
     try
     {
-        // Try to open necessary files
         ifstream nameGradeHeader("nameGrade.h");
         ifstream nameGradeFunctionsHeader("nameGradeFunctions.h");
         ifstream nameConstantsHeader("nameConstants.h");
@@ -30,39 +29,39 @@ int main()
 
         if (!nameGradeHeader.is_open())
         {
-            throw runtime_error("nameGrade.h is missing.");
+            throw runtime_error("nameGrade.h nerastas.");
         }
 
         if (!nameGradeFunctionsHeader.is_open())
         {
-            throw runtime_error("nameGradeFunctions.h is missing.");
+            throw runtime_error("nameGradeFunctions.h nerastas.");
         }
 
         if (!nameConstantsHeader.is_open())
         {
-            throw runtime_error("nameConstants.h is missing.");
+            throw runtime_error("nameConstants.h nerastas.");
         }
 
         if (!nameGradeFunctionsCpp.is_open())
         {
-            throw runtime_error("nameGradeFunctions.cpp is missing.");
+            throw runtime_error("nameGradeFunctions.cpp nerastas.");
         }
 
         if (!mainCpp.is_open())
         {
-            throw runtime_error("main.cpp is missing.");
+            throw runtime_error("main.cpp nerastas.");
         }
 
         while (true)
         {
-            cout << "Menu:\n1 - Enter data manually\n2 - Generate random grades\n3 - Generate random grades and names\n4 - Input from file\n5 - Exit\n6 - Testing" << endl;
+            cout << "Meniu:\n1 - Įvesti duomenis ranka\n2 - Sugeneruoti atsitiktinius pažymius\n3 - Sugeneruoti atsitiktinius pažymius ir vardus\n4 - Įvestis iš failo\n5 - Išeiti\n6 - Testavimas" << endl;
             int choice;
             cin >> choice;
             if (choice == 5)
                 break;
             else if (choice == 6)
             {
-                cout << "Enter the number of students to test (1 - 10000, 2 - 100000, 3 - 1000000): ";
+                cout << "Įveskite studentų skaičių testavimui (1 - 10000, 2 - 100000, 3 - 1000000): ";
                 int numStudents;
                 cin >> numStudents;
                 string filename;
@@ -78,7 +77,7 @@ int main()
                     filename = "studentai1000000.txt";
                     break;
                 default:
-                    cout << "Invalid number of students." << endl;
+                    cout << "Netinkamas studentų skaičius." << endl;
                     break;
                 }
                 ifstream file(filename);
@@ -106,11 +105,11 @@ int main()
                     fileOutput = true;
                     end = chrono::high_resolution_clock::now();
                     total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                    cout<<"Time taken for input: "<<total<<endl;
+                    cout<<"Užtrukta laiko įvedimui: "<<total<<endl;
                 }
                 else
                 {
-                    cout << "Unable to open file." << endl;
+                    cout << "Nepavyko atidaryti failo." << endl;
                 }
             }
             else
@@ -156,11 +155,11 @@ int main()
                         fileOutput = true;
                         end = chrono::high_resolution_clock::now();
                         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                        cout<<"Time taken for input: "<<total<<endl;
+                        cout<<"Užtrukta laiko įvedimui: "<<total<<endl;
                     }
                     else
                     {
-                        cout << "Unable to open file." << endl;
+                        cout << "Nepavyko atidaryti failo." << endl;
                     }
                 }
                 if (fileOutput)
@@ -171,7 +170,7 @@ int main()
             }
         }
 
-        cout << "Sort by:\n1 - Name\n2 - Lastname\n3 - Grade (average)\n4 - Grade (median)" << endl;
+        cout << "Rūšiuoti pagal:\n1 - Vardą\n2 - Pavardę\n3 - Pažymių vidurkį\n4 - Pažymių medianą" << endl;
         int sortChoice;
         cin >> sortChoice;
         begin = chrono::high_resolution_clock::now();
@@ -181,10 +180,10 @@ int main()
         end = chrono::high_resolution_clock::now();
         total=0;
         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-        cout<<"Time taken for sorting: "<<total<<endl;
+        cout<<"Užtrukta laiko rūšiavimui: "<<total<<endl;
 
         bool outputChoice;
-        cout << "Choose the output destination (0 for file, 1 for screen): ";
+        cout << "Pasirinkite išvesties vietą (0 - failas, 1 - ekranas): ";
         cin >> outputChoice;
         begin = chrono::high_resolution_clock::now();
         if (outputChoice == 0)
@@ -193,11 +192,11 @@ int main()
             ofstream outputFile("kursiokaiOut.txt");
             if (!outputFile.is_open())
             {
-                cout << "Unable to open file." << endl;
+                cout << "Nepavyko atidaryti failo." << endl;
                 return 1;
             }
             streambuf *originalCoutBuffer = cout.rdbuf();
-            cout.rdbuf(outputFile.rdbuf()); //redirect cout to the file
+            cout.rdbuf(outputFile.rdbuf()); //nukreipkite cout į failą
             cout << fixed << setprecision(2) << setw(20) << left << "Vardas" << setw(20) << left << "Pavardė" << setw(20) << left << "Galutinis(Vid.)" << setw(20) << left << "Galutinis(Med.)" << endl;
             cout << "--------------------------------------------------------------------------" << endl;
 
@@ -205,7 +204,7 @@ int main()
             {
                 printResults(students[i]);
             }
-            cout.rdbuf(originalCoutBuffer); // Restore original cout buffer
+            cout.rdbuf(originalCoutBuffer); // Atstatyti originalų cout buferį
         }
         else
         {
@@ -221,7 +220,7 @@ int main()
         end = chrono::high_resolution_clock::now();
         total=0;
         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-        cout<<"Time taken for output: "<<total<<endl;
+        cout<<"Užtrukta laiko išvesties: "<<total<<endl;
 
         for (size_t i = 0; i < students.size(); ++i)
         {
@@ -232,7 +231,7 @@ int main()
     }
     catch (const runtime_error &e)
     {
-        cout << "Error: " << e.what() << endl;
+        cout << "Klaida: " << e.what() << endl;
         return 1;
     }
 }
