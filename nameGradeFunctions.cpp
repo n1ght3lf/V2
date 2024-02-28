@@ -18,6 +18,7 @@ void readData(nameGrade &student)
     cout << "Enter student's surname: ";
     getline(cin, student.surname);
 
+    bool hasHomework = false;
     cout << "Enter homework results, 11 to finish: ";
     int i = 0;
     while (true)
@@ -25,7 +26,14 @@ void readData(nameGrade &student)
         double input;
         cin >> input;
         if (input == 11)
+        {
+            if (!hasHomework)
+            {
+                cout << "At least one homework result is required." << endl;
+                continue;
+            }
             break;
+        }
         if (input < 0 || input > 10 || cin.fail())
         {
             cout << "Invalid input. Enter a grade between 0 and 10 or 11 to cancel." << endl;
@@ -36,6 +44,7 @@ void readData(nameGrade &student)
         int grade = static_cast<int>(round(input));
         student.homework.push_back(grade);
         ++i;
+        hasHomework = true;
     }
 
     while (true)
@@ -54,6 +63,7 @@ void readData(nameGrade &student)
         break;
     }
 }
+
 
 void generateRandomGrades(nameGrade &student, bool inputName)
 {
