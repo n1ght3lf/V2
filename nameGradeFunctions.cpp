@@ -17,6 +17,7 @@ void readData(nameGrade &student)
         return;
     cout << "Enter student's surname: ";
     getline(cin, student.surname);
+
     cout << "Enter homework results, 11 to finish: ";
     int i = 0;
     while (true)
@@ -25,26 +26,31 @@ void readData(nameGrade &student)
         cin >> input;
         if (input == 11)
             break;
-        if (input < 0 || input > 10)
+        if (input < 0 || input > 10 || cin.fail())
         {
-            cout << "Enter a grade between 0 and 10 or 11 to cancel." << endl;
+            cout << "Invalid input. Enter a grade between 0 and 10 or 11 to cancel." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
         int grade = static_cast<int>(round(input));
         student.homework.push_back(grade);
         ++i;
     }
+
     while (true)
     {
         cout << "Enter exam result: ";
         double examInput;
         cin >> examInput;
-        student.exam = static_cast<int>(round(examInput));
-        if (student.exam < 0 || student.exam > 10)
+        if (examInput < 0 || examInput > 10 || cin.fail())
         {
-            cout << "Enter a result between 0 and 10." << endl;
+            cout << "Invalid input. Enter a result between 0 and 10." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
+        student.exam = static_cast<int>(round(examInput));
         break;
     }
 }
