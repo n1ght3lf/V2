@@ -18,38 +18,65 @@ int main()
     double total = 0;
     auto begin = chrono::high_resolution_clock::now();
     auto end = chrono::high_resolution_clock::now();
-
+    bool crash = 0;
     try
     {
         ifstream nameGradeHeader("nameGrade.h");
         ifstream nameGradeFunctionsHeader("nameGradeFunctions.h");
         ifstream nameConstantsHeader("nameConstants.h");
         ifstream nameGradeFunctionsCpp("nameGradeFunctions.cpp");
-        ifstream mainCpp("main.cpp");
-
+        ifstream kursiokai("kursiokai.txt");
+        ifstream stud10000("studentai10000.txt");
+        ifstream stud100000("studentai100000.txt");
+        ifstream stud1000000("studentai1000000.txt");
         if (!nameGradeHeader.is_open())
         {
-            throw runtime_error("nameGrade.h nerastas.");
+            cout << "nameGrade.h nerastas.\n";
+            crash=1;
         }
 
         if (!nameGradeFunctionsHeader.is_open())
         {
-            throw runtime_error("nameGradeFunctions.h nerastas.");
+            cout << "nameGradeFunctions.h nerastas.\n";
+            crash=1;
         }
 
         if (!nameConstantsHeader.is_open())
         {
-            throw runtime_error("nameConstants.h nerastas.");
+            cout << "nameConstants.h nerastas.\n";
+            crash=1;
         }
 
         if (!nameGradeFunctionsCpp.is_open())
         {
-            throw runtime_error("nameGradeFunctions.cpp nerastas.");
+            cout << "nameGradeFunctions.cpp nerastas.\n";
+            crash=1;
         }
 
-        if (!mainCpp.is_open())
+        if (!kursiokai.is_open())
         {
-            throw runtime_error("main.cpp nerastas.");
+            cout << "studentai10000.txt nerastas.\n";
+            crash=1;
+        }
+
+        if (!stud10000.is_open())
+        {
+            cout << "studentai10000.txt nerastas.\n";
+            crash=1;
+        }
+        if (!stud100000.is_open())
+        {
+            cout << "studentai100000.txt nerastas.\n";
+            crash=1;
+        }
+        if (!stud100000.is_open())
+        {
+            cout << "studentai1000000.txt nerastas.\n";
+            crash=1;
+        }
+        if (crash == 1)
+        {
+            throw runtime_error("Pridėkite reikalingus failus.");
         }
 
         while (true)
@@ -57,8 +84,9 @@ int main()
             cout << "Meniu:\n1 - Įvesti duomenis ranka\n2 - Sugeneruoti atsitiktinius pažymius\n3 - Sugeneruoti atsitiktinius pažymius ir vardus\n4 - Įvestis iš failo\n5 - Išeiti\n6 - Testavimas" << endl;
             int choice;
             cin >> choice;
-            if (cin.fail()){
-                cout<<"Netinkama įvestis \n";
+            if (cin.fail())
+            {
+                cout << "Netinkama įvestis \n";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
@@ -111,7 +139,7 @@ int main()
                     fileOutput = true;
                     end = chrono::high_resolution_clock::now();
                     total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                    cout<<"Užtrukta laiko įvedimui: "<<total<<endl;
+                    cout << "Užtrukta laiko įvedimui: " << total << endl;
                 }
                 else
                 {
@@ -161,7 +189,7 @@ int main()
                         fileOutput = true;
                         end = chrono::high_resolution_clock::now();
                         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                        cout<<"Užtrukta laiko įvedimui: "<<total<<endl;
+                        cout << "Užtrukta laiko įvedimui: " << total << endl;
                     }
                     else
                     {
@@ -177,11 +205,13 @@ int main()
         }
 
         int sortChoice;
-        while(true){
+        while (true)
+        {
             cout << "Rūšiuoti pagal:\n1 - Vardą\n2 - Pavardę\n3 - Pažymių vidurkį\n4 - Pažymių medianą" << endl;
             cin >> sortChoice;
-            if (cin.fail()){
-                cout<<"Netinkama įvestis \n";
+            if (cin.fail())
+            {
+                cout << "Netinkama įvestis \n";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
@@ -189,20 +219,22 @@ int main()
             break;
         }
         begin = chrono::high_resolution_clock::now();
-        
+
         sortStudents(students, sortChoice);
 
         end = chrono::high_resolution_clock::now();
-        total=0;
+        total = 0;
         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-        cout<<"Užtrukta laiko rūšiavimui: "<<total<<endl;
+        cout << "Užtrukta laiko rūšiavimui: " << total << endl;
 
         bool outputChoice;
-        while(true){
+        while (true)
+        {
             cout << "Pasirinkite išvesties vietą (0 - failas, 1 - ekranas): ";
             cin >> outputChoice;
-            if (cin.fail()){
-                cout<<"Netinkama įvestis \n";
+            if (cin.fail())
+            {
+                cout << "Netinkama įvestis \n";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
@@ -220,7 +252,7 @@ int main()
                 return 1;
             }
             streambuf *originalCoutBuffer = cout.rdbuf();
-            cout.rdbuf(outputFile.rdbuf()); //nukreipkite cout į failą
+            cout.rdbuf(outputFile.rdbuf()); // nukreipkite cout į failą
             cout << fixed << setprecision(2) << setw(20) << left << "Vardas" << setw(20) << left << "Pavardė" << setw(20) << left << "Galutinis(Vid.)" << setw(20) << left << "Galutinis(Med.)" << endl;
             cout << "--------------------------------------------------------------------------" << endl;
 
@@ -242,9 +274,9 @@ int main()
         }
 
         end = chrono::high_resolution_clock::now();
-        total=0;
+        total = 0;
         total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-        cout<<"Užtrukta laiko išvesties: "<<total<<endl;
+        cout << "Užtrukta laiko išvesties: " << total << endl;
 
         for (size_t i = 0; i < students.size(); ++i)
         {
