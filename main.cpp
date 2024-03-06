@@ -138,7 +138,7 @@ int main()
                     file.close();
                     fileOutput = true;
                     end = chrono::high_resolution_clock::now();
-                    total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+                    total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
                     cout << "Užtrukta laiko įvedimui: " << total << endl;
                 }
                 else
@@ -188,7 +188,7 @@ int main()
                         file.close();
                         fileOutput = true;
                         end = chrono::high_resolution_clock::now();
-                        total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+                        total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
                         cout << "Užtrukta laiko įvedimui: " << total << endl;
                     }
                     else
@@ -223,8 +223,7 @@ int main()
         sortStudents(students, sortChoice);
 
         end = chrono::high_resolution_clock::now();
-        total = 0;
-        total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+        total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
         cout << "Užtrukta laiko rūšiavimui: " << total << endl;
 
         bool outputChoice;
@@ -274,8 +273,7 @@ int main()
         }
 
         end = chrono::high_resolution_clock::now();
-        total = 0;
-        total += chrono::duration_cast<chrono::duration<double>>(end - begin).count();
+        total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
         cout << "Užtrukta laiko išvesties: " << total << endl;
 
         for (size_t i = 0; i < students.size(); ++i)
