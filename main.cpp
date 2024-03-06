@@ -27,9 +27,9 @@ int main()
         ifstream nameConstantsHeader("nameConstants.h");
         ifstream nameGradeFunctionsCpp("nameGradeFunctions.cpp");
         ifstream kursiokai("kursiokai.txt");
-        // ifstream stud10000("studentai10000.txt");
-        // ifstream stud100000("studentai100000.txt");
-        // ifstream stud1000000("studentai1000000.txt");
+        /*ifstream stud10000("studentai10000.txt");
+        ifstream stud100000("studentai100000.txt");
+        ifstream stud1000000("studentai1000000.txt");*/
         if (!nameGradeHeader.is_open())
         {
             cout << "nameGrade.h nerastas.\n";
@@ -60,21 +60,21 @@ int main()
             crash=1;
         }
 
-        // if (!stud10000.is_open())
-        // {
-        //     cout << "studentai10000.txt nerastas.\n";
-        //     crash=1;
-        // }
-        // if (!stud100000.is_open())
-        // {
-        //     cout << "studentai100000.txt nerastas.\n";
-        //     crash=1;
-        // }
-        // if (!stud1000000.is_open())
-        // {
-        //     cout << "studentai1000000.txt nerastas.\n";
-        //     crash=1;
-        // }
+        /*if (!stud10000.is_open())
+        {
+            cout << "studentai10000.txt nerastas.\n";
+            crash=1;
+        }
+        if (!stud100000.is_open())
+        {
+            cout << "studentai100000.txt nerastas.\n";
+            crash=1;
+        }
+        if (!stud1000000.is_open())
+        {
+            cout << "studentai1000000.txt nerastas.\n";
+            crash=1;
+        }*/
         if (crash == 1)
         {
             throw runtime_error("Pridėkite reikalingus failus.");
