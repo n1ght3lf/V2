@@ -97,30 +97,13 @@ int main()
             else if (choice == 6){
                 begin = chrono::high_resolution_clock::now();
                 generateTestFile("studentai1000.txt", 1000);
-                end = chrono::high_resolution_clock::now();
-                total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                cout << "Užtrukta laiko sukūrimui: " << total << endl;
-                begin = chrono::high_resolution_clock::now();
                 generateTestFile("studentai10000.txt", 10000);
-                end = chrono::high_resolution_clock::now();
-                total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                cout << "Užtrukta laiko sukūrimui: " << total << endl;
-                begin = chrono::high_resolution_clock::now();
                 generateTestFile("studentai100000.txt", 100000);
-                end = chrono::high_resolution_clock::now();
-                total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                cout << "Užtrukta laiko sukūrimui: " << total << endl;
-                begin = chrono::high_resolution_clock::now();
                 generateTestFile("studentai1000000.txt", 1000000);
-                end = chrono::high_resolution_clock::now();
-                total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
-                cout << "Užtrukta laiko sukūrimui: " << total << endl;
-                begin = chrono::high_resolution_clock::now();
                 generateTestFile("studentai10000000.txt", 10000000);
                 end = chrono::high_resolution_clock::now();
                 total = chrono::duration_cast<chrono::duration<double>>(end - begin).count();
                 cout << "Užtrukta laiko sukūrimui: " << total << endl;
-                
             }
             else if (choice == 5)
             {
