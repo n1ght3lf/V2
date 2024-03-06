@@ -8,6 +8,41 @@
 #include "nameConstants.h"
 using namespace std;
 
+void generateTestFile(const string& filename, int numEntries) {
+    ofstream outputFile(filename);
+    if (!outputFile.is_open()) {
+        cout << "Failed to open file for writing." << endl;
+        return;
+    }
+
+    outputFile << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde";
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> numHomeworkDist(1, 50); // Random number of homework columns
+
+    int numHomework = numHomeworkDist(gen);
+
+    for (int i = 1; i <= numHomework; ++i) {
+        outputFile << setw(9) << left << "ND" + to_string(i);
+    }
+    outputFile << "Egz." << endl;
+
+    uniform_int_distribution<int> dis(1, 10);
+
+    for (int i = 1; i <= numEntries; ++i) {
+        outputFile << setw(20) << left << "Vardas" + to_string(i);
+        outputFile << setw(20) << left << "Pavarde" + to_string(i);
+
+        for (int j = 0; j < numHomework; ++j) {
+            outputFile << setw(9) << left << dis(gen);
+        }
+
+        outputFile << dis(gen) << endl;
+    }
+
+    outputFile.close();
+}
+
 void readData(nameGrade &student)
 {
     cout << "Įveskite studento vardą (įveskite '0' jei norite baigti): ";

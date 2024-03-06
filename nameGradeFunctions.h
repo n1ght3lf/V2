@@ -11,5 +11,6 @@ double calculateFinalAverage(const nameGrade &student);
 double calculateFinalMedian(const nameGrade &student);
 void printResults(const nameGrade &student);
 void sortStudents(std::vector<nameGrade> &students, int sortChoice);
+void generateTestFile(const std::string& filename, int numEntries);
 
 #endif

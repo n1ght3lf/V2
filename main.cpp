@@ -21,6 +21,9 @@ int main()
     bool crash = 0;
     try
     {
+        int a;// TODO delete lines 24, 25, 26, 84 when done
+        cin>>a;
+        if(a==1){
         ifstream nameGradeHeader("nameGrade.h");
         ifstream nameGradeFunctionsHeader("nameGradeFunctions.h");
         ifstream nameConstantsHeader("nameConstants.h");
@@ -78,6 +81,12 @@ int main()
         {
             throw runtime_error("Pridėkite reikalingus failus.");
         }
+        }
+        generateTestFile("studentai1000.txt", 1000);
+        generateTestFile("studentai10000.txt", 10000);
+        generateTestFile("studentai100000.txt", 100000);
+        generateTestFile("studentai1000000.txt", 1000000);
+        generateTestFile("studentai10000000.txt", 10000000);
 
         while (true)
         {
