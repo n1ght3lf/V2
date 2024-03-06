@@ -69,7 +69,7 @@ int main()
             cout << "studentai100000.txt nerastas.\n";
             crash=1;
         }
-        if (!stud100000.is_open())
+        if (!stud1000000.is_open())
         {
             cout << "studentai1000000.txt nerastas.\n";
             crash=1;
