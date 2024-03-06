@@ -58,7 +58,6 @@ void readData(nameGrade &student)
     while (true)
     {
         double input;
-        cout<<"testing";
         cin >> input;
         if (input == 11)
             break;
