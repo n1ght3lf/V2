@@ -8,6 +8,7 @@
 #include "nameGrade.h"
 #include "nameGradeFunctions.h"
 #include "nameConstants.h"
+
 using namespace std;
 
 int main()
@@ -21,17 +22,14 @@ int main()
     bool crash = 0;
     try
     {
-        int a;// TODO delete lines 24, 25, 26, 84 when done
-        cin>>a;
-        if(a==1){
         ifstream nameGradeHeader("nameGrade.h");
         ifstream nameGradeFunctionsHeader("nameGradeFunctions.h");
         ifstream nameConstantsHeader("nameConstants.h");
         ifstream nameGradeFunctionsCpp("nameGradeFunctions.cpp");
         ifstream kursiokai("kursiokai.txt");
-        ifstream stud10000("studentai10000.txt");
-        ifstream stud100000("studentai100000.txt");
-        ifstream stud1000000("studentai1000000.txt");
+        // ifstream stud10000("studentai10000.txt");
+        // ifstream stud100000("studentai100000.txt");
+        // ifstream stud1000000("studentai1000000.txt");
         if (!nameGradeHeader.is_open())
         {
             cout << "nameGrade.h nerastas.\n";
@@ -62,35 +60,29 @@ int main()
             crash=1;
         }
 
-        if (!stud10000.is_open())
-        {
-            cout << "studentai10000.txt nerastas.\n";
-            crash=1;
-        }
-        if (!stud100000.is_open())
-        {
-            cout << "studentai100000.txt nerastas.\n";
-            crash=1;
-        }
-        if (!stud1000000.is_open())
-        {
-            cout << "studentai1000000.txt nerastas.\n";
-            crash=1;
-        }
+        // if (!stud10000.is_open())
+        // {
+        //     cout << "studentai10000.txt nerastas.\n";
+        //     crash=1;
+        // }
+        // if (!stud100000.is_open())
+        // {
+        //     cout << "studentai100000.txt nerastas.\n";
+        //     crash=1;
+        // }
+        // if (!stud1000000.is_open())
+        // {
+        //     cout << "studentai1000000.txt nerastas.\n";
+        //     crash=1;
+        // }
         if (crash == 1)
         {
             throw runtime_error("Pridėkite reikalingus failus.");
         }
-        }
-        generateTestFile("studentai1000.txt", 1000);
-        generateTestFile("studentai10000.txt", 10000);
-        generateTestFile("studentai100000.txt", 100000);
-        generateTestFile("studentai1000000.txt", 1000000);
-        generateTestFile("studentai10000000.txt", 10000000);
 
         while (true)
         {
-            cout << "Meniu:\n1 - Įvesti duomenis ranka\n2 - Sugeneruoti atsitiktinius pažymius\n3 - Sugeneruoti atsitiktinius pažymius ir vardus\n4 - Įvestis iš failo\n5 - Išeiti\n6 - Testavimas" << endl;
+            cout << "Meniu:\n1 - Įvesti duomenis ranka\n2 - Sugeneruoti atsitiktinius pažymius\n3 - Sugeneruoti atsitiktinius pažymius ir vardus\n4 - Įvestis iš failo\n5 - Testavimas\n6 - Generavimas\n7-Išeiti" << endl;
             int choice;
             cin >> choice;
             if (cin.fail())
@@ -100,9 +92,16 @@ int main()
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 continue;
             }
-            if (choice == 5)
+            if (choice == 7)
                 break;
-            else if (choice == 6)
+            else if (choice == 6){
+                generateTestFile("studentai1000.txt", 1000);
+                generateTestFile("studentai10000.txt", 10000);
+                generateTestFile("studentai100000.txt", 100000);
+                generateTestFile("studentai1000000.txt", 1000000);
+                generateTestFile("studentai10000000.txt", 10000000);
+            }
+            else if (choice == 5)
             {
                 cout << "Įveskite studentų skaičių testavimui (1 - 10000, 2 - 100000, 3 - 1000000): ";
                 int numStudents;
