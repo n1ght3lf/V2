@@ -10,10 +10,6 @@ using namespace std;
 
 void generateTestFile(const string& filename, int numEntries) {
     ofstream outputFile(filename);
-    if (!outputFile.is_open()) {
-        cout << "Failed to open file for writing." << endl;
-        return;
-    }
 
     outputFile << setw(20) << left << "Vardas" << setw(20) << left << "Pavarde";
     random_device rd;
