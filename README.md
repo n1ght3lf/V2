@@ -1,34 +1,25 @@
-# Lab1OoP
-Studentų duomenų nuskaitymas ir balų skaičiavimas
+# v0.4
+Laboratinio darbo nr. 1 v.0.4 versija
 
-All times are in seconds:
+1. Nuskaito duomenis iš naudotojo arba failo ir patikrina ar jie yra teisingi (naudojant išimčių valdymą). 
+2. Duoda naudotojui galimybė pasirinkti du galutinio balo skaičiavimo būdus - skaičiuojant vidurkį ar medianą.
+3. Leidžia pasirinkti 5 skirtingus būdus įvesti, nuskaityti ar sugeneruoti duomenis.
+4. Dinamiškai paskiria atmintį pagal įvesta / nuskaitytą duomenų kiekį.
+5. Atidaro testavimo failus ir apskaičiuoja laiką, kurį praleidžia apdorojant duomenis iš failų.
+6. Visi pranešimai išvedami lietuvių kalbą.
+7. Projektas išskaidytas į kelis failus (.h ir .cpp).
+8. Generuoja penkis atsitiktinius studentų sąrašų failus, sudarytus iš: 1 000, 10 000, 100 000, 1 000 000, 10 000 000 įrašų
+9. Atlieka tyrimus / testavimus su sugeneruotais failais.
+10. Surūšiuoja studentus ir išveda į du naujus failus.
 
-10000
-Inputting average:                          0.04
-Sorting average (not name or last name):    0.31
-Outputting average (to file):               0.5
+## Tyrimo rezultatai
 
-data for averages: 
-Inputting:                                  0.0358  0.0359  0.0375  0.0361  0.0364
-Sorting:                                    0.3096  0.3135  0.3127  0.3116  0.3152
-Outputting:                                 0.49    0.51    0.51    0.50    0.50
+| Failo dydis | Skaitymo laikas  | Rūšiavimo laikas | Išvedimo laikas  |
+|-------------|------------------|------------------|------------------|
+| 1 000       | 0.002s           | 0.001s           | 0.001s           |
+| 10 000      | 0.085s           | 0.024s           | 0.019s           |
+| 100 000     | 0.837s           | 0.243s           | 0.195s           |
+| 1 000 000   | 8.395s           | 2.657s           | 1.940s           |
+| 10 000 000  | 86.659s          | 33.528s          | 20.298s          |
 
-100000
-Inputting average:                          0.44
-Sorting average (not name or last name):    5.54
-Outputting average (to file):               7.43
-
-data for averages: 
-Inputting:                                  0.4373  0.4379  0.4898  0.4302  0.4289
-Sorting:                                    5.5187  5.5702  5.5581  5.5304  5.5092
-Outputting:                                 7.41    7.48    7.45    7.44    7.37
-
-1000000
-Inputting average:                          2.34
-Sorting average (not name or last name):    22.28
-Outputting average (to file):               39.76
-
-data for averages: 
-Inputting:                                  2.4235  2.3218  2.3178  2.3184  2.2950
-Sorting:                                    22.2665 22.4865 22.0998 22.4346 22.1153
-Outputting:                                 39.48   39.98   39.69   40.00   39.67
+![Tyrimas](./image.png)
