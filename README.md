@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # v0.4
 Laboratorinio darbo V0.4 versija
 1. Naudotojas pasirenki ar skaičiuoti vidurkį ar medianą
@@ -23,3 +24,6 @@ Išskaidytas į kelis failus
 | 10 000 000  | 86.659s          | 33.528s          | 20.298s          |
 
 ![Tyrimas](./image.png)
+=======
+
+>>>>>>> 0b67dd3914dc52aa7f52708f22b58a5cccab3d8a
