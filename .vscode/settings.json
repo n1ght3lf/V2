@@ -6,7 +6,9 @@
         "string_view": "cpp",
         "iostream": "cpp",
         "iomanip": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp"
     },
     "cmake.configureOnOpen": false
 }

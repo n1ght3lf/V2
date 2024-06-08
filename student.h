@@ -4,7 +4,8 @@
 #include <string>
 #include <vector>
 
-struct Student {
+struct Student
+{
     std::string firstName, lastName;
     std::vector<int> homeworkResults;
     int examResults;
