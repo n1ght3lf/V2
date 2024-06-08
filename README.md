@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # v0.4
 Laboratorinio darbo V0.4 versija
 1. Naudotojas pasirenki ar skaičiuoti vidurkį ar medianą
@@ -9,9 +9,9 @@ Laboratorinio darbo V0.4 versija
 6. Galutinis rezultatas išvedamas arba konsolėje, arba skirstomi į du failus.
 
 Projektas:
-Dinamiškai paskiria atmintį pagal duomenis
-Gali sugeneruoti penkis studentų sąrašų failus, nuo 1000 iki 10000000 eilučių dydžio, su jais atlikti tyrimus.
-Išskaidytas į kelis failus
+1. Dinamiškai paskiria atmintį pagal duomenis
+2. Gali sugeneruoti penkis studentų sąrašų failus, nuo 1000 iki 10000000 eilučių dydžio, su jais atlikti tyrimus.
+3. Išskaidytas į kelis failus
 
 ## Tyrimo rezultatai
 
@@ -26,4 +26,3 @@ Išskaidytas į kelis failus
 ![Tyrimas](./image.png)
 =======
 
->>>>>>> 0b67dd3914dc52aa7f52708f22b58a5cccab3d8a
