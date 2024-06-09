@@ -8,6 +8,9 @@
 
 using namespace std;
 
+/// @brief Displays the menu and prompts the user to choose an option.
+/// @return The user's menu choice.
+
 bool getMedianPreference()
 {
     string a;
@@ -36,6 +39,12 @@ bool getMedianPreference()
         }
     }
 }
+
+/// @brief Processes student data based on user input. 
+/// @tparam Container The type of container used to store student data (e.g., vector, list).
+/// @param students The container holding student data.
+/// @param Median Flag indicating whether to calculate median or average.
+/// @param startTotal The starting time point for measuring total execution time.
 
 template <typename Container>
 void processStudents(Container &students, bool Median, chrono::high_resolution_clock::time_point startTotal)
@@ -402,6 +411,8 @@ template void processStudents(vector<Student> &students, bool Median, chrono::hi
 template void processStudents(deque<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 template void processStudents(list<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 
+/// @brief Displays the menu and prompts the user to choose an option.
+/// @return The user's menu choice.
 int Menu()
 {
     int menuChoice;
@@ -421,7 +432,8 @@ int Menu()
     }
     return menuChoice;
 }
-
+/// @brief Prompts the user to enter a filename.
+/// @return The filename entered by the user.
 string getFilenameFromUser()
 {
     cout << "Įveskite norimo failo pavadinimą (kursiokai.txt, studentai1000.txt, studentai10000.txt, studentai100000.txt, studentai1000000.txt, studentai10000000.txt): \n";
@@ -434,7 +446,10 @@ string getFilenameFromUser()
     }
     return inputFileName;
 }
-
+/// @brief Reads student data from a file and populates the container.
+/// @tparam Container The type of container used to store student data.
+/// @param inputFile The input file stream.
+/// @param students The container to populate with student data.
 template <typename Container>
 void readData(ifstream& inputFile, Container& students) {
     string buffer; 
@@ -452,7 +467,12 @@ void readData(ifstream& inputFile, Container& students) {
 template void readData(ifstream &inputFile, vector<Student> &students);
 template void readData(ifstream &inputFile, deque<Student> &students);
 template void readData(ifstream &inputFile, list<Student> &students);
-
+/// @brief Opens files containing student data and performs operations based on the chosen strategy.
+/// @tparam Container The type of container used to store student data.
+/// @param filenames The names of the input files.
+/// @param students The container holding student data.
+/// @param Median Flag indicating whether to calculate median or average.
+/// @param strategy The strategy chosen for data processing.
 template <typename Container>
 void openFiles(const vector<string> &filenames, Container &students, bool Median, int strategy)
 {
@@ -537,7 +557,9 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
 template void openFiles(const vector<string> &filenames, vector<Student> &students, bool Median, int strategy);
 template void openFiles(const vector<string> &filenames, deque<Student> &students, bool Median, int strategy);
 template void openFiles(const vector<string> &filenames, list<Student> &students, bool Median, int strategy);
-
+/// @brief Reads input data for a single student
+/// @param data The Student object to populate with input data.
+/// @param Median Flag indicating whether to calculate median or average.
 void input(Student &data, bool &Median)
 {
     data.setFirstName(isString("Įveskite studento vardą: "));
@@ -560,7 +582,9 @@ void input(Student &data, bool &Median)
     }
     data.setHomeworkMarks(move(grades));
 }
-
+/// @brief Converts a Student object to a string representation.
+/// @param s The Student object.
+/// @return A string representation of the Student object.
 string studentData(const Student& s) {
     ostringstream oss;
     oss << s.getFirstName() << " " << s.getLastName() << " ";
