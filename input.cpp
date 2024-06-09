@@ -542,7 +542,7 @@ void input(Student &data, bool &Median)
 {
     data.setFirstName(isString("Įveskite studento vardą: "));
     data.setLastName(isString("Įveskite studento pavardę: "));
-    data.clearHomeworkResults(); // isvalome vektoriu
+    data.clearHomeworkMarks(); // isvalome vektoriu
     vector<int> grades;
     while (true)
     {
@@ -555,18 +555,18 @@ void input(Student &data, bool &Median)
     }
     if (!grades.empty())
     {
-        data.setExamResults(grades.back());
+        data.setExamMark(grades.back());
         grades.pop_back();
     }
-    data.setHomeworkResults(std::move(grades));
+    data.setHomeworkMarks(std::move(grades));
 }
 
 std::string studentData(const Student& s) {
     std::ostringstream oss;
     oss << s.getFirstName() << " " << s.getLastName() << " ";
-    for (const auto& grade : s.getHomeworkResults()) {
+    for (const auto& grade : s.getHomeworkMarks()) {
         oss << grade << " ";
     }
-    oss << s.getExamResults();
+    oss << s.getExamMark();
     return oss.str();
 }

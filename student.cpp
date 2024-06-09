@@ -1,28 +1,28 @@
 #include "student.h"
 
-Student::Student() : firstName(""), lastName(""), examResults(0) {} //  konstruktorius
+Student::Student() : firstName(""), lastName(""), examMark(0) {} //  konstruktorius
 
 //  konstruktorius su parametrais
-Student::Student(const std::string& firstName, const std::string& lastName, int examResults, const std::vector<int>& homeworkResults)
-    : firstName(firstName), lastName(lastName), examResults(examResults), homeworkResults(homeworkResults) {}
+Student::Student(const std::string& firstName, const std::string& lastName, int examMark, const std::vector<int>& homeworkMarks)
+    : firstName(firstName), lastName(lastName), examMark(examMark), homeworkMarks(homeworkMarks) {}
 
 //  konstruktorius su parametrais
 Student::Student(const Student& other)
     : firstName(other.firstName), lastName(other.lastName),
-      homeworkResults(other.homeworkResults), examResults(other.examResults) {}
+      homeworkMarks(other.homeworkMarks), examMark(other.examMark) {}
 
 //  move konstruktorius
 Student::Student(Student&& other) noexcept
     : firstName(std::move(other.firstName)), lastName(std::move(other.lastName)),
-      homeworkResults(std::move(other.homeworkResults)), examResults(other.examResults) {}
+      homeworkMarks(std::move(other.homeworkMarks)), examMark(other.examMark) {}
 
 //  copy konstruktorius
 Student& Student::operator=(const Student& other) {
     if (this != &other) {
         firstName = other.firstName;
         lastName = other.lastName;
-        homeworkResults = other.homeworkResults;
-        examResults = other.examResults;
+        homeworkMarks = other.homeworkMarks;
+        examMark = other.examMark;
     }
     return *this;
 }
@@ -32,8 +32,8 @@ Student& Student::operator=(Student&& other) noexcept {
     if (this != &other) {
         firstName = std::move(other.firstName);
         lastName = std::move(other.lastName);
-        homeworkResults = std::move(other.homeworkResults);
-        examResults = other.examResults;
+        homeworkMarks = std::move(other.homeworkMarks);
+        examMark = other.examMark;
     }
     return *this;
 }
@@ -60,10 +60,10 @@ std::istream& operator>>(std::istream& is, Student& s) {
     }
 
     if (!grades.empty()) {
-        s.setExamResults(grades.back()); // Set the last grade as the exam result
+        s.setExamMark(grades.back()); // Set the last grade as the exam result
         grades.pop_back(); // Remove the last grade from the homework results
     }
-    s.setHomeworkResults(std::move(grades));
+    s.setHomeworkMarks(std::move(grades));
 
     return is;
 }
@@ -76,18 +76,18 @@ std::ostream& operator<<(std::ostream& os, const Student& s) {
 }
 
 double Student::calculateAverage() const {
-    if (homeworkResults.empty()) {
+    if (homeworkMarks.empty()) {
         return 0;
     }
-    double sum = std::accumulate(homeworkResults.begin(), homeworkResults.end(), 0.0);
-    return sum / homeworkResults.size();
+    double sum = std::accumulate(homeworkMarks.begin(), homeworkMarks.end(), 0.0);
+    return sum / homeworkMarks.size();
 }
 
 double Student::calculateMedian() const { 
-    if (homeworkResults.empty()) { 
+    if (homeworkMarks.empty()) { 
         return 0;
     }
-    std::vector<int> scores = homeworkResults; 
+    std::vector<int> scores = homeworkMarks; 
     std::sort(scores.begin(), scores.end()); 
     int size = scores.size(); 
     if (size % 2 == 0) { 
@@ -99,5 +99,5 @@ double Student::calculateMedian() const {
 
 double Student::calculateFinalGrade(bool median) const { 
     double homeworkGrade = median ? calculateMedian() : calculateAverage();
-    return 0.4 * homeworkGrade + 0.6 * examResults;
+    return 0.4 * homeworkGrade + 0.6 * examMark;
 }
