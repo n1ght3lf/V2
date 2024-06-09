@@ -42,7 +42,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
 {
     Student data;
     int menuChoice;
-    int moreStudents;
+    int addMoreStudents;
     int studentCounts[] = {1000, 10000, 100000, 1000000, 10000000};
     do
     {
@@ -73,14 +73,14 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 while (true)
                 {
                     cout << "Ar norite suvesti dar vieno studento pažymius? (1 - taip, 0 - ne): ";
-                    cin >> moreStudents;
+                    cin >> addMoreStudents;
                     if (cin.fail())
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cerr << "Neteisinga įvestis. Prašome įvesti 0 arba 1." << endl;
                     }
-                    else if (moreStudents == 0 || moreStudents == 1)
+                    else if (addMoreStudents == 0 || addMoreStudents == 1)
                     {
                         break;
                     }
@@ -89,7 +89,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                         cerr << "Neteisinga įvestis. Prašome įvesti 0 arba 1." << endl;
                     }
                 }
-            } while (moreStudents == 1);
+            } while (addMoreStudents == 1);
             break;
         }
         case 2:
@@ -109,14 +109,14 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                     while (true)
                     {
                         cout << "Ar norite sugeneruoti dar vieno studento pažymius? (1 - taip, 0 - ne): ";
-                        cin >> moreStudents;
+                        cin >> addMoreStudents;
                         if (cin.fail())
                         {
                             cin.clear();
                             cin.ignore(numeric_limits<streamsize>::max(), '\n');
                             cerr << "Neteisinga įvestis. Prašome įvesti 0 arba 1." << endl;
                         }
-                        else if (moreStudents == 0 || moreStudents == 1)
+                        else if (addMoreStudents == 0 || addMoreStudents == 1)
                         {
                             break;
                         }
@@ -130,19 +130,19 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 {
                     cerr << "Įvyko klaida: " << e.what() << '\n';
                 }
-            } while (moreStudents == 1);
+            } while (addMoreStudents == 1);
             break;
         }
         case 3:
         {
-            int numStudents;
+            int numOfGenStudents;
             while (true)
             {
                 try
                 {
                     cout << "Įveskite kiek studentų duomenų norite sugeneruoti: ";
-                    cin >> numStudents;
-                    if (cin.fail() || numStudents < 1)
+                    cin >> numOfGenStudents;
+                    if (cin.fail() || numOfGenStudents < 1)
                     {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -155,7 +155,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                     cerr << "Įvyko klaida: " << e.what() << '\n';
                 }
             }
-            for (int i = 0; i < numStudents; i++)
+            for (int i = 0; i < numOfGenStudents; i++)
             {
                 data.setFirstName(generateName());
                 data.setLastName(generateLastName());
@@ -172,10 +172,10 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
         {
             try
             {
-                string filename = getFilenameFromUser();
-                ifstream fin(filename);
-                cout << "\nFailas " << '"' << filename << '"' << " nuskaitytas sėkmingai." << endl;
-                readData(fin, students);
+                string inputFileName = getFilenameFromUser();
+                ifstream inputFile(inputFileName);
+                cout << "\nFailas " << '"' << inputFileName << '"' << " nuskaitytas sėkmingai." << endl;
+                readData(inputFile, students);
             }
             catch (const runtime_error &e)
             {
@@ -425,21 +425,21 @@ int Menu()
 string getFilenameFromUser()
 {
     cout << "Įveskite norimo failo pavadinimą (kursiokai.txt, studentai1000.txt, studentai10000.txt, studentai100000.txt, studentai1000000.txt, studentai10000000.txt): \n";
-    string filename;
-    cin >> filename;
-    ifstream fin(filename);
-    if (!fin)
+    string inputFileName;
+    cin >> inputFileName;
+    ifstream inputFile(inputFileName);
+    if (!inputFile)
     {
-        throw runtime_error("Failas " + filename + " nerastas.");
+        throw runtime_error("Failas " + inputFileName + " nerastas.");
     }
-    return filename;
+    return inputFileName;
 }
 
 template <typename Container>
-void readData(ifstream& fin, Container& students) {
+void readData(ifstream& inputFile, Container& students) {
     string buffer; 
-    getline(fin, buffer); 
-    while (getline(fin, buffer)) {
+    getline(inputFile, buffer); 
+    while (getline(inputFile, buffer)) {
         stringstream ss(buffer); 
         Student s; 
         if (!(ss >> s)) {
@@ -449,27 +449,27 @@ void readData(ifstream& fin, Container& students) {
     }
 }
 
-template void readData(ifstream &fin, vector<Student> &students);
-template void readData(ifstream &fin, deque<Student> &students);
-template void readData(ifstream &fin, list<Student> &students);
+template void readData(ifstream &inputFile, vector<Student> &students);
+template void readData(ifstream &inputFile, deque<Student> &students);
+template void readData(ifstream &inputFile, list<Student> &students);
 
 template <typename Container>
 void openFiles(const vector<string> &filenames, Container &students, bool Median, int strategy)
 {
-    for (const auto &filename : filenames)
+    for (const auto &inputFileName : filenames)
     {
-        ifstream fin(filename);
-        double sumRead = 0.0, sumSort = 0.0, sumOutput = 0.0, sumDistribution = 0.0;
+        ifstream inputFile(inputFileName);
+        double readTime = 0.0, sortTime = 0.0, outputTime = 0.0, distributionTime = 0.0;
 
-        auto startRead = chrono::high_resolution_clock::now();
-        readData(fin, students);
-        auto endRead = chrono::high_resolution_clock::now();
-        sumRead = chrono::duration<double>(endRead - startRead).count();
+        auto startReadTime = chrono::high_resolution_clock::now();
+        readData(inputFile, students);
+        auto endReadTime = chrono::high_resolution_clock::now();
+        readTime = chrono::duration<double>(endReadTime - startReadTime).count();
 
-        auto startSort = chrono::high_resolution_clock::now();
+        auto startSortTime = chrono::high_resolution_clock::now();
         sortStudents(students, 3); // rusiuojame studentus pagal galutini bala
-        auto endSort = chrono::high_resolution_clock::now();
-        sumSort = chrono::duration<double>(endSort - startSort).count();
+        auto endSortTime = chrono::high_resolution_clock::now();
+        sortTime = chrono::duration<double>(endSortTime - startSortTime).count();
 
         auto startDistribution = chrono::high_resolution_clock::now();
         Container kietiakai, nuskriaustukai;
@@ -517,18 +517,18 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
             students.clear();
         }
         auto endDistribution = chrono::high_resolution_clock::now();
-        sumDistribution = chrono::duration<double>(endDistribution - startDistribution).count();
+        distributionTime = chrono::duration<double>(endDistribution - startDistribution).count();
 
-        fin.clear();
-        fin.seekg(0);
-        fin.close();
+        inputFile.clear();
+        inputFile.seekg(0);
+        inputFile.close();
 
-        cout << "\nFailas: " << filename << endl;
-        cout << "Laikas sugaištas duomenų nuskaitymui: " << fixed << setprecision(6) << sumRead << " sekundės" << endl;
-        cout << "Laikas sugaištas duomenų rušiavimui: " << fixed << setprecision(6) << sumSort << " sekundės" << endl;
-        cout << "Laikas sugaištas duomenų skirstymui į dvi grupes: " << fixed << setprecision(6) << sumDistribution << " sekundės" << endl;
+        cout << "\nFailas: " << inputFileName << endl;
+        cout << "Laikas sugaištas duomenų nuskaitymui: " << fixed << setprecision(6) << readTime << " sekundės" << endl;
+        cout << "Laikas sugaištas duomenų rušiavimui: " << fixed << setprecision(6) << sortTime << " sekundės" << endl;
+        cout << "Laikas sugaištas duomenų skirstymui į dvi grupes: " << fixed << setprecision(6) << distributionTime << " sekundės" << endl;
 
-        double timeCreateFile = sumRead + sumSort + sumDistribution;
+        double timeCreateFile = readTime + sortTime + distributionTime;
         cout << "\nVisas sugaištas laikas: " << fixed << setprecision(6) << timeCreateFile << " sekundės\n"
              << endl;
     }
