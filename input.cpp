@@ -38,7 +38,7 @@ bool getMedianPreference()
 }
 
 template <typename Container>
-void processStudents(Container &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal)
+void processStudents(Container &students, bool Median, chrono::high_resolution_clock::time_point startTotal)
 {
     Student data;
     int number;
@@ -102,7 +102,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                     data.setLastName(isString("Įveskite studento pavardę: "));
                     for (int j = 0; j < 5; j++)
                     {
-                        data.addHomeworkResult(generateGrade());
+                        data.addHomeworkMark(generateGrade());
                     }
                     data.setExamMark(generateGrade());
                     students.push_back(data);
@@ -161,7 +161,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 data.setLastName(generateLastName());
                 for (int j = 0; j < 5; j++)
                 {
-                    data.addHomeworkResult(generateGrade());
+                    data.addHomeworkMark(generateGrade());
                 }
                 data.setExamMark(generateGrade());
                 students.push_back(data);
@@ -213,7 +213,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 {
                     cout << "Neteisinga įvestis. Prašome įvesti 1, 2 arba 3.\n";
                     cin.clear();
-                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 }
                 for (int i = 0; i < sizeof(studentCounts) / sizeof(studentCounts[0]); i++)
                 {
@@ -225,7 +225,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                     {
                         cout << "Neteisinga įvestis. Prašome įvesti 1, norint tęsti.\n";
                         cin.clear(); // clear the error flag
-                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
                 }
             }
@@ -301,7 +301,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 chrono::duration<double> diffTotal = endTotal - startTotal;
                 double totalTime = diffTotal.count();
 
-                cout << "\nVisos programos veikimo laikas: " << std::fixed << std::setprecision(6) << totalTime << " sekundės\n"
+                cout << "\nVisos programos veikimo laikas: " << fixed << setprecision(6) << totalTime << " sekundės\n"
                      << endl;
             }
             break;
@@ -311,28 +311,28 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
             try
             {
                 // 
-                std::vector<int> HomeworkMarks = {5, 6, 7, 8};
+                vector<int> HomeworkMarks = {5, 6, 7, 8};
                 Student s1("Martynas", "Kazlauskas", 10, HomeworkMarks);
                 Student s2(s1); // Copy constructor
                 if (!(s2.getFirstName() == s1.getFirstName() && s2.getLastName() == s1.getLastName() && s2.getExamMark() == s1.getExamMark() && s2.getHomeworkMarks() == s1.getHomeworkMarks()))
                 {
-                    std::cerr << "Kopijavimo konstruktoriaus testas nepavyko.\n";
+                    cerr << "Kopijavimo konstruktoriaus testas nepavyko.\n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Kopijavimo konstruktoriaus testas sėkmingas.\n";
+                    cout << "Kopijavimo konstruktoriaus testas sėkmingas.\n";
                 }
 
-                Student s3(std::move(s1)); // Move constructor
+                Student s3(move(s1)); // Move constructor
                 if (!(s3.getFirstName() == "Martynas" && s3.getLastName() == "Kazlauskas" && s3.getExamMark() == 10 && s3.getHomeworkMarks() == HomeworkMarks))
                 {
-                    std::cerr << "Perkėlimo konstruktoriaus testas nepavyko.\n";
+                    cerr << "Perkėlimo konstruktoriaus testas nepavyko.\n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Perkėlimo konstruktoriaus testas sėkmingas.\n";
+                    cout << "Perkėlimo konstruktoriaus testas sėkmingas.\n";
                 }
 
                 // Test assignment operators
@@ -340,57 +340,57 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 s4 = s2; // Copy assignment operator
                 if (!(s4.getFirstName() == s2.getFirstName() && s4.getLastName() == s2.getLastName() && s4.getExamMark() == s2.getExamMark() && s4.getHomeworkMarks() == s2.getHomeworkMarks()))
                 {
-                    std::cerr << "Kopijavimo priskyrimo operatorius nepavyko.\n";
+                    cerr << "Kopijavimo priskyrimo operatorius nepavyko.\n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Kopijavimo priskyrimo operatorius sėkmingas.\n";
+                    cout << "Kopijavimo priskyrimo operatorius sėkmingas.\n";
                 }
 
                 Student s5;
-                s5 = std::move(s4); // Move assignment operator
+                s5 = move(s4); // Move assignment operator
                 if (!(s5.getFirstName() == "Martynas" && s5.getLastName() == "Kazlauskas" && s5.getExamMark() == 10 && s5.getHomeworkMarks() == HomeworkMarks))
                 {
-                    std::cerr << "Perkėlimo priskyrimo operatorius nepavyko.\n";
+                    cerr << "Perkėlimo priskyrimo operatorius nepavyko.\n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Perkėlimo priskyrimo operatorius sėkmingas.\n";
+                    cout << "Perkėlimo priskyrimo operatorius sėkmingas.\n";
                 }
 
                 // Test input operator
-                std::istringstream iss("Martynas Kazlauskas 5 6 7 8 10");
+                istringstream iss("Martynas Kazlauskas 5 6 7 8 10");
                 Student s6;
                 iss >> s6; // Input operator
-                if (!(s6.getFirstName() == "Martynas" && s6.getLastName() == "Kazlauskas" && s6.getExamMark() == 10 && s6.getHomeworkMarks() == std::vector<int>{5, 6, 7, 8}))
+                if (!(s6.getFirstName() == "Martynas" && s6.getLastName() == "Kazlauskas" && s6.getExamMark() == 10 && s6.getHomeworkMarks() == vector<int>{5, 6, 7, 8}))
                 {
-                    std::cerr << "Įvesties operatoriaus testas nepavyko. \n";
+                    cerr << "Įvesties operatoriaus testas nepavyko. \n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Įvesties operatoriaus testas sėkmingas.\n";
+                    cout << "Įvesties operatoriaus testas sėkmingas.\n";
                 }
 
                 // Test output operator
-                std::string expectedOutput = "Martynas Kazlauskas 5 6 7 8 10";
+                string expectedOutput = "Martynas Kazlauskas 5 6 7 8 10";
                 if (studentData(s6) != expectedOutput)
                 {
-                    std::cerr << "Išvesties operatoriaus testas nepavyko. \n";
+                    cerr << "Išvesties operatoriaus testas nepavyko. \n";
                     return;
                 }
                 else
                 {
-                    std::cout << "Išvesties operatoriaus testas sėkmingas.\n";
+                    cout << "Išvesties operatoriaus testas sėkmingas.\n";
                 }
 
-                std::cout << "Testai baigti. Visi metodai veikia.\n";
+                cout << "Testai baigti. Visi metodai veikia.\n";
             }
-            catch (const std::exception &e)
+            catch (const exception &e)
             {
-                std::cerr << "An error occurred: " << e.what() << '\n';
+                cerr << "An error occurred: " << e.what() << '\n';
             }
             break;
         }
@@ -398,9 +398,9 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
     } while (number != 8);
 }
 
-template void processStudents(std::vector<Student> &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
-template void processStudents(std::deque<Student> &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
-template void processStudents(std::list<Student> &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
+template void processStudents(vector<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
+template void processStudents(deque<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
+template void processStudents(list<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 
 int Menu()
 {
@@ -445,13 +445,13 @@ void readData(ifstream& fin, Container& students) {
         if (!(ss >> s)) {
             throw runtime_error("Failed to read student.");
         }
-        students.push_back(std::move(s));
+        students.push_back(move(s));
     }
 }
 
-template void readData(std::ifstream &fin, std::vector<Student> &students);
-template void readData(std::ifstream &fin, std::deque<Student> &students);
-template void readData(std::ifstream &fin, std::list<Student> &students);
+template void readData(ifstream &fin, vector<Student> &students);
+template void readData(ifstream &fin, deque<Student> &students);
+template void readData(ifstream &fin, list<Student> &students);
 
 template <typename Container>
 void openFiles(const vector<string> &filenames, Container &students, bool Median, int strategy)
@@ -534,9 +534,9 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
     }
 }
 
-template void openFiles(const std::vector<std::string> &filenames, std::vector<Student> &students, bool Median, int strategy);
-template void openFiles(const std::vector<std::string> &filenames, std::deque<Student> &students, bool Median, int strategy);
-template void openFiles(const std::vector<std::string> &filenames, std::list<Student> &students, bool Median, int strategy);
+template void openFiles(const vector<string> &filenames, vector<Student> &students, bool Median, int strategy);
+template void openFiles(const vector<string> &filenames, deque<Student> &students, bool Median, int strategy);
+template void openFiles(const vector<string> &filenames, list<Student> &students, bool Median, int strategy);
 
 void input(Student &data, bool &Median)
 {
@@ -558,11 +558,11 @@ void input(Student &data, bool &Median)
         data.setExamMark(grades.back());
         grades.pop_back();
     }
-    data.setHomeworkMarks(std::move(grades));
+    data.setHomeworkMarks(move(grades));
 }
 
-std::string studentData(const Student& s) {
-    std::ostringstream oss;
+string studentData(const Student& s) {
+    ostringstream oss;
     oss << s.getFirstName() << " " << s.getLastName() << " ";
     for (const auto& grade : s.getHomeworkMarks()) {
         oss << grade << " ";

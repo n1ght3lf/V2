@@ -50,7 +50,7 @@ public:
 
     // Setters
     void setFirstName(std::string firstName) { this->firstName = std::move(firstName); } 
-    void setLastName(std::string familyName) { this->lastName = std::move(lastName); } // changed from setLastName
+    void setLastName(std::string lastName) { this->lastName = std::move(lastName); } // changed from setLastName
     void addHomeworkMark(int mark) { homeworkMarks.push_back(mark); } // changed from addHomeworkResult
     void clearHomeworkMarks() { homeworkMarks.clear(); } // changed from clearHomeworkResults
     void setExamMark(int examMark) { this->examMark = examMark; } // changed from setExamResults
