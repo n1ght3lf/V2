@@ -21,7 +21,7 @@ double calculateFinalGrade(const Student& data, bool Median);
 double calculateMedian(std::vector<int> homeworkResults);
 
 template <typename Container>
-void sortStudents(Container& students, int criteria);
+void sortStudents(Container& students, int criteria, int Median);
 
 template <>
 void sortStudents<std::list<Student>>(std::list<Student>& students, int criteria);

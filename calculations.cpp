@@ -20,7 +20,7 @@ bool compareByGrade(const Student &a, const Student &b)
 }
 
 template <typename Container>
-void sortStudents(vector<Student> &students, int criteria, int Median)
+void sortStudents(Container &students, int criteria, int Median)
 {
     if (criteria == 1)
     {
@@ -32,19 +32,20 @@ void sortStudents(vector<Student> &students, int criteria, int Median)
     }
     else if (criteria == 3)
     {
+        sort(students.begin(), students.end(), compareByGrade);
         if (Median == 1)
         {
-            sort(students.begin(), students.end(), [](const Student &a, const Student &b)
-                 { return calculateFinalGrade(a, true) < calculateFinalGrade(b, true); });
-        }
-        else
-        {
-            sort(students.begin(), students.end(), compareByGrade);
+            int size = students.size();
+            int medianIndex = size / 2;
+            auto it = students.begin();
+            std::advance(it, medianIndex);
+            std::nth_element(students.begin(), it, students.end(), compareByGrade);
         }
     }
 }
+
 template <>
-void sortStudents<list<Student>>(list<Student> &students, int criteria)
+void sortStudents<list<Student>>(list<Student> &students, int criteria, int median)
 {
     if (criteria == 1)
     {
@@ -60,5 +61,5 @@ void sortStudents<list<Student>>(list<Student> &students, int criteria)
     }
 }
 
-template void sortStudents<vector<Student>>(vector<Student> &, int);
-template void sortStudents<deque<Student>>(deque<Student> &, int);
+template void sortStudents<vector<Student>>(vector<Student> &, int, int);
+template void sortStudents<deque<Student>>(deque<Student> &, int, int);
