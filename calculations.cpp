@@ -20,7 +20,7 @@ bool compareByGrade(const Student &a, const Student &b)
 }
 
 template <typename Container>
-void sortStudents(Container &students, int criteria)
+void sortStudents(vector<Student> &students, int criteria, int Median)
 {
     if (criteria == 1)
     {
@@ -32,10 +32,17 @@ void sortStudents(Container &students, int criteria)
     }
     else if (criteria == 3)
     {
-        sort(students.begin(), students.end(), compareByGrade);
+        if (Median == 1)
+        {
+            sort(students.begin(), students.end(), [](const Student &a, const Student &b)
+                 { return calculateFinalGrade(a, true) < calculateFinalGrade(b, true); });
+        }
+        else
+        {
+            sort(students.begin(), students.end(), compareByGrade);
+        }
     }
 }
-
 template <>
 void sortStudents<list<Student>>(list<Student> &students, int criteria)
 {
