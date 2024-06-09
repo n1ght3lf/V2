@@ -15,5 +15,3 @@ int main()
     processStudents(students, Median, startTotal);
     return 0;
 }
-
-// g++ -std=c++11 -o main main.cpp functionality.cpp input.cpp calculations.cpp
