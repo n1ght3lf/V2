@@ -24,6 +24,6 @@ template <typename Container>
 void sortStudents(Container& students, int criteria, int Median);
 
 template <>
-void sortStudents<std::list<Student>>(std::list<Student>& students, int criteria);
+void sortStudents<std::list<Student>>(std::list<Student>& students, int criteria, int Median);
 
 #endif // CALCULATIONS_H

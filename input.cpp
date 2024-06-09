@@ -274,7 +274,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 }
                 try
                 {
-                    sortStudents(students, criteria);
+                    sortStudents(students, criteria, Median);
                     vector<Student> kietiakai;
                     vector<Student> nuskriaustukai;
                     for (auto it = students.begin(); it != students.end(); ++it)
@@ -487,7 +487,7 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
         readTime = chrono::duration<double>(endReadTime - startReadTime).count();
 
         auto startSortTime = chrono::high_resolution_clock::now();
-        sortStudents(students, 3); // rusiuojame studentus pagal galutini bala
+        sortStudents(students, 3, Median); // rusiuojame studentus pagal galutini bala
         auto endSortTime = chrono::high_resolution_clock::now();
         sortTime = chrono::duration<double>(endSortTime - startSortTime).count();
 
