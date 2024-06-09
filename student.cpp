@@ -1,22 +1,23 @@
 #include "student.h"
 
-Student::Student() : firstName(""), lastName(""), examMark(0) {} //  konstruktorius
+// Default constructor: initializes an empty student
+Student::Student() : firstName(""), lastName(""), examMark(0) {}
 
-//  konstruktorius su parametrais
+// Parameterized constructor: initializes a student with given details
 Student::Student(const std::string& firstName, const std::string& lastName, int examMark, const std::vector<int>& homeworkMarks)
     : firstName(firstName), lastName(lastName), examMark(examMark), homeworkMarks(homeworkMarks) {}
 
-//  konstruktorius su parametrais
+// Copy constructor: creates a copy of an existing student
 Student::Student(const Student& other)
     : firstName(other.firstName), lastName(other.lastName),
       homeworkMarks(other.homeworkMarks), examMark(other.examMark) {}
 
-//  move konstruktorius
+// Move constructor: transfers ownership of resources from another student
 Student::Student(Student&& other) noexcept
     : firstName(std::move(other.firstName)), lastName(std::move(other.lastName)),
       homeworkMarks(std::move(other.homeworkMarks)), examMark(other.examMark) {}
 
-//  copy konstruktorius
+// Copy assignment operator: copies data from another student
 Student& Student::operator=(const Student& other) {
     if (this != &other) {
         firstName = other.firstName;
@@ -27,7 +28,7 @@ Student& Student::operator=(const Student& other) {
     return *this;
 }
 
-//  move konstruktorius
+// Move assignment operator: moves data from another student
 Student& Student::operator=(Student&& other) noexcept {
     if (this != &other) {
         firstName = std::move(other.firstName);
@@ -38,18 +39,20 @@ Student& Student::operator=(Student&& other) noexcept {
     return *this;
 }
 
-// ivesties operatorius (nuskaitymui is failo)
+// Input operator: reads student data from input stream
 std::istream& operator>>(std::istream& is, Student& s) {
     std::string tempFirstName, tempLastName;
     std::vector<int> grades;
     int grade;
 
+    // Read first and last names
     if (!(is >> tempFirstName >> tempLastName)) {
         return is;
     }
     s.setFirstName(tempFirstName);
     s.setLastName(tempLastName);
 
+    // Read grades until end of input
     while (is >> grade) {
         grades.push_back(grade);
     }
@@ -59,22 +62,24 @@ std::istream& operator>>(std::istream& is, Student& s) {
         is.clear();
     }
 
+    // Set the exam mark and homework marks
     if (!grades.empty()) {
-        s.setExamMark(grades.back()); // Set the last grade as the exam result
-        grades.pop_back(); // Remove the last grade from the homework results
+        s.setExamMark(grades.back());
+        grades.pop_back();
     }
     s.setHomeworkMarks(std::move(grades));
 
     return is;
 }
 
-// isvesties operatorius 
+// Output operator: writes student data to output stream
 std::ostream& operator<<(std::ostream& os, const Student& s) {
     os << std::setw(15) << s.getLastName() 
        << std::setw(15) << s.getFirstName();
     return os;
 }
 
+// Calculates the average of homework marks
 double Student::calculateAverage() const {
     if (homeworkMarks.empty()) {
         return 0;
@@ -83,6 +88,7 @@ double Student::calculateAverage() const {
     return sum / homeworkMarks.size();
 }
 
+// Calculates the median of homework marks
 double Student::calculateMedian() const { 
     if (homeworkMarks.empty()) { 
         return 0;
@@ -97,6 +103,7 @@ double Student::calculateMedian() const {
     }
 }
 
+// Calculates the final grade based on exam mark and homework marks
 double Student::calculateFinalGrade(bool median) const { 
     double homeworkGrade = median ? calculateMedian() : calculateAverage();
     return 0.4 * homeworkGrade + 0.6 * examMark;
