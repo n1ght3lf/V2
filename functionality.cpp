@@ -72,7 +72,7 @@ int isGrade(const string& prompt) {
 }
 
 void generateFile(int studentCount) {
-    auto startTimer = std::chrono::high_resolution_clock::now(); 
+    auto startTimer = chrono::high_resolution_clock::now(); 
 
     ofstream outputFile("studentai" + to_string(studentCount) + ".txt");
     if (!outputFile) {
@@ -94,8 +94,8 @@ void generateFile(int studentCount) {
         outputFile << setw(5) << generateGrade() << endl;
     }
 
-    auto endTimer = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> diff = endTimer-startTimer; 
+    auto endTimer = chrono::high_resolution_clock::now();
+    chrono::duration<double> diff = endTimer-startTimer; 
 
     cout << "Failas 'studentai" << studentCount << ".txt' sukurtas per " << diff.count() << " sekundes.\n";
 }
@@ -118,7 +118,7 @@ void outputToTerminal(const vector<Student>& badStudents, const vector<Student>&
 }
 
 template <typename Container>
-void outputToFile(const Container& students, size_t numberOfStudents, bool Median, const std::string& filename) {
+void outputToFile(const Container& students, size_t numberOfStudents, bool Median, const string& filename) {
     ofstream outputFile(filename);
     outputFile << left << setw(15) << "Pavardė" << setw(15) << " Vardas" << setw(20) << (Median ? "Galutinis (Med.)" : "Galutinis (Vid.)") << endl; 
     outputFile << "-------------------------------------------------------" << endl;
@@ -129,6 +129,6 @@ void outputToFile(const Container& students, size_t numberOfStudents, bool Media
     outputFile.close();
 }
 
-template void outputToFile<std::vector<Student>>(const std::vector<Student>&, size_t, bool, const std::string&);
-template void outputToFile<std::deque<Student>>(const std::deque<Student>&, size_t, bool, const std::string&);
-template void outputToFile<std::list<Student>>(const std::list<Student>&, size_t, bool, const std::string&);
+template void outputToFile<vector<Student>>(const vector<Student>&, size_t, bool, const string&);
+template void outputToFile<deque<Student>>(const deque<Student>&, size_t, bool, const string&);
+template void outputToFile<list<Student>>(const list<Student>&, size_t, bool, const string&);

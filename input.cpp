@@ -41,21 +41,21 @@ template <typename Container>
 void processStudents(Container &students, bool Median, chrono::high_resolution_clock::time_point startTotal)
 {
     Student data;
-    int number;
+    int menuChoice;
     int moreStudents;
     int studentCounts[] = {1000, 10000, 100000, 1000000, 10000000};
     do
     {
         try
         {
-            number = Menu();
+            menuChoice = Menu();
         }
         catch (const exception &e)
         {
             cerr << "Įvyko klaida: " << e.what() << '\n';
             continue;
         }
-        switch (number)
+        switch (menuChoice)
         {
         case 1:
         {
@@ -395,7 +395,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
             break;
         }
         }
-    } while (number != 8);
+    } while (menuChoice != 8);
 }
 
 template void processStudents(vector<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
@@ -404,22 +404,22 @@ template void processStudents(list<Student> &students, bool Median, chrono::high
 
 int Menu()
 {
-    int number;
-    cout << "\n1 - Suvesti duomenis ranka\n";
+    int menuChoice;
+    cout << "\n1 - Suvesti ranka\n";
     cout << "2 - Generuoti pažymius\n";
-    cout << "3 - Generuoti ir pažymius ir studentų vardus, pavardes\n";
-    cout << "4 - Skaityti duomenis iš failo\n";
-    cout << "5 - Sugeneruoti penkis atsitiktinius studentų sąrašų failus\n";
-    cout << "6 - Testuoti penkis atsitiktinius studentų sąrašų failus\n";
-    cout << "7 - Baigti darbą / Išvedimas\n";
-    cout << "8 - 'Rule of five' + I/O operatorių Testavimas\n";
+    cout << "3 - Generuoti ir pažymius, vardus, pavardes\n";
+    cout << "4 - Skaityti iš failo\n";
+    cout << "5 - Atidaryti testavimo failus\n";
+    cout << "6 - Sugeneruoti ir testuoti penkis failus\n";
+    cout << "7 - Išvedimas\n";
+    cout << "8 - I/O + 'Rule of five'\n";
     cout << "\nĮveskite skaičių: ";
-    cin >> number;
-    if (number < 1 || number > 8)
+    cin >> menuChoice;
+    if (menuChoice < 1 || menuChoice > 8)
     {
         throw runtime_error("Netinkama įvestis, įveskite skaičių tarp 1 ir 8.");
     }
-    return number;
+    return menuChoice;
 }
 
 string getFilenameFromUser()
