@@ -11,16 +11,21 @@
 
 bool getMedianPreference();
 
-void processStudents(std::vector<Student>& students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
+template <typename Container>
+void processStudents(Container& students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
 
 int Menu();
 
 std::string getFilenameFromUser();
 
-void readData(std::ifstream& fin, std::vector<Student>& students);
+template <typename Container>
+void readData(std::ifstream& fin, Container& students);
 
-void openFiles(const std::vector<std::string>& filenames, bool Median);
+template <typename Container>
+void openFiles(const std::vector<std::string>& filenames, Container& students, bool Median, int strategy);
 
 void input(Student& data, bool& Median);
+
+std::string studentData(const Student& s);
 
 #endif // INPUT_H
