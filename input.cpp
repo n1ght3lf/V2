@@ -104,7 +104,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                     {
                         data.addHomeworkResult(generateGrade());
                     }
-                    data.setExamResults(generateGrade());
+                    data.setExamMark(generateGrade());
                     students.push_back(data);
                     while (true)
                     {
@@ -163,7 +163,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 {
                     data.addHomeworkResult(generateGrade());
                 }
-                data.setExamResults(generateGrade());
+                data.setExamMark(generateGrade());
                 students.push_back(data);
             }
             break;
@@ -311,10 +311,10 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
             try
             {
                 // 
-                std::vector<int> homeworkResults = {5, 6, 7, 8};
-                Student s1("Martynas", "Kazlauskas", 10, homeworkResults);
+                std::vector<int> HomeworkMarks = {5, 6, 7, 8};
+                Student s1("Martynas", "Kazlauskas", 10, HomeworkMarks);
                 Student s2(s1); // Copy constructor
-                if (!(s2.getFirstName() == s1.getFirstName() && s2.getLastName() == s1.getLastName() && s2.getExamResults() == s1.getExamResults() && s2.getHomeworkResults() == s1.getHomeworkResults()))
+                if (!(s2.getFirstName() == s1.getFirstName() && s2.getLastName() == s1.getLastName() && s2.getExamMark() == s1.getExamMark() && s2.getHomeworkMarks() == s1.getHomeworkMarks()))
                 {
                     std::cerr << "Kopijavimo konstruktoriaus testas nepavyko.\n";
                     return;
@@ -325,7 +325,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 }
 
                 Student s3(std::move(s1)); // Move constructor
-                if (!(s3.getFirstName() == "Martynas" && s3.getLastName() == "Kazlauskas" && s3.getExamResults() == 10 && s3.getHomeworkResults() == homeworkResults))
+                if (!(s3.getFirstName() == "Martynas" && s3.getLastName() == "Kazlauskas" && s3.getExamMark() == 10 && s3.getHomeworkMarks() == HomeworkMarks))
                 {
                     std::cerr << "Perkėlimo konstruktoriaus testas nepavyko.\n";
                     return;
@@ -338,7 +338,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 // Test assignment operators
                 Student s4;
                 s4 = s2; // Copy assignment operator
-                if (!(s4.getFirstName() == s2.getFirstName() && s4.getLastName() == s2.getLastName() && s4.getExamResults() == s2.getExamResults() && s4.getHomeworkResults() == s2.getHomeworkResults()))
+                if (!(s4.getFirstName() == s2.getFirstName() && s4.getLastName() == s2.getLastName() && s4.getExamMark() == s2.getExamMark() && s4.getHomeworkMarks() == s2.getHomeworkMarks()))
                 {
                     std::cerr << "Kopijavimo priskyrimo operatorius nepavyko.\n";
                     return;
@@ -350,7 +350,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
 
                 Student s5;
                 s5 = std::move(s4); // Move assignment operator
-                if (!(s5.getFirstName() == "Martynas" && s5.getLastName() == "Kazlauskas" && s5.getExamResults() == 10 && s5.getHomeworkResults() == homeworkResults))
+                if (!(s5.getFirstName() == "Martynas" && s5.getLastName() == "Kazlauskas" && s5.getExamMark() == 10 && s5.getHomeworkMarks() == HomeworkMarks))
                 {
                     std::cerr << "Perkėlimo priskyrimo operatorius nepavyko.\n";
                     return;
@@ -364,7 +364,7 @@ void processStudents(Container &students, bool Median, std::chrono::high_resolut
                 std::istringstream iss("Martynas Kazlauskas 5 6 7 8 10");
                 Student s6;
                 iss >> s6; // Input operator
-                if (!(s6.getFirstName() == "Martynas" && s6.getLastName() == "Kazlauskas" && s6.getExamResults() == 10 && s6.getHomeworkResults() == std::vector<int>{5, 6, 7, 8}))
+                if (!(s6.getFirstName() == "Martynas" && s6.getLastName() == "Kazlauskas" && s6.getExamMark() == 10 && s6.getHomeworkMarks() == std::vector<int>{5, 6, 7, 8}))
                 {
                     std::cerr << "Įvesties operatoriaus testas nepavyko. \n";
                     return;
