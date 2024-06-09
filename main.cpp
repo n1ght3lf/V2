@@ -1,17 +1,35 @@
+#include <vector>
+#include <deque>
+#include <list>
+#include <chrono>
 #include "student.h"
 #include "input.h"
 #include "calculations.h"
 #include "functionality.h"
 
-using namespace std;
+std::vector<Student> studentVector;
+std::deque<Student> studentDeque;
+std::list<Student> studentList;
 
-int main()
-{
-    auto startTotal = chrono::high_resolution_clock::now();
+int main() {
+    auto startTotal = std::chrono::high_resolution_clock::now();
     setlocale(LC_ALL, "lt_LT.UTF-8");
     srand(time(0));
     bool Median = getMedianPreference();
-    vector<Student> students;
-    processStudents(students, Median, startTotal);
-    return 0;
+
+    int containerType = getContainerTypeFromUser();
+
+    switch (containerType) {
+        case 1:
+            processStudents(studentVector, Median, startTotal);
+            break;
+        case 2:
+            processStudents(studentDeque, Median, startTotal);
+            break;
+        case 3:
+            processStudents(studentList, Median, startTotal);
+            break;
+    }
+
+    return 0; 
 }
