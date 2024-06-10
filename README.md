@@ -53,6 +53,29 @@ make clean
 make distclean
 ```
 
+### Optimizavimas
+
+
+- Be optimizacijos
+
+  |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
+  |-----------|----------------|-----------------|--------------|
+  | Class     |    12.111s     |    130.058s     |    411kb     |
+
+- O1 optimizacija
+
+
+- O2 optimizacija
+
+
+- O3 optimizacija
+
+
+
+
+
+<details>
+    <summary> Strategijos </summary>
 
 ## Rezultatai
 
@@ -163,6 +186,8 @@ make distclean
 | 10 000 000  | 147.641          | 97.7937          | 14.651           |
 
 ![List_3](./images/list3.png)
+
+</details>
 
 ### Apibendrinimas
 
