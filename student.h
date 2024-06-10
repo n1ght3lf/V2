@@ -1,19 +1,9 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <string>
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include <numeric>
-#include <deque>
-#include <list>
-#include <istream>
-#include <ostream>
-#include <iomanip>
-#include <sstream>
+#include "person.h"
 
-class Student
+class Student : public Person
 {
 private:
     std::string firstName; 
