@@ -233,14 +233,8 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                     vector<string> filenames = {"studentai" + to_string(studentCounts[i]) + ".txt"};
                     openFiles<Container>(filenames, students, Median, strategy);;
                 }
-                    cout << "Įveskite 1 norėdami tęsti: ";
-                    int userInput;
-                    while (!(cin >> userInput) || userInput != 1)
-                    {
-                        cout << "Neteisinga įvestis. Prašome įvesti 1, norint tęsti.\n";
-                        cin.clear(); // clear the error flag
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    }
+                cout << "\nFailai sukurti ir apdoroti sėkmingai." << endl;
+                break;
                 }
             }
             catch (const exception &e)
@@ -409,7 +403,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
             break;
         }
         }
-    } while (menuChoice != 8 && menuChoice != 7);
+    } while (menuChoice != 8 && menuChoice != 7 && menuChoice != 6);
 }
 
 template void processStudents(vector<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
@@ -549,12 +543,12 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
         inputFile.close();
 
         cout << "\nFailas: " << inputFileName << endl;
-        cout << "Laikas sugaištas duomenų nuskaitymui: " << fixed << setprecision(6) << readTime << " sekundės" << endl;
-        cout << "Laikas sugaištas duomenų rušiavimui: " << fixed << setprecision(6) << sortTime << " sekundės" << endl;
-        cout << "Laikas sugaištas duomenų skirstymui į dvi grupes: " << fixed << setprecision(6) << distributionTime << " sekundės" << endl;
+        cout << "Nuskaitymui: " << fixed << setprecision(6) << readTime << " sekundės" << endl;
+        cout << "Rušiavimui " << fixed << setprecision(6) << sortTime << " sekundės" << endl;
+        cout << "Išvedimui " << fixed << setprecision(6) << distributionTime << " sekundės" << endl;
 
         double timeCreateFile = readTime + sortTime + distributionTime;
-        cout << "\nVisas sugaištas laikas: " << fixed << setprecision(6) << timeCreateFile << " sekundės\n"
+        cout << "\nVisas laikas: " << fixed << setprecision(6) << timeCreateFile << " sekundės\n"
              << endl;
     }
 }
