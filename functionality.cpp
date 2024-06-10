@@ -124,7 +124,7 @@ void outputToFile(const Container& students, size_t numberOfStudents, bool Media
     outputFile << "-------------------------------------------------------" << endl;
     for (const auto& student : students) {
         double finalGrade = student.calculateFinalGrade(Median);
-        outputFile << student << fixed << setprecision(2) << finalGrade << endl;
+        outputFile << left << setw(15) << student.getLastName() << setw(15) << student.getFirstName() << setw(20) << fixed << setprecision(2) << finalGrade << endl;
     }
     outputFile.close();
 }
