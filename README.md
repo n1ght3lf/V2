@@ -62,11 +62,9 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    13.2770     |    156.2178     |    642KB     |
 
-<details>
-    <summary>Nuotraukos</summary>
     ![Class](./images/noOptimization.png)
     ![Class](./images/noOptimizationEXE.png)
-</details>
+
 
 
 - O1 optimizacija
@@ -75,12 +73,11 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    5.03360     |    51.12527     |    328KB     |
 
-
-<details>
-    <summary>Nuotraukos</summary>
     ![Class](./images/O1.png)
     ![Class](./images/O1EXE.png)
-</details>
+
+
+
 
 - O2 optimizacija
 
@@ -88,11 +85,8 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    4.36167     |    50.75928     |    309KB     |
 
-<details>
-    <summary>Nuotraukos</summary>
     ![Class](./images/O2.png)
     ![Class](./images/O2EXE.png)
-</details>
 
 - O3 optimizacija
 
@@ -100,11 +94,9 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    4.87037     |    52.20442     |    314KB     |
 
-<details>
-    <summary>Nuotraukos</summary>
+
     ![Class](./images/O3.png)
     ![Class](./images/O3EXE.png)
-</details>
 
 <details>
     <summary> Strategijos </summary>
