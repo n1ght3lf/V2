@@ -15,7 +15,12 @@ Student::Student(const Student& other)
 // Move constructor: transfers ownership of resources from another student
 Student::Student(Student&& other) noexcept
     : firstName(std::move(other.firstName)), lastName(std::move(other.lastName)),
-      homeworkMarks(std::move(other.homeworkMarks)), examMark(other.examMark) {}
+    homeworkMarks(std::move(other.homeworkMarks)), examMark(other.examMark) {
+    other.firstName.clear();
+    other.lastName.clear();
+    other.homeworkMarks.clear();
+    other.examMark = 0;
+}
 
 // Copy assignment operator: copies data from another student
 Student& Student::operator=(const Student& other) {
