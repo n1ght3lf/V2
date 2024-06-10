@@ -227,7 +227,12 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 for (int i = 0; i < sizeof(studentCounts) / sizeof(studentCounts[0]); i++)
                 {
                     vector<string> filenames = {"studentai" + to_string(studentCounts[i]) + ".txt"}; // sudedame sugeneruotus failus i vektoriu
-                    openFiles<Container>(filenames, students, Median, strategy);
+                    for (int i = 0; i < sizeof(studentCounts) / sizeof(studentCounts[0]); i++)
+                {
+                    generateFile(studentCounts[i]);
+                    vector<string> filenames = {"studentai" + to_string(studentCounts[i]) + ".txt"};
+                    openFiles<Container>(filenames, students, Median, strategy);;
+                }
                     cout << "Įveskite 1 norėdami tęsti: ";
                     int userInput;
                     while (!(cin >> userInput) || userInput != 1)
@@ -321,7 +326,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
             {
                 // 
                 vector<int> HomeworkMarks = {5, 6, 7, 8};
-                Student s1("Martynas", "Kazlauskas", 10, HomeworkMarks);
+                Student s1("Dominykas", "Jurevičius", 10, HomeworkMarks);
                 Student s2(s1); // Copy constructor
                 if (!(s2.getFirstName() == s1.getFirstName() && s2.getLastName() == s1.getLastName() && s2.getExamMark() == s1.getExamMark() && s2.getHomeworkMarks() == s1.getHomeworkMarks()))
                 {
@@ -334,7 +339,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 }
 
                 Student s3(move(s1)); // Move constructor
-                if (!(s3.getFirstName() == "Martynas" && s3.getLastName() == "Kazlauskas" && s3.getExamMark() == 10 && s3.getHomeworkMarks() == HomeworkMarks))
+                if (!(s3.getFirstName() == "Dominykas" && s3.getLastName() == "Jurevičius" && s3.getExamMark() == 10 && s3.getHomeworkMarks() == HomeworkMarks))
                 {
                     cerr << "Perkėlimo konstruktoriaus testas nepavyko.\n";
                     return;
@@ -359,7 +364,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
 
                 Student s5;
                 s5 = move(s4); // Move assignment operator
-                if (!(s5.getFirstName() == "Martynas" && s5.getLastName() == "Kazlauskas" && s5.getExamMark() == 10 && s5.getHomeworkMarks() == HomeworkMarks))
+                if (!(s5.getFirstName() == "Dominykas" && s5.getLastName() == "Jurevičius" && s5.getExamMark() == 10 && s5.getHomeworkMarks() == HomeworkMarks))
                 {
                     cerr << "Perkėlimo priskyrimo operatorius nepavyko.\n";
                     return;
@@ -370,10 +375,10 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 }
 
                 // Test input operator
-                istringstream iss("Martynas Kazlauskas 5 6 7 8 10");
+                istringstream iss("Dominykas Jurevičius 5 6 7 8 10");
                 Student s6;
                 iss >> s6; // Input operator
-                if (!(s6.getFirstName() == "Martynas" && s6.getLastName() == "Kazlauskas" && s6.getExamMark() == 10 && s6.getHomeworkMarks() == vector<int>{5, 6, 7, 8}))
+                if (!(s6.getFirstName() == "Dominykas" && s6.getLastName() == "Jurevičius" && s6.getExamMark() == 10 && s6.getHomeworkMarks() == vector<int>{5, 6, 7, 8}))
                 {
                     cerr << "Įvesties operatoriaus testas nepavyko. \n";
                     return;
@@ -384,7 +389,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 }
 
                 // Test output operator
-                string expectedOutput = "Martynas Kazlauskas 5 6 7 8 10";
+                string expectedOutput = "Dominykas Jurevičius 5 6 7 8 10";
                 if (studentData(s6) != expectedOutput)
                 {
                     cerr << "Išvesties operatoriaus testas nepavyko. \n";
