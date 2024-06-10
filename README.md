@@ -62,11 +62,21 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    13.2770     |    156.2178     |    642KB     |
 
+<details>
+    <summary>Nuotraukos</summary>
+</details>
+
+
 - O1 optimizacija
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
   | Class     |    5.03360     |    51.12527     |    328KB     |
+
+
+<details>
+    <summary>Nuotraukos</summary>
+</details>
 
 - O2 optimizacija
 
@@ -74,13 +84,19 @@ make distclean
   |-----------|----------------|-----------------|--------------|
   | Class     |    4.36167     |    50.75928     |    309KB     |
 
+<details>
+    <summary>Nuotraukos</summary>
+</details>
+
 - O3 optimizacija
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
   | Class     |    4.87037     |    52.20442     |    314KB     |
 
-
+<details>
+    <summary>Nuotraukos</summary>
+</details>
 
 <details>
     <summary> Strategijos </summary>
