@@ -117,18 +117,6 @@ void outputToTerminal(const vector<Student>& badStudents, const vector<Student>&
     }
 }
 
-template <typename Container>
-void outputToFile(const Container& students, size_t numberOfStudents, bool Median, const string& filename) {
-    ofstream outputFile(filename);
-    outputFile << left << setw(15) << "Pavardė" << setw(15) << " Vardas" << setw(20) << (Median ? "Galutinis (Med.)" : "Galutinis (Vid.)") << endl; 
-    outputFile << "-------------------------------------------------------" << endl;
-    for (const auto& student : students) {
-        double finalGrade = student.calculateFinalGrade(Median);
-        outputFile << student << fixed << setprecision(2) << finalGrade << endl;
-    }
-    outputFile.close();
-}
-
 template void outputToFile<vector<Student>>(const vector<Student>&, size_t, bool, const string&);
 template void outputToFile<deque<Student>>(const deque<Student>&, size_t, bool, const string&);
 template void outputToFile<list<Student>>(const list<Student>&, size_t, bool, const string&);
