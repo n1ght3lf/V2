@@ -3,7 +3,7 @@ CXX = g++ #CXX - pasirenka kompiliatorių
 
 CXXFLAGS = -std=c++14 # CXXflags - compiler flags
 
-TARGET = V1 #TARGET - exectuable file name
+TARGET = main #TARGET - exectuable file name
 
 SRCS = main.cpp functionality.cpp input.cpp calculations.cpp student.cpp #SRCS - source files
 
