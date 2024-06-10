@@ -60,17 +60,25 @@ make distclean
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
-  | Class     |    12.111s     |    130.058s     |    411kb     |
+  | Class     |         |         |        |
 
 - O1 optimizacija
 
+  |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
+  |-----------|----------------|-----------------|--------------|
+  | Class     |         |         |        |
 
 - O2 optimizacija
 
+  |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
+  |-----------|----------------|-----------------|--------------|
+  | Class     |         |         |        |
 
 - O3 optimizacija
 
-
+  |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
+  |-----------|----------------|-----------------|--------------|
+  | Class     |         |         |        |
 
 
 
