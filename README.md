@@ -253,3 +253,9 @@ make distclean
 -v0.4: Galimybė generuoti penkis failus 1000-10000000 įrašų dydžio. Atlieka tyrimus su failais. Surūšiuoja studentus į du failus pagal balus.
 
 -v1: Vector, Deque ir List konteinerio tipai.
+
+-v1.1: Klasės su destrukotriais ir konstruktoriais vietoj struktūrų
+
+-v1.2: rule of five + IO
+
+-v1.5: Abstrakti klasė person.
