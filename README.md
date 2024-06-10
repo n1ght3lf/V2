@@ -60,7 +60,7 @@ make distclean
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
-  | Class     |         |         |        |
+  | Class     |    13.2770     |    156.2178     |    642KB     |
 
 - O1 optimizacija
 
