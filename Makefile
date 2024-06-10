@@ -19,7 +19,7 @@ $(TARGET): $(OBJS) # V1: main.o functionality.o input.o calculations.o student.o
 #g++ -std=c++14 -c main.cpp -o main.o . $< - prereq file, $@ - target file
 
 clean: #remove object files
-	del /Q $(OBJS)
+	rm -f $(OBJS)
 
 distclean: clean #remove object files and executable
-	del /Q $(TARGET).exe
+	rm -f $(TARGET)
