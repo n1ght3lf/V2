@@ -55,7 +55,7 @@ make distclean
 
 ### Rule of Five ir I/O
 
-- C++ kalbos konceptas, apimantis komponentus reikalingus objektų valdymui: destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkeliamasis konstruktorius ir perkeliamasis priskyrimo operatorius. 
+- C++ kalbos konceptas, apimantis komponentus reikalingus objektų valdymui: destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkeliamasis konstruktorius ir perkeliamasis priskyrimo operatorius. Testus galima atlikti  per meniu.
 
 1. Destruktorius: Išvalo objektą kai jis nereikalingas
 2. Kopijavimo konstruktorius: Sukuria naują nukopijuodamas seną objektą
@@ -63,8 +63,8 @@ make distclean
 4. Perkeliamasis konstruktorius: Perkelia vertes vietoj kopijavimo, naudojamas kai reik laikino objekto.
 5. Perkeliamasis priskyrimo operatorius: Perkelia vertes iš vieno objekto į kitą.
 
-
-
+- I - įvesties operatorius, naudojamas nuskaitant duomenis į objektą. pvz: cin ar istringstream
+- O - Išvesties operatorius, naudojamas rašant duomenis į srautą iš objekto. Pvz: cout ar ostringstream
 
 ### Optimizavimas
 
