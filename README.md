@@ -66,8 +66,10 @@ make distclean
 - I - įvesties operatorius, naudojamas nuskaitant duomenis į objektą. pvz: cin ar istringstream
 - O - Išvesties operatorius, naudojamas rašant duomenis į srautą iš objekto. Pvz: cout ar ostringstream
 
-### Optimizavimas
+<details>
+<summary> Optimizacija </summary>
 
+### Optimizavimas
 
 - Be optimizacijos, šie rezultatai bus naudojami kaip pagrindas su kuo lyginama.
 
@@ -114,6 +116,8 @@ make distclean
     ![Class](./images/O3EXE.png)
 
 - O3 suveikė net lėčiau, nei O2 ir O1 (O1 jeigu lyginame didesnius skaičiavimus). Tikrai neverta naudoti vietoje O1 ar O2, nes kartu ir turi šansą sugadinti programą jei kodas blogai parašytas.
+
+</details>
 
 <details>
     <summary> Strategijos </summary>
