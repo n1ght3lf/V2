@@ -17,9 +17,9 @@ class Student
 {
 private:
     std::string firstName; 
-    std::string lastName; // changed from lastName
-    std::vector<int> homeworkMarks; // changed from homeworkResults
-    int examMark; // changed from examResults
+    std::string lastName;
+    std::vector<int> homeworkMarks;
+    int examMark;
 
 public:
     // Constructors
@@ -41,20 +41,20 @@ public:
 
     // Getters
     inline std::string getFirstName() const { return firstName; } 
-    inline std::string getLastName() const { return lastName; } // changed from getLastName
-    std::string getName() const { return getFirstName() + " " + getLastName(); } // changed from getName
-    const std::vector<int>& getHomeworkMarks() const { return homeworkMarks; } // changed from getHomeworkResults
-    int getExamMark() const { return examMark; } // changed from getExamResults
-    int getExamGrade() const { return homeworkMarks.back(); } // changed from getExamGrade
-    void removeLastHomeworkMark() { if (!homeworkMarks.empty()) { homeworkMarks.pop_back(); } } // changed from removeLastHomeworkGrade
+    inline std::string getLastName() const { return lastName; }
+    std::string getName() const { return getFirstName() + " " + getLastName(); }
+    const std::vector<int>& getHomeworkMarks() const { return homeworkMarks; }
+    int getExamMark() const { return examMark; }
+    int getExamGrade() const { return homeworkMarks.back(); } 
+    void removeLastHomeworkMark() { if (!homeworkMarks.empty()) { homeworkMarks.pop_back(); } }
 
     // Setters
     void setFirstName(std::string firstName) { this->firstName = std::move(firstName); } 
-    void setLastName(std::string lastName) { this->lastName = std::move(lastName); } // changed from setLastName
-    void addHomeworkMark(int mark) { homeworkMarks.push_back(mark); } // changed from addHomeworkResult
-    void clearHomeworkMarks() { homeworkMarks.clear(); } // changed from clearHomeworkResults
-    void setExamMark(int examMark) { this->examMark = examMark; } // changed from setExamResults
-    void setHomeworkMarks(std::vector<int> marks) { homeworkMarks = std::move(marks); } // changed from setHomeworkResults
+    void setLastName(std::string lastName) { this->lastName = std::move(lastName); }
+    void addHomeworkMark(int mark) { homeworkMarks.push_back(mark); } 
+    void clearHomeworkMarks() { homeworkMarks.clear(); }
+    void setExamMark(int examMark) { this->examMark = examMark; }
+    void setHomeworkMarks(std::vector<int> marks) { homeworkMarks = std::move(marks); }
 
     // Functions
     double calculateMedian() const;
