@@ -72,13 +72,13 @@ make distclean
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
-  | Class     |    4.36167     |    50.75928     |    314KB     |
+  | Class     |    4.36167     |    50.75928     |    309KB     |
 
 - O3 optimizacija
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
-  | Class     |         |         |        |
+  | Class     |    4.87037     |    52.20442     |    314KB     |
 
 
 
