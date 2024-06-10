@@ -64,6 +64,8 @@ make distclean
 
 <details>
     <summary>Nuotraukos</summary>
+    ![Class](./images/noOptimization.png)
+    ![Class](./images/noOptimizationEXE.png)
 </details>
 
 
@@ -76,6 +78,8 @@ make distclean
 
 <details>
     <summary>Nuotraukos</summary>
+    ![Class](./images/O1.png)
+    ![Class](./images/O1EXE.png)
 </details>
 
 - O2 optimizacija
@@ -86,6 +90,8 @@ make distclean
 
 <details>
     <summary>Nuotraukos</summary>
+    ![Class](./images/O2.png)
+    ![Class](./images/O2EXE.png)
 </details>
 
 - O3 optimizacija
@@ -96,6 +102,8 @@ make distclean
 
 <details>
     <summary>Nuotraukos</summary>
+    ![Class](./images/O3.png)
+    ![Class](./images/O3EXE.png)
 </details>
 
 <details>
