@@ -1,4 +1,4 @@
-# v1.0
+# v1.2
 
 # Instrukcija
 
@@ -45,6 +45,7 @@ main
 - Generuojant kartu ir testuoja kiek laiko kiekvienas failas užima kiekvienam etape.
 - Jei išvedami rezultatai į failus, failai rūšiuojami pagal pažymius.
 - Yra 3 konteinerio tipai (vector, deque ir list) ir 3 skirtingos strategijos duomenų skirstymui
+- "rule of five" ir IO tikrinimas
 
 ### Valymas
 - clean išvalo objektus (.o), o distclean išvalo visus sukurtus failus
