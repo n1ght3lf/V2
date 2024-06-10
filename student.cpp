@@ -35,6 +35,10 @@ Student& Student::operator=(Student&& other) noexcept {
         lastName = std::move(other.lastName);
         homeworkMarks = std::move(other.homeworkMarks);
         examMark = other.examMark;
+        other.firstName.clear();
+        other.lastName.clear();
+        other.homeworkMarks.clear();
+        other.examMark = 0;
     }
     return *this;
 }
@@ -74,8 +78,11 @@ std::istream& operator>>(std::istream& is, Student& s) {
 
 // Output operator: writes student data to output stream
 std::ostream& operator<<(std::ostream& os, const Student& s) {
-    os << std::setw(15) << s.getLastName() 
-       << std::setw(15) << s.getFirstName();
+    os << s.getFirstName() << " " << s.getLastName();
+    for (const auto& result : s.getHomeworkMarks()) {
+        os << " " << result;
+    }
+    os << " " << s.getExamMark();
     return os;
 }
 
