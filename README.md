@@ -231,4 +231,4 @@ make distclean
 
 -v0.4: Galimybė generuoti penkis failus 1000-10000000 įrašų dydžio. Atlieka tyrimus su failais. Surūšiuoja studentus į du failus pagal balus.
 
--v0.1: Vector, Deque ir List konteinerio tipai.
+-v1: Vector, Deque ir List konteinerio tipai.
