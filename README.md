@@ -56,7 +56,7 @@ make distclean
 ### Optimizavimas
 
 
-- Be optimizacijos
+- Be optimizacijos, šie rezultatai bus naudojami kaip pagrindas su kuo lyginama.
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
   |-----------|----------------|-----------------|--------------|
@@ -76,7 +76,7 @@ make distclean
     ![Class](./images/O1.png)
     ![Class](./images/O1EXE.png)
 
-
+- O1 žymiai pagreitino programos veikimą (tarp 2 ir 3 kartų, žiūrint pagal operacijos dydį) ir perpus sumažino failo dydį.
 
 
 - O2 optimizacija
@@ -88,6 +88,8 @@ make distclean
     ![Class](./images/O2.png)
     ![Class](./images/O2EXE.png)
 
+- O2 pagreitino procesą, bet nežymiai daugiau nei O1, kartu ir failo dydis sumažėjo, bet per labai mažą procentą. Nematau tikslo naudoti O2 vietoje O1
+
 - O3 optimizacija
 
   |           | Greitis(1mln.) | Greitis(10mln.) | Failo dydis  |
@@ -97,6 +99,8 @@ make distclean
 
     ![Class](./images/O3.png)
     ![Class](./images/O3EXE.png)
+
+- O3 suveikė net lėčiau, nei O2 ir O1 (O1 jeigu lyginame didesnius skaičiavimus). Tikrai neverta naudoti vietoje O1 ar O2, nes kartu ir turi šansą sugadinti programą jei kodas blogai parašytas.
 
 <details>
     <summary> Strategijos </summary>
