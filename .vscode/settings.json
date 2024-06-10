@@ -8,7 +8,8 @@
         "iomanip": "cpp",
         "istream": "cpp",
         "ios": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "xstring": "cpp"
     },
     "cmake.configureOnOpen": false
 }
