@@ -6,24 +6,6 @@
 
 using namespace std;
 
-int getContainerTypeFromUser() {
-    int containerType;
-
-    cout << "\nPasirinkite konteinerio tipą: \n";
-    cout << "1 - Vector\n";
-    cout << "2 - Deque\n";
-    cout << "3 - List\n";
-    cout << "\nPasirinkite: ";
-    cin >> containerType;
-
-    while (containerType < 1 || containerType > 3) {
-        cout << "Netinkama įvestis, įveskite skaičių tarp 1 ir 3. \n";
-        cin >> containerType;
-    }
-
-    return containerType;
-}
-
 int generateGrade() {
     return rand() % 10 + 1; // grazina skaiciu nuo 1 iki 10 (pazymi)
 }
@@ -132,3 +114,4 @@ void outputToFile(const Container& students, size_t numberOfStudents, bool Media
 template void outputToFile<vector<Student>>(const vector<Student>&, size_t, bool, const string&);
 template void outputToFile<deque<Student>>(const deque<Student>&, size_t, bool, const string&);
 template void outputToFile<list<Student>>(const list<Student>&, size_t, bool, const string&);
+template void outputToFile<MyVector<Student>>(const MyVector<Student>&, size_t, bool, const std::string&);

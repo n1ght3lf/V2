@@ -7,7 +7,7 @@
 #include "student.h" 
 #include "calculations.h"
 
-int getContainerTypeFromUser();
+
 int generateGrade();
 std::string generateName();
 std::string generateLastName();

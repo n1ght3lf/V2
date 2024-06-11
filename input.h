@@ -9,6 +9,8 @@
 #include "calculations.h"
 #include "functionality.h"
 
+int getContainerTypeFromUser();
+
 bool getMedianPreference();
 
 template <typename Container>

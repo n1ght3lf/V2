@@ -63,3 +63,4 @@ void sortStudents<list<Student>>(list<Student> &students, int criteria, int medi
 
 template void sortStudents<vector<Student>>(vector<Student> &, int, int);
 template void sortStudents<deque<Student>>(deque<Student> &, int, int);
+template void sortStudents<MyVector<Student>>(MyVector<Student>&, int, int);

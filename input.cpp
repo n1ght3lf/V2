@@ -8,6 +8,26 @@
 
 using namespace std;
 
+
+int getContainerTypeFromUser() {
+    int containerType;
+
+    cout << "\nPasirinkite konteinerio tipą: \n";
+    cout << "1 - Vector\n";
+    cout << "2 - Deque\n";
+    cout << "3 - List\n";
+    cout << "4 - STL Vector\n";
+    cout << "\nPasirinkite: ";
+    cin >> containerType;
+
+    while (containerType < 1 || containerType > 4) {
+        cout << "Netinkama įvestis, įveskite skaičių tarp 1 ir 4. \n";
+        cin >> containerType;
+    }
+
+    return containerType;
+}
+
 /// @brief Displays the menu and prompts the user to choose an option.
 /// @return The user's menu choice.
 
@@ -409,6 +429,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
 template void processStudents(vector<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 template void processStudents(deque<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 template void processStudents(list<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
+template void processStudents(MyVector<Student> &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
 
 /// @brief Displays the menu and prompts the user to choose an option.
 /// @return The user's menu choice.
@@ -466,6 +487,7 @@ void readData(ifstream& inputFile, Container& students) {
 template void readData(ifstream &inputFile, vector<Student> &students);
 template void readData(ifstream &inputFile, deque<Student> &students);
 template void readData(ifstream &inputFile, list<Student> &students);
+template void readData(std::ifstream &fin, MyVector<Student> &students);
 /// @brief Opens files containing student data and performs operations based on the chosen strategy.
 /// @tparam Container The type of container used to store student data.
 /// @param filenames The names of the input files.
