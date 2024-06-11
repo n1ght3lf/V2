@@ -12,6 +12,8 @@
 #include <ostream>
 #include <iomanip>
 #include <sstream>
+#include <cmath>
+#include "myVector.h"
 
 class Person {
 public:

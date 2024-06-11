@@ -28,7 +28,7 @@ public:
     // Member functions
 
     // Constructor
-    MyVector() : arr(allocator_type().allocate(1)), capacity(1), current(0) {}
+    MyVector() : arr(nullptr), capacity(0), current(0) {}
 
     // Destructor
     ~MyVector() {
@@ -204,7 +204,7 @@ public:
     }
 
     // capacity
-    size_type get_capacity() const noexcept {
+    size_type getCapacity() const noexcept {
         return capacity;
     }
 
@@ -321,8 +321,8 @@ public:
     // swap
     void swap(MyVector& other) noexcept {
         std::swap(arr, other.arr);
-        std::swap(current, other.current);
         std::swap(capacity, other.capacity);
+        std::swap(current, other.current);
     }
 };
 
@@ -365,9 +365,11 @@ bool operator>=(const MyVector<T>& lhs, const MyVector<T>& rhs) {
 }
 
 // std::swap
-template <typename T>
-void swap(MyVector<T>& lhs, MyVector<T>& rhs) noexcept {
-    lhs.swap(rhs);
+namespace std {
+    template <typename T>
+    void swap(MyVector<T>& lhs, MyVector<T>& rhs) noexcept {
+        lhs.swap(rhs);
+    }
 }
 
 // erase
