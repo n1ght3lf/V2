@@ -446,7 +446,7 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
                 exit(0);
             }
         }
-    } while (menuChoice != 8 && menuChoice != 7 && menuChoice != 6);
+    } while (menuChoice != 10);
 }
 
 template void processStudents(vector<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
