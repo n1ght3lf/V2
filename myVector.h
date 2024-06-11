@@ -3,7 +3,7 @@
 #include <memory> // allocator_traits tipams
 
 template <typename T, typename Allocator = std::allocator<T>>
-class MyVector {
+class MyVector {    
 public:
     // Member types
     using value_type = T;
@@ -25,6 +25,8 @@ private:
     size_type current;
 
 public:
+    // Member functions
+
     // Constructor
     MyVector() : arr(allocator_type().allocate(1)), capacity(1), current(0) {}
 
@@ -32,7 +34,8 @@ public:
     ~MyVector() {
         allocator_type().deallocate(arr, capacity);
     }
-        reference at(size_type pos) {
+    // at
+    reference at(size_type pos) {
         if (pos >= current) {
             throw std::out_of_range("MyVector::at");
         }
@@ -46,6 +49,7 @@ public:
         return arr[pos];
     }
 
+    // operator[]
     reference operator[](size_type pos) {
         return arr[pos];
     }
@@ -53,7 +57,7 @@ public:
     const_reference operator[](size_type pos) const {
         return arr[pos];
     }
-        // Copy assignment operator
+    // Copy assignment operator
     MyVector& operator=(const MyVector& other) {
         if (this != &other) {
             allocator_type().deallocate(arr, capacity);
@@ -200,7 +204,7 @@ public:
     }
 
     // capacity
-    size_type capacity() const noexcept {
+    size_type get_capacity() const noexcept {
         return capacity;
     }
 
@@ -321,3 +325,59 @@ public:
         std::swap(capacity, other.capacity);
     }
 };
+
+// Non-member functions
+
+// operator==
+template <typename T>
+bool operator==(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return lhs.size() == rhs.size() && std::equal(lhs.begin(), lhs.end(), rhs.begin());
+}
+
+// operator!=
+template <typename T>
+bool operator!=(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return !(lhs == rhs);
+}
+
+// operator<
+template <typename T>
+bool operator<(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return std::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+}
+
+// operator<=
+template <typename T>
+bool operator<=(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return !(rhs < lhs);
+}
+
+// operator>
+template <typename T>
+bool operator>(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return rhs < lhs;
+}
+
+// operator>=
+template <typename T>
+bool operator>=(const MyVector<T>& lhs, const MyVector<T>& rhs) {
+    return !(lhs < rhs);
+}
+
+// std::swap
+template <typename T>
+void swap(MyVector<T>& lhs, MyVector<T>& rhs) noexcept {
+    lhs.swap(rhs);
+}
+
+// erase
+template <typename T, typename Pred>
+void erase(MyVector<T>& vec, Pred pred) {
+    vec.erase(std::remove_if(vec.begin(), vec.end(), pred), vec.end());
+}
+
+// erase_if
+template <typename T, typename Pred>
+void erase_if(MyVector<T>& vec, Pred pred) {
+    vec.erase(std::remove_if(vec.begin(), vec.end(), pred), vec.end());
+}
