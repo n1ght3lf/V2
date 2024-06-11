@@ -55,7 +55,7 @@ main
 - Generuoja failus 5 skirtingų dydžių.
 - Generuojant kartu ir testuoja kiek laiko kiekvienas failas užima kiekvienam etape.
 - Jei išvedami rezultatai į failus, failai rūšiuojami pagal pažymius.
-- Yra 3 konteinerio tipai (vector, deque ir list) ir 3 skirtingos strategijos duomenų skirstymui
+- Yra 4 konteinerio tipai (vector, deque ir list, myVector) ir 3 skirtingos strategijos duomenų skirstymui
 
 ### Valymas
 - clean išvalo objektus (.o), o distclean išvalo visus sukurtus failus
@@ -284,3 +284,5 @@ make distclean
 -v1.2: rule of five + IO
 
 -v1.5: Abstrakti klasė person.
+
+-v2: Doxygen dokumentacija, bandyta googletests (failed)
