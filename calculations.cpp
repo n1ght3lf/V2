@@ -53,8 +53,8 @@ void sortStudents(Container &students, int criteria, int Median)
             int size = students.size();
             int medianIndex = size / 2;
             auto it = students.begin();
-            advance(it, medianIndex);
-            nth_element(students.begin(), it, students.end(), compareByGrade);
+            std::advance(it, medianIndex);
+            std::nth_element(students.begin(), it, students.end(), compareByGrade);
         }
     }
 }
