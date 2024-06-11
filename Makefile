@@ -9,18 +9,16 @@ SRCS = main.cpp functionality.cpp input.cpp calculations.cpp student.cpp #SRCS -
 
 OBJS = $(SRCS:.cpp=.o) #Transform .cpp to .o
 
-GTEST = /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a
-
 # Test files
-TEST_SRCS = student_test.cpp
-# V1: student_test.cpp
+TEST_SRCS = test.cpp
+# V1: test.cpp
 
 # Test objects
 TEST_OBJS = $(TEST_SRCS:.cpp=.o)
-# V1: student_test.o
+# V1: test.o
 
 # test file name
-TEST_TARGET = student_test
+TEST_TARGET = test
 # V1: main.o functionality.o input.o calculations.o student.o
 
 $(TARGET): $(OBJS) # V1: main.o functionality.o input.o calculations.o student.o
@@ -29,8 +27,8 @@ $(TARGET): $(OBJS) # V1: main.o functionality.o input.o calculations.o student.o
 
 # Rule to build the test executable
 $(TEST_TARGET): student.o $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) student.o $(TEST_OBJS) $(GTEST)
-# g++ -std=c++14 -o student_test student.o student_test.o /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a
+	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) student.o $(TEST_OBJS)
+# g++ -std=c++14 -o test student.o test.o
 
 
 .cpp.o:
