@@ -29,7 +29,11 @@ bool compareByGrade(const Student &a, const Student &b)
 {
     return a.calculateFinalGrade(false) < b.calculateFinalGrade(false);
 }
-
+/// @brief Funkcija, kuri surikiuoja studentus pagal nurodytus kriterijus.
+/// @tparam Container Konteinerio tipas, kuriame saugomi studentai.
+/// @param students Studentų konteineris, kuris bus surikiuotas.
+/// @param criteria Kriterijus, pagal kurį bus atliekama rikiavimas.
+/// @param Median Jei 1, tada surikiuojant pagal galutinį balą naudojama mediana.
 template <typename Container>
 void sortStudents(Container &students, int criteria, int Median)
 {
@@ -49,12 +53,15 @@ void sortStudents(Container &students, int criteria, int Median)
             int size = students.size();
             int medianIndex = size / 2;
             auto it = students.begin();
-            std::advance(it, medianIndex);
-            std::nth_element(students.begin(), it, students.end(), compareByGrade);
+            advance(it, medianIndex);
+            nth_element(students.begin(), it, students.end(), compareByGrade);
         }
     }
 }
-
+/// @brief Funkcija, kuri surikiuoja studentus pagal nurodytus kriterijus.
+/// @param students Studentų konteineris, kuris bus surikiuotas.
+/// @param criteria Kriterijus, pagal kurį bus atliekama rikiavimas.
+/// @param Median Jei 1, tada surikiuojant pagal galutinį balą naudojama mediana.
 template <>
 void sortStudents<list<Student>>(list<Student> &students, int criteria, int median)
 {
@@ -69,6 +76,14 @@ void sortStudents<list<Student>>(list<Student> &students, int criteria, int medi
     else if (criteria == 3)
     {
         students.sort(compareByGrade);
+        if (median == 1)
+        {
+            int size = students.size();
+            int medianIndex = size / 2;
+            auto it = students.begin();
+            advance(it, medianIndex);
+            students.splice(students.begin(), students, it);
+        }
     }
 }
 

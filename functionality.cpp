@@ -5,28 +5,33 @@
 #include "functionality.h"
 
 using namespace std;
-
+/// @brief Sugeneruoti pažymį
+/// @return Pažymys
 int generateGrade() {
-    return rand() % 10 + 1; // grazina skaiciu nuo 1 iki 10 (pazymi)
+    return rand() % 10 + 1; 
 }
-
+/// @brief Sugeneruoti vardą
+/// @return Vardas
 string generateName() {
-    string firstNames[] = {"Jonas", "Tomas", "Rokas", "Lukas", "Mantas", "Arvydas"};
+    string firstNames[] = {"Adas", "Aidas", "Albertas", "Dovydas", "Jonas", "Lukas"};
     return firstNames[rand() % 6];
 }
-
+/// @brief Sugeneruoti pavardę
+/// @return Pavardė
 string generateLastName() {
-    string lastNames[] = {"Kazlauskas", "Sabonis", "Stankevicius", "Petrauskas", "Navickas", "Urbonas"};
+    string lastNames[] = {"Adomaitis", "Petrauskas", "Butkus", "Stankevicius", "Kazlauskas", "Urbonas", "Jakubauskas", "Jankunas"};
     return lastNames[rand() % 6]; 
 }
-
+/// @brief Tikrinti, ar įvestas tekstas yra eilutė
+/// @param prompt Pranešimas vartotojui
+/// @return Eilutė
 string isString(const string& prompt) {
     while (true) {
         try {
             string userInput;
             cout << prompt;
             cin >> userInput;
-            if (!all_of(userInput.begin(), userInput.end(), ::isalpha)) { // patikrina ar ivestis yra tik is raidziu
+            if (!all_of(userInput.begin(), userInput.end(), ::isalpha)) { 
                 throw runtime_error("Netinkama įvestis, nenaudokite skaičių.");
             }
             return userInput;
@@ -35,14 +40,16 @@ string isString(const string& prompt) {
         }
     }
 }
-
+/// @brief Tikrinti, ar įvestas pažymys yra tinkamas
+/// @param prompt Pranešimas vartotojui
+/// @return Pažymys
 int isGrade(const string& prompt) {
     while (true) {
         try {
             int userInput;
             cout << prompt;
             cin >> userInput;
-            if (cin.fail() || cin.peek() != '\n' || (userInput < 1 && userInput != -1) || userInput > 10) { // patikrina ar ivestis yra sveikas skaicius nuo 1 iki 10 arba -1
+            if (cin.fail() || cin.peek() != '\n' || (userInput < 1 && userInput != -1) || userInput > 10) { 
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw runtime_error("Netinkama įvestis, įveskite sveiką skaičių nuo 1 iki 10 arba -1 jei baigėte."); 
             }
@@ -52,17 +59,23 @@ int isGrade(const string& prompt) {
         }
     }
 }
-
+/// @brief Gauti mano vektoriaus talpą
+/// @param container Mano vektorius
+/// @return Talpa
 template <typename T>
 size_t getCapacity(const std::vector<T>& container) {
     return container.capacity();
 }
-
+/// @brief Gauti mano vektoriaus talpą
+/// @param container Mano vektorius
+/// @return Talpa
 template <typename T>
 size_t getCapacity(const MyVector<T>& container) {
     return container.getCapacity();
 }
-
+/// @brief Testuoti konteinerį
+/// @param sz Dydis
+/// @param containerName Konteinerio pavadinimas
 template <typename Container>
 void testContainer(unsigned int sz, const std::string& containerName) {
     auto start = std::chrono::high_resolution_clock::now();
@@ -83,7 +96,8 @@ void testContainer(unsigned int sz, const std::string& containerName) {
 template void testContainer<std::vector<int>>(unsigned int, const std::string&);
 template void testContainer<MyVector<int>>(unsigned int, const std::string&);
 
-
+/// @brief Sugeneruoti failą su studentų duomenimis
+/// @param studentCount Studentų skaičius
 void generateFile(int studentCount) {
     auto startTimer = chrono::high_resolution_clock::now(); 
 
@@ -112,7 +126,10 @@ void generateFile(int studentCount) {
 
     cout << "Failas 'studentai" << studentCount << ".txt' sukurtas per " << diff.count() << " sekundes.\n";
 }
-
+/// @brief Išvesti duomenis į terminalą
+/// @param badStudents Prastai besimokantys studentai
+/// @param goodStudents Gerai besimokantys studentai
+/// @param Median Ar naudoti medianą
 void outputToTerminal(const vector<Student>& badStudents, const vector<Student>& goodStudents, bool Median){
     cout <<"\nNuskriaustukai: \n\n";
     cout << left << setw(15) << "Pavardė" << setw(15) << " Vardas" << setw(20) << (Median ? "Galutinis (Med.)" : "Galutinis (Vid.)") << endl; 
@@ -129,7 +146,11 @@ void outputToTerminal(const vector<Student>& badStudents, const vector<Student>&
         cout << left << setw(15) << student.getLastName() << setw(15) << student.getFirstName() << setw(20) << fixed << setprecision(2) << finalGrade << endl;
     }
 }
-
+/// @brief Išvesti duomenis į failą
+/// @param students Studentų konteineris
+/// @param numberOfStudents Studentų skaičius
+/// @param Median Ar naudoti medianą
+/// @param filename Failo pavadinimas
 template <typename Container>
 void outputToFile(const Container& students, size_t numberOfStudents, bool Median, const string& filename) {
     ofstream outputFile(filename);

@@ -467,9 +467,8 @@ public:
      *
      * @return Maksimalus elementų skaičius.
      */
-    size_type max_size() const noexcept
-    {
-        return std::numeric_limits<size_t>::max() / sizeof(T);
+    size_type max_size() const noexcept {
+        return std::allocator_traits<Allocator>::max_size(allocator);
     }
 
     /**

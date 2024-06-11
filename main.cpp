@@ -11,7 +11,8 @@ std::vector<Student> studentVector;
 std::deque<Student> studentDeque;
 std::list<Student> studentList;
 MyVector<Student> studentMyVector;
-
+/// @brief 
+/// @return 
 int main() {
     auto startTotal = std::chrono::high_resolution_clock::now();
     setlocale(LC_ALL, "lt_LT.UTF-8");
