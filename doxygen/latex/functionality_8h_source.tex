@@ -5,22 +5,37 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNCTIONALITY\_H}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdlib>}\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}student.h"{}}\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}student.h"{}}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}calculations.h"{}}}
 \DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keywordtype}{int}\ getContainerTypeFromUser();}
-\DoxyCodeLine{00011\ \textcolor{keywordtype}{int}\ generateGrade();}
-\DoxyCodeLine{00012\ std::string\ generateName();}
-\DoxyCodeLine{00013\ std::string\ generateLastName();}
-\DoxyCodeLine{00014\ std::string\ isString(\textcolor{keyword}{const}\ std::string\&\ prompt);}
-\DoxyCodeLine{00015\ \textcolor{keywordtype}{int}\ isGrade(\textcolor{keyword}{const}\ std::string\&\ prompt);}
-\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ generateFile(\textcolor{keywordtype}{int}\ studentCount);}
-\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ outputToTerminal(\textcolor{keyword}{const}\ std::vector<Student>\&\ badStudents,\ \textcolor{keyword}{const}\ std::vector<Student>\&\ goodStudents,\ \textcolor{keywordtype}{bool}\ Median);}
-\DoxyCodeLine{00018\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
-\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ outputToFile(\textcolor{keyword}{const}\ Container\&\ students,\ \textcolor{keywordtype}{size\_t}\ numberOfStudents,\ \textcolor{keywordtype}{bool}\ Median,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FUNCTIONALITY\_H}}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{int}\ generateGrade();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00016\ std::string\ generateName();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00020\ std::string\ generateLastName();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ std::string\ isString(\textcolor{keyword}{const}\ std::string\&\ prompt);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{int}\ isGrade(\textcolor{keyword}{const}\ std::string\&\ prompt);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ generateFile(\textcolor{keywordtype}{int}\ studentCount);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ outputToTerminal(\textcolor{keyword}{const}\ std::vector<Student>\&\ badStudents,\ \textcolor{keyword}{const}\ std::vector<Student>\&\ goodStudents,\ \textcolor{keywordtype}{bool}\ Median);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ outputToFile(\textcolor{keyword}{const}\ Container\&\ students,\ \textcolor{keywordtype}{size\_t}\ numberOfStudents,\ \textcolor{keywordtype}{bool}\ Median,\ \textcolor{keyword}{const}\ std::string\&\ filename);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{size\_t}\ getCapacity(\textcolor{keyword}{const}\ std::vector<T>\&\ container);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{size\_t}\ getCapacity(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_my_vector}{MyVector<T>}}\&\ container);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{void}\ testContainer(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sz,\ \textcolor{keyword}{const}\ std::string\&\ containerName);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FUNCTIONALITY\_H}}
 
 \end{DoxyCode}

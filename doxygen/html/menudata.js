@@ -25,9 +25,45 @@
 var menudata={children:[
 {text:"Pagrindinis Puslapis",url:"index.html"},
 {text:"Susiję Puslapiai",url:"pages.html"},
+{text:"Vardų Sritys",url:"namespaces.html",children:[
+{text:"Varų Srities Sąrašas",url:"namespaces.html"}]},
 {text:"Klasės",url:"annotated.html",children:[
 {text:"Klasės",url:"annotated.html"},
 {text:"Klasės Indeksas",url:"classes.html"},
-{text:"Klasių hierarchija",url:"hierarchy.html"}]},
+{text:"Klasių hierarchija",url:"hierarchy.html"},
+{text:"Klasių Nariai",url:"functions.html",children:[
+{text:"Visi",url:"functions.html",children:[
+{text:"a",url:"functions.html#index_a"},
+{text:"b",url:"functions.html#index_b"},
+{text:"c",url:"functions.html#index_c"},
+{text:"d",url:"functions.html#index_d"},
+{text:"e",url:"functions.html#index_e"},
+{text:"f",url:"functions.html#index_f"},
+{text:"g",url:"functions.html#index_g"},
+{text:"i",url:"functions.html#index_i"},
+{text:"m",url:"functions.html#index_m"},
+{text:"o",url:"functions.html#index_o"},
+{text:"p",url:"functions.html#index_p"},
+{text:"r",url:"functions.html#index_r"},
+{text:"s",url:"functions.html#index_s"},
+{text:"v",url:"functions.html#index_v"},
+{text:"~",url:"functions.html#index__7E"}]},
+{text:"Funkcijos",url:"functions_func.html",children:[
+{text:"a",url:"functions_func.html#index_a"},
+{text:"b",url:"functions_func.html#index_b"},
+{text:"c",url:"functions_func.html#index_c"},
+{text:"d",url:"functions_func.html#index_d"},
+{text:"e",url:"functions_func.html#index_e"},
+{text:"f",url:"functions_func.html#index_f"},
+{text:"g",url:"functions_func.html#index_g"},
+{text:"i",url:"functions_func.html#index_i"},
+{text:"m",url:"functions_func.html#index_m"},
+{text:"o",url:"functions_func.html#index_o"},
+{text:"p",url:"functions_func.html#index_p"},
+{text:"r",url:"functions_func.html#index_r"},
+{text:"s",url:"functions_func.html#index_s"},
+{text:"~",url:"functions_func.html#index__7E"}]},
+{text:"Tipų apibrėžimai",url:"functions_type.html"},
+{text:"Susiję Funkcijos",url:"functions_rela.html"}]}]},
 {text:"Failai",url:"files.html",children:[
 {text:"Failai",url:"files.html"}]}]}

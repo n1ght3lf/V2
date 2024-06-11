@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.11.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>V2: Person Klasė</title>
+<title>V3: Person Klasė</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">V2
+   <div id="projectname">V3
    </div>
   </td>
  </tr>
@@ -90,20 +90,29 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">Person Klasė<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Asmens klasė  
+ <a href="#details">Daugiau...</a></p>
+
+<p><code>#include &lt;<a class="el" href="person_8h_source.html">person.h</a>&gt;</code></p>
 <div class="dynheader">
 Paveldimumo diagrama Person:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_person.png" usemap="#Person_map" alt=""/>
   <map id="Person_map" name="Person_map">
-<area href="class_student.html" alt="Student" shape="rect" coords="0,56,54,80"/>
+<area href="class_student.html" title="Studentų klasė, paveldinti asmens klasę" alt="Student" shape="rect" coords="0,56,54,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Vieši Metodai</h2></td></tr>
-<tr class="memitem:aa1a208a23ec21d102f75b2f3b3e61d27" id="r_aa1a208a23ec21d102f75b2f3b3e61d27"><td class="memItemLeft" align="right" valign="top"><a id="aa1a208a23ec21d102f75b2f3b3e61d27" name="aa1a208a23ec21d102f75b2f3b3e61d27"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getFirstName</b> () const =0</td></tr>
+<tr class="memitem:a22234d7de3132c581406f040196eef44" id="r_a22234d7de3132c581406f040196eef44"><td class="memItemLeft" align="right" valign="top"><a id="a22234d7de3132c581406f040196eef44" name="a22234d7de3132c581406f040196eef44"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Person</b> ()=default</td></tr>
+<tr class="memdesc:a22234d7de3132c581406f040196eef44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruktorius. <br /></td></tr>
+<tr class="separator:a22234d7de3132c581406f040196eef44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a208a23ec21d102f75b2f3b3e61d27" id="r_aa1a208a23ec21d102f75b2f3b3e61d27"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a208a23ec21d102f75b2f3b3e61d27">getFirstName</a> () const =0</td></tr>
+<tr class="memdesc:aa1a208a23ec21d102f75b2f3b3e61d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Geteriai.  <br /></td></tr>
 <tr class="separator:aa1a208a23ec21d102f75b2f3b3e61d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829ef9d557e749cc5a5c9a46ef12e4f6" id="r_a829ef9d557e749cc5a5c9a46ef12e4f6"><td class="memItemLeft" align="right" valign="top"><a id="a829ef9d557e749cc5a5c9a46ef12e4f6" name="a829ef9d557e749cc5a5c9a46ef12e4f6"></a>
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLastName</b> () const =0</td></tr>
@@ -112,6 +121,38 @@ virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLas
 virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getName</b> () const =0</td></tr>
 <tr class="separator:aef61692af3ae0ed8764186c5f3363243"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Smulkus aprašymas</h2>
+<div class="textblock"><p>Asmens klasė </p>
+</div><h2 class="groupheader">Metodų Dokumentacija</h2>
+<a id="aa1a208a23ec21d102f75b2f3b3e61d27" name="aa1a208a23ec21d102f75b2f3b3e61d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a208a23ec21d102f75b2f3b3e61d27">&#9670;&#160;</a></span>getFirstName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string Person::getFirstName </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Geteriai. </p>
+
+<p>Realizuota <a class="el" href="class_student.html#a90fe7570044fb05f6543af666b581ab8">Student</a>.</p>
+
+</div>
+</div>
 <hr/>Dokumentacija šiai klasei sugeneruota iš šio failo:<ul>
 <li><a class="el" href="person_8h_source.html">person.h</a></li>
 </ul>
