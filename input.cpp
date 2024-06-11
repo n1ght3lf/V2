@@ -422,6 +422,28 @@ void processStudents(Container &students, bool Median, chrono::high_resolution_c
             }
             break;
         }
+        case 9:
+            {
+                std::vector<unsigned int> sizes = {10000, 100000, 1000000, 10000000, 100000000};
+
+                for (unsigned int sz : sizes) {
+                    std::cout << "Testuojame su " << sz << " elementų.\n";
+
+                    testContainer<std::vector<int>>(sz, "std::vector");
+                    testContainer<MyVector<int>>(sz, "MyVector");
+
+                    std::cout << "\n";
+                }
+                break;
+            }
+            case 10:
+            {
+                auto endTotal = chrono::high_resolution_clock::now();
+                chrono::duration<double> diffTotal = endTotal - startTotal;
+                double totalTime = diffTotal.count();
+                cout << "\nVisos programos veikimo laikas: " << std::fixed << std::setprecision(6) << totalTime << " sekundės\n" << endl;
+                exit(0);
+            }
         }
     } while (menuChoice != 8 && menuChoice != 7 && menuChoice != 6);
 }
@@ -444,11 +466,13 @@ int Menu()
     cout << "6 - Sugeneruoti ir testuoti penkis failus\n";
     cout << "7 - Išvedimas\n";
     cout << "8 - I/O + 'Rule of five'\n";
+    cout << "9 - std::Vector vs MyVector testavimas\n";
+    cout << "10 - Baigti darbą\n";
     cout << "\nĮveskite skaičių: ";
     cin >> menuChoice;
-    if (menuChoice < 1 || menuChoice > 8)
+    if (menuChoice < 1 || menuChoice > 10)
     {
-        throw runtime_error("Netinkama įvestis, įveskite skaičių tarp 1 ir 8.");
+        throw runtime_error("Netinkama įvestis, įveskite skaičių tarp 1 ir 10.");
     }
     return menuChoice;
 }
