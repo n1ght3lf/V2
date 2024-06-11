@@ -59,6 +59,9 @@ public:
     }
     // Copy assignment operator
     MyVector& operator=(const MyVector& other) {
+         if (this == &other) {
+            return *this;
+        }
         if (this != &other) {
             allocator_type().deallocate(arr, capacity);
             arr = allocator_type().allocate(other.capacity);
@@ -68,7 +71,13 @@ public:
         }
         return *this;
     }
-
+      // Copy constructor
+    MyVector(const MyVector& other) {
+        arr = allocator_type().allocate(other.capacity);
+        capacity = other.capacity;
+        current = other.current;
+        std::copy(other.arr, other.arr + other.current, arr);
+    }
     // assign
     void assign(size_type count, const T& value) {
         if (count > capacity) {
@@ -281,6 +290,15 @@ public:
         ++current;
     }
 
+    // pop_back
+    void pop_back() {
+        if (current > 0) {
+            --current;
+        } else {
+            throw std::out_of_range("Cannot pop_back from an empty MyVector");
+        }
+    }
+
     // emplace_back
     template <typename... Args>
     void emplace_back(Args&&... args) {
@@ -300,11 +318,6 @@ public:
         }
         std::copy(first, last, arr + current);
         current += count;
-    }
-
-    // pop_back
-    void pop_back() {
-        --current;
     }
 
     // resize
