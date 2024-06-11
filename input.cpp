@@ -8,7 +8,8 @@
 
 using namespace std;
 
-
+/// @brief Gauti vartotojo pasirinktą konteinerio tipą.
+/// @return Vartotojo pasirinktas konteinerio tipas.
 int getContainerTypeFromUser() {
     int containerType;
 
@@ -28,8 +29,8 @@ int getContainerTypeFromUser() {
     return containerType;
 }
 
-/// @brief Displays the menu and prompts the user to choose an option.
-/// @return The user's menu choice.
+/// @brief Ar naudoti medianą galutinio balo skaičiavimui.
+/// @return Vartotojo pasirinkimas.
 
 bool getMedianPreference()
 {
@@ -60,11 +61,11 @@ bool getMedianPreference()
     }
 }
 
-/// @brief Processes student data based on user input. 
-/// @tparam Container The type of container used to store student data (e.g., vector, list).
-/// @param students The container holding student data.
-/// @param Median Flag indicating whether to calculate median or average.
-/// @param startTotal The starting time point for measuring total execution time.
+/// @brief Apdoroti studentų duomenis pagal vartotojo pasirinkimą.
+/// @tparam Container Konteinerio tipas naudojamas studentų duomenims saugoti (pvz., vector, list).
+/// @param students Konteineris, laikantis studentų duomenis.
+/// @param Median Flag, nurodantis ar skaičiuoti medianą ar vidurkį.
+/// @param startTotal Pradinis laiko taškas bendro veikimo laiko matavimui.
 
 template <typename Container>
 void processStudents(Container &students, bool Median, chrono::high_resolution_clock::time_point startTotal)
@@ -453,8 +454,8 @@ template void processStudents(deque<Student> &students, bool Median, chrono::hig
 template void processStudents(list<Student> &students, bool Median, chrono::high_resolution_clock::time_point startTotal);
 template void processStudents(MyVector<Student> &students, bool Median, std::chrono::high_resolution_clock::time_point startTotal);
 
-/// @brief Displays the menu and prompts the user to choose an option.
-/// @return The user's menu choice.
+/// @brief Parodo meniu ir leidžia vartotojui pasirinkti parinktį.
+/// @return Vartotojo meniu pasirinkimas.
 int Menu()
 {
     int menuChoice;
@@ -476,8 +477,8 @@ int Menu()
     }
     return menuChoice;
 }
-/// @brief Prompts the user to enter a filename.
-/// @return The filename entered by the user.
+/// @brief Leidžia vartotojui įvesti failo pavadinimą.
+/// @return Vartotojo įvestas failo pavadinimas.
 string getFilenameFromUser()
 {
     cout << "Įveskite norimo failo pavadinimą (kursiokai.txt, studentai1000.txt, studentai10000.txt, studentai100000.txt, studentai1000000.txt, studentai10000000.txt): \n";
@@ -490,10 +491,10 @@ string getFilenameFromUser()
     }
     return inputFileName;
 }
-/// @brief Reads student data from a file and populates the container.
-/// @tparam Container The type of container used to store student data.
-/// @param inputFile The input file stream.
-/// @param students The container to populate with student data.
+/// @brief Nuskaito studentų duomenis iš failo ir užpildo konteinerį.
+/// @tparam Container Konteinerio tipas, naudojamas studentų duomenims saugoti.
+/// @param inputFile Įvesties failo srautas.
+/// @param students Konteineris, kurį užpildyti studentų duomenimis.
 template <typename Container>
 void readData(ifstream& inputFile, Container& students) {
     string buffer; 
@@ -512,12 +513,12 @@ template void readData(ifstream &inputFile, vector<Student> &students);
 template void readData(ifstream &inputFile, deque<Student> &students);
 template void readData(ifstream &inputFile, list<Student> &students);
 template void readData(std::ifstream &fin, MyVector<Student> &students);
-/// @brief Opens files containing student data and performs operations based on the chosen strategy.
-/// @tparam Container The type of container used to store student data.
-/// @param filenames The names of the input files.
-/// @param students The container holding student data.
-/// @param Median Flag indicating whether to calculate median or average.
-/// @param strategy The strategy chosen for data processing.
+/// @brief Atidaro failus, kuriuose yra studentų duomenys, ir atlieka operacijas pagal pasirinktą strategiją.
+/// @tparam Container Konteinerio tipas, naudojamas studentų duomenims saugoti.
+/// @param filenames Įvesties failų pavadinimai.
+/// @param students Konteineris, saugantis studentų duomenis.
+/// @param Median Flag, nurodanti, ar naudoti medianą ar vidurkį.
+/// @param strategy Pasirinkta duomenų apdorojimo strategija.
 template <typename Container>
 void openFiles(const vector<string> &filenames, Container &students, bool Median, int strategy)
 {
@@ -603,9 +604,9 @@ template void openFiles(const vector<string> &filenames, vector<Student> &studen
 template void openFiles(const vector<string> &filenames, deque<Student> &students, bool Median, int strategy);
 template void openFiles(const vector<string> &filenames, list<Student> &students, bool Median, int strategy);
 template void openFiles(const std::vector<std::string> &filenames, MyVector<Student> &students, bool Median, int strategy);
-/// @brief Reads input data for a single student
-/// @param data The Student object to populate with input data.
-/// @param Median Flag indicating whether to calculate median or average.
+/// @brief Nuskaito įvesties duomenis vienam studentui.
+/// @param data Studentas objektas, kurį užpildyti įvesties duomenimis.
+/// @param Median Flag, nurodanti, ar naudoti medianą ar vidurkį.
 void input(Student &data, bool &Median)
 {
     data.setFirstName(isString("Įveskite studento vardą: "));
@@ -628,9 +629,9 @@ void input(Student &data, bool &Median)
     }
     data.setHomeworkMarks(move(grades));
 }
-/// @brief Converts a Student object to a string representation.
-/// @param s The Student object.
-/// @return A string representation of the Student object.
+/// @brief Konvertuoja Student objektą į eilutės atvaizdavimą.
+/// @param s Student objektas.
+/// @return Eilutės atvaizdavimas Student objekto.
 string studentData(const Student& s) {
     ostringstream oss;
     oss << s.getFirstName() << " " << s.getLastName() << " ";

@@ -4,16 +4,27 @@
 
 using namespace std;
 
+/// @brief Palyginti studentus pagal vardą
+/// @param a Pirmas studentas
+/// @param b Antras studentas
+/// @return Boolean reikšmė
 bool compareByFirstName(const Student &a, const Student &b)
 {
     return a.getFirstName() < b.getFirstName();
 }
-
+/// @brief Palyginti studentus pagal pavardę
+/// @param a Pirmas studentas
+/// @param b Antras studentas
+/// @return Boolean reikšmė
 bool compareByLastName(const Student &a, const Student &b)
 {
     return a.getLastName() < b.getLastName();
 }
 
+/// @brief Palyginti studentus pagal pažymį
+/// @param a Pirmas studentas
+/// @param b Antras studentas
+/// @return Boolean reikšmė
 bool compareByGrade(const Student &a, const Student &b)
 {
     return a.calculateFinalGrade(false) < b.calculateFinalGrade(false);
@@ -22,7 +33,7 @@ bool compareByGrade(const Student &a, const Student &b)
 template <typename Container>
 void sortStudents(Container &students, int criteria, int Median)
 {
-    if (criteria == 1)
+    if (criteria == 1)  
     {
         sort(students.begin(), students.end(), compareByFirstName);
     }

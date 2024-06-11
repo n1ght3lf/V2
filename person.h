@@ -15,12 +15,14 @@
 #include <cmath>
 #include "myVector.h"
 
+/// @brief Asmens klasė
 class Person {
 public:
-    virtual ~Person() = default; // destructor
-    // getters
-    virtual std::string getFirstName() const = 0; 
-    virtual std::string getLastName() const = 0; 
+    virtual ~Person() = default; ///< Destruktorius
+
+    /// @brief Geteriai
+    virtual std::string getFirstName() const = 0;
+    virtual std::string getLastName() const = 0;
     virtual std::string getName() const = 0;
 };
 

@@ -126,7 +126,7 @@ void outputToTerminal(const vector<Student>& badStudents, const vector<Student>&
     cout << "-------------------------------------------------------" << endl;
     for (const auto& student : goodStudents) {
         double finalGrade = student.calculateFinalGrade(Median);
-        cout << student << fixed << setprecision(2) << finalGrade << endl;
+        cout << left << setw(15) << student.getLastName() << setw(15) << student.getFirstName() << setw(20) << fixed << setprecision(2) << finalGrade << endl;
     }
 }
 
