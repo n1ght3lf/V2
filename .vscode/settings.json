@@ -9,7 +9,8 @@
         "istream": "cpp",
         "ios": "cpp",
         "iosfwd": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "xutility": "cpp"
     },
     "cmake.configureOnOpen": false
 }
