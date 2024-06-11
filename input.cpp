@@ -578,6 +578,7 @@ void openFiles(const vector<string> &filenames, Container &students, bool Median
 template void openFiles(const vector<string> &filenames, vector<Student> &students, bool Median, int strategy);
 template void openFiles(const vector<string> &filenames, deque<Student> &students, bool Median, int strategy);
 template void openFiles(const vector<string> &filenames, list<Student> &students, bool Median, int strategy);
+template void openFiles(const std::vector<std::string> &filenames, MyVector<Student> &students, bool Median, int strategy);
 /// @brief Reads input data for a single student
 /// @param data The Student object to populate with input data.
 /// @param Median Flag indicating whether to calculate median or average.
