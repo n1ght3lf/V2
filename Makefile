@@ -21,6 +21,9 @@ TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 TEST_TARGET = test
 # V1: main.o functionality.o input.o calculations.o student.o
 
+
+
+
 $(TARGET): $(OBJS) # V1: main.o functionality.o input.o calculations.o student.o
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) 
 #g++ -std=c++14 -o V1 main.o functionality.o input.o calculations.o student.o
@@ -41,3 +44,11 @@ clean: #remove object files
 
 distclean: clean #remove object files and executable
 	rm -f $(TARGET) $(TEST_TARGET)
+
+	setup.sh:
+    @echo "#!/bin/bash" > setup.sh
+    @echo "echo 'Setting up the environment...'" >> setup.sh
+    @echo "sudo apt-get update" >> setup.sh
+    @echo "sudo apt-get install g++" >> setup.sh
+    @echo "echo 'Environment setup complete.'" >> setup.sh
+    @chmod +x setup.sh
