@@ -1,5 +1,15 @@
 # v3
 
+# Paleidimas
+
+- Atsisiųskite Ver3.msi ir setup.exe . Paleiskite Ver3.msi ir instaliuokite kur norite turėti programą, leidžiama pasirinkti. Kai programa instaliuota, atidarykite tą aplanką ir paleiskite main.exe. Jeigu norite kažką pakeisti arba per naują kompiliuoti programą, naudokites 'senas paleidimas' skyriumi.
+
+![Tutorial](./tutor/tutorial1.png)
+![Tutorial](./tutor/tutorial2.png)
+![Tutorial](./tutor/tutorial3.png)
+
+<details>
+<summary> Senas paleidimas </summary>
 # Instrukcija
 
 - Atsidarykite command promt, nueikite į vietą kur norėsite turėti programą
@@ -32,6 +42,7 @@ make
 ```
 main
 ```
+
 ### Naudojimasis
 
 - Paleidus programą bus pateiktas meniu kuris parodys visas funkcijas kai prie jų prieisite. Parašysit numerį ir paspausit Enter, kad judėti toliau.
@@ -52,6 +63,8 @@ main
 make clean
 make distclean
 ```
+
+</details>
 
 ### Efektyvumo analizė std::vector ir myVector
 
