@@ -1,4 +1,4 @@
-# v1.5
+# v3
 
 # Instrukcija
 
@@ -53,6 +53,17 @@ make clean
 make distclean
 ```
 
+### Efektyvumo analizė std::vector ir myVector
+
+- Visi testavimai atliekami buvo naudojant O2 flagą ir kur priklauso trečią strategiją.
+
+![Rezultatai](./images/vectorbattle1.png)
+![Rezultatai](./images/stdvectorTest.png)
+![Rezultatai](./images/myVectorTest.png)
+
+<details>
+<summary> Rule of Five + I/O </summary>
+
 ### Rule of Five ir I/O
 
 - C++ kalbos konceptas, apimantis komponentus reikalingus objektų valdymui: destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkeliamasis konstruktorius ir perkeliamasis priskyrimo operatorius. Testus galima atlikti  per meniu.
@@ -65,6 +76,7 @@ make distclean
 
 - I - įvesties operatorius, naudojamas nuskaitant duomenis į objektą. pvz: cin ar istringstream
 - O - Išvesties operatorius, naudojamas rašant duomenis į srautą iš objekto. Pvz: cout ar ostringstream
+</details>
 
 <details>
 <summary> Optimizacija </summary>
