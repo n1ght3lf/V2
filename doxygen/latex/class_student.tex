@@ -1,0 +1,294 @@
+\doxysection{Student Klasė}
+\hypertarget{class_student}{}\label{class_student}\index{Student@{Student}}
+
+
+Studentų klasė, paveldinti asmens klasę  
+
+
+
+
+{\ttfamily \#include $<$student.\+h$>$}
+
+Paveldimumo diagrama Student\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_student}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Vieši Metodai}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}} ()
+\begin{DoxyCompactList}\small\item\em Konstruktorius. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student_a0e05584b9a06f3d5355c36cbe82a2cb2}{Student}} (const std\+::string \&first\+Name, const std\+::string \&family\+Name, int exam\+Mark, const std\+::vector$<$ int $>$ \&homework\+Marks)
+\item 
+\mbox{\hyperlink{class_student_a05b37ffb050ddb039db63a8764d790cb}{Student}} (const \mbox{\hyperlink{class_student}{Student}} \&other)
+\item 
+\mbox{\hyperlink{class_student_a154f8e92f220eff931891d336ebed0be}{Student}} (\mbox{\hyperlink{class_student}{Student}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{class_student}{Student}} \& \mbox{\hyperlink{class_student_ad05dd6148523a2a8b38128b60297b52a}{operator=}} (const \mbox{\hyperlink{class_student}{Student}} \&other)
+\begin{DoxyCompactList}\small\item\em Priskyrimo operatoriai. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_student}{Student}} \& \mbox{\hyperlink{class_student_a458365d8621d8e49e17ed809a272feeb}{operator=}} (\mbox{\hyperlink{class_student}{Student}} \&\&other) noexcept
+\item 
+\Hypertarget{class_student_a54a8ea060d6cd04222c3a2f89829f105}\label{class_student_a54a8ea060d6cd04222c3a2f89829f105} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Student} ()
+\begin{DoxyCompactList}\small\item\em Destruktorius. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_student_a90fe7570044fb05f6543af666b581ab8}{get\+First\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Geteriai. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_student_a4f404b2970696f73d44ad6a0bd02d9f4}{get\+Last\+Name}} () const
+\item 
+std\+::string \mbox{\hyperlink{class_student_af2b671e64af8a240f59652414a8b8047}{get\+Name}} () const
+\item 
+\Hypertarget{class_student_affbd7fe73a022eb70db0a1071b729786}\label{class_student_affbd7fe73a022eb70db0a1071b729786} 
+const std\+::vector$<$ int $>$ \& {\bfseries get\+Homework\+Marks} () const
+\item 
+\Hypertarget{class_student_a1fd355b9a10854aec4f3fe23da695b9d}\label{class_student_a1fd355b9a10854aec4f3fe23da695b9d} 
+int {\bfseries get\+Exam\+Mark} () const
+\item 
+\Hypertarget{class_student_a5b3fe9047d32ff3fa247d2a438ac2f36}\label{class_student_a5b3fe9047d32ff3fa247d2a438ac2f36} 
+int {\bfseries get\+Exam\+Grade} () const
+\item 
+\Hypertarget{class_student_a56bca5d332819d54193dd2048172ada0}\label{class_student_a56bca5d332819d54193dd2048172ada0} 
+void {\bfseries remove\+Last\+Homework\+Mark} ()
+\item 
+\Hypertarget{class_student_a863f6e9970dfabef00a50375cc8c4098}\label{class_student_a863f6e9970dfabef00a50375cc8c4098} 
+void {\bfseries set\+First\+Name} (std\+::string first\+Name)
+\begin{DoxyCompactList}\small\item\em Seteriai. \end{DoxyCompactList}\item 
+\Hypertarget{class_student_ab33cbd7f8da4c170dd7227d52b2fa8a0}\label{class_student_ab33cbd7f8da4c170dd7227d52b2fa8a0} 
+void {\bfseries set\+Last\+Name} (std\+::string last\+Name)
+\item 
+\Hypertarget{class_student_a7897dd44b34e6a4836a6f09d45a91318}\label{class_student_a7897dd44b34e6a4836a6f09d45a91318} 
+void {\bfseries add\+Homework\+Mark} (int mark)
+\item 
+\Hypertarget{class_student_adc277beaf39d74563ee06d430b78568a}\label{class_student_adc277beaf39d74563ee06d430b78568a} 
+void {\bfseries clear\+Homework\+Marks} ()
+\item 
+\Hypertarget{class_student_a5cbdb6d7c8683ee6b9ced0454b22810f}\label{class_student_a5cbdb6d7c8683ee6b9ced0454b22810f} 
+void {\bfseries set\+Exam\+Mark} (int exam\+Mark)
+\item 
+\Hypertarget{class_student_abd5594aa04b551e5e4b810476442a260}\label{class_student_abd5594aa04b551e5e4b810476442a260} 
+void {\bfseries set\+Homework\+Marks} (std\+::vector$<$ int $>$ marks)
+\item 
+double \mbox{\hyperlink{class_student_a1d4c9b5950ee0da4bd24670530e80e5d}{calculate\+Median}} () const
+\begin{DoxyCompactList}\small\item\em Funkcijos. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_student_a92a96071e442ba4e10f984f18fc24874}{calculate\+Average}} () const
+\item 
+double \mbox{\hyperlink{class_student_aa09562d4908ba3c37c77a7b1d0437ab4}{calculate\+Final\+Grade}} (bool median) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Vieši Metodai inherited from \mbox{\hyperlink{class_person}{Person}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Person} ()=default
+\begin{DoxyCompactList}\small\item\em Destruktorius. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Draugai}
+\begin{DoxyCompactItemize}
+\item 
+std\+::istream \& \mbox{\hyperlink{class_student_a7154134029d768635e256507170d649b}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{class_student}{Student}} \&s)
+\begin{DoxyCompactList}\small\item\em Įvesties ir išvesties operatoriai. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{class_student_a07bff4b34ee18e927d9e711b6aef336f}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{class_student}{Student}} \&s)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Smulkus aprašymas}
+Studentų klasė, paveldinti asmens klasę 
+
+\doxysubsection{Konstruktoriaus ir Destruktoriaus Dokumentacija}
+\Hypertarget{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d}\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_student_af9168cedbfa5565cf0b20c1a9d3f5c9d} 
+Student\+::\+Student (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Konstruktorius. 
+
+Default constructor\+: initializes an empty student. \Hypertarget{class_student_a0e05584b9a06f3d5355c36cbe82a2cb2}\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_student_a0e05584b9a06f3d5355c36cbe82a2cb2} 
+Student\+::\+Student (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{first\+Name}{, }\item[{const std\+::string \&}]{last\+Name}{, }\item[{int}]{exam\+Mark}{, }\item[{const std\+::vector$<$ int $>$ \&}]{homework\+Marks}{}\end{DoxyParamCaption})}
+
+Parameterized constructor\+: initializes a student with given details 
+\begin{DoxyParams}{Parametrai}
+{\em first\+Name} & The first name of the student \\
+\hline
+{\em last\+Name} & The last name of the student \\
+\hline
+{\em exam\+Mark} & The exam mark of the student \\
+\hline
+{\em homework\+Marks} & The homework marks of the student \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a05b37ffb050ddb039db63a8764d790cb}\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_student_a05b37ffb050ddb039db63a8764d790cb} 
+Student\+::\+Student (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{other}{}\end{DoxyParamCaption})}
+
+Copy constructor\+: creates a copy of an existing student 
+\begin{DoxyParams}{Parametrai}
+{\em other} & The student to copy from \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_student_a154f8e92f220eff931891d336ebed0be}\index{Student@{Student}!Student@{Student}}
+\index{Student@{Student}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_student_a154f8e92f220eff931891d336ebed0be} 
+Student\+::\+Student (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Move constructor\+: transfers ownership of resources from another student 
+\begin{DoxyParams}{Parametrai}
+{\em other} & The student to move from \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Metodų Dokumentacija}
+\Hypertarget{class_student_a92a96071e442ba4e10f984f18fc24874}\index{Student@{Student}!calculateAverage@{calculateAverage}}
+\index{calculateAverage@{calculateAverage}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{calculateAverage()}{calculateAverage()}}
+{\footnotesize\ttfamily \label{class_student_a92a96071e442ba4e10f984f18fc24874} 
+double Student\+::calculate\+Average (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+Calculates the average of homework marks \begin{DoxyReturn}{Gražina}
+The average of homework marks 
+\end{DoxyReturn}
+\Hypertarget{class_student_aa09562d4908ba3c37c77a7b1d0437ab4}\index{Student@{Student}!calculateFinalGrade@{calculateFinalGrade}}
+\index{calculateFinalGrade@{calculateFinalGrade}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{calculateFinalGrade()}{calculateFinalGrade()}}
+{\footnotesize\ttfamily \label{class_student_aa09562d4908ba3c37c77a7b1d0437ab4} 
+double Student\+::calculate\+Final\+Grade (\begin{DoxyParamCaption}\item[{bool}]{median}{}\end{DoxyParamCaption}) const}
+
+Calculates the final grade based on exam mark and homework marks 
+\begin{DoxyParams}{Parametrai}
+{\em median} & If true, use the median of homework marks; otherwise, use the average \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Gražina}
+The final grade 
+\end{DoxyReturn}
+\Hypertarget{class_student_a1d4c9b5950ee0da4bd24670530e80e5d}\index{Student@{Student}!calculateMedian@{calculateMedian}}
+\index{calculateMedian@{calculateMedian}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{calculateMedian()}{calculateMedian()}}
+{\footnotesize\ttfamily \label{class_student_a1d4c9b5950ee0da4bd24670530e80e5d} 
+double Student\+::calculate\+Median (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Funkcijos. 
+
+Calculates the median of homework marks \begin{DoxyReturn}{Gražina}
+The median of homework marks 
+\end{DoxyReturn}
+\Hypertarget{class_student_a90fe7570044fb05f6543af666b581ab8}\index{Student@{Student}!getFirstName@{getFirstName}}
+\index{getFirstName@{getFirstName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getFirstName()}{getFirstName()}}
+{\footnotesize\ttfamily \label{class_student_a90fe7570044fb05f6543af666b581ab8} 
+std\+::string Student\+::get\+First\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Geteriai. 
+
+
+
+Realizuoja \mbox{\hyperlink{class_person_aa1a208a23ec21d102f75b2f3b3e61d27}{Person}}.
+
+\Hypertarget{class_student_a4f404b2970696f73d44ad6a0bd02d9f4}\index{Student@{Student}!getLastName@{getLastName}}
+\index{getLastName@{getLastName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getLastName()}{getLastName()}}
+{\footnotesize\ttfamily \label{class_student_a4f404b2970696f73d44ad6a0bd02d9f4} 
+std\+::string Student\+::get\+Last\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Realizuoja \mbox{\hyperlink{class_person}{Person}}.
+
+\Hypertarget{class_student_af2b671e64af8a240f59652414a8b8047}\index{Student@{Student}!getName@{getName}}
+\index{getName@{getName}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily \label{class_student_af2b671e64af8a240f59652414a8b8047} 
+std\+::string Student\+::get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Realizuoja \mbox{\hyperlink{class_person}{Person}}.
+
+\Hypertarget{class_student_ad05dd6148523a2a8b38128b60297b52a}\index{Student@{Student}!operator=@{operator=}}
+\index{operator=@{operator=}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_student_ad05dd6148523a2a8b38128b60297b52a} 
+\mbox{\hyperlink{class_student}{Student}} \& Student\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Priskyrimo operatoriai. 
+
+Copy assignment operator\+: copies data from another student 
+\begin{DoxyParams}{Parametrai}
+{\em other} & The student to copy from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Gražina}
+Reference to this student 
+\end{DoxyReturn}
+\Hypertarget{class_student_a458365d8621d8e49e17ed809a272feeb}\index{Student@{Student}!operator=@{operator=}}
+\index{operator=@{operator=}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_student_a458365d8621d8e49e17ed809a272feeb} 
+\mbox{\hyperlink{class_student}{Student}} \& Student\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_student}{Student}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+Move assignment operator\+: moves data from another student 
+\begin{DoxyParams}{Parametrai}
+{\em other} & The student to move from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Gražina}
+Reference to this student 
+\end{DoxyReturn}
+
+
+\doxysubsection{Draugiškų Ir Susijusių Funkcijų Dokumentacija}
+\Hypertarget{class_student_a07bff4b34ee18e927d9e711b6aef336f}\index{Student@{Student}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_student_a07bff4b34ee18e927d9e711b6aef336f} 
+std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{, }\item[{const \mbox{\hyperlink{class_student}{Student}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Output operator\+: writes student data to output stream 
+\begin{DoxyParams}{Parametrai}
+{\em os} & Output stream \\
+\hline
+{\em s} & \doxylink{class_student}{Student} to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Gražina}
+Reference to the output stream 
+\end{DoxyReturn}
+\Hypertarget{class_student_a7154134029d768635e256507170d649b}\index{Student@{Student}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily \label{class_student_a7154134029d768635e256507170d649b} 
+std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{, }\item[{\mbox{\hyperlink{class_student}{Student}} \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Įvesties ir išvesties operatoriai. 
+
+Input operator\+: reads student data from input stream 
+\begin{DoxyParams}{Parametrai}
+{\em is} & Input stream \\
+\hline
+{\em s} & \doxylink{class_student}{Student} to read into \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Gražina}
+Reference to the input stream 
+\end{DoxyReturn}
+
+
+Dokumentacija šiai klasei sugeneruota iš šių failų\+:\begin{DoxyCompactItemize}
+\item 
+student.\+h\item 
+student.\+cpp\end{DoxyCompactItemize}

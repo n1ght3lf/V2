@@ -1,0 +1,474 @@
+\chapter{v3}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{v3@{v3}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Paleidimas}{Paleidimas}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyItemize}
+\item Atsisiųskite Ver3.\+msi ir setup.\+exe . Paleiskite Ver3.\+msi ir instaliuokite kur norite turėti programą, leidžiama pasirinkti. Kai programa instaliuota, atidarykite tą aplanką ir paleiskite main.\+exe. Jeigu norite kažką pakeisti arba per naują kompiliuoti programą, naudokites \textquotesingle{}senas paleidimas\textquotesingle{} skyriumi.
+\end{DoxyItemize}
+
+  
+
+
+
+{\bfseries{Senas paleidimas }}\begin{adjustwidth}{1em}{0em}
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Instrukcija}{Instrukcija}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Atsidarykite command promt, nueikite į vietą kur norėsite turėti programą
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ <dokumento\ nuoroda,\ pvz\ C:\(\backslash\)Users\(\backslash\)JohnDoe\(\backslash\)Documents\(\backslash\)>}
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item Atsisiųskite programą 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/n1ght3lf/V1}
+
+\end{DoxyCode}
+
+\item Jei turite UNIX OS, paleiskite 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+\item kitu atveju atsisiųskite Moba\+Xterm ( \href{https://mobaxterm.mobatek.net/}{\texttt{ https\+://mobaxterm.\+mobatek.\+net/}} ), instaliuokite ir tada atidarykite faile kuriame yra problema, tada (jei parašys kad neinstaliuota, tai sutikite su instaliacija ir vėl paleiskite)
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Paleiskite programą
+\item UNIX\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./main}
+
+\end{DoxyCode}
+
+\item WINDOWS\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{main}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Naudojimasis}{Naudojimasis}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item Paleidus programą bus pateiktas meniu kuris parodys visas funkcijas kai prie jų prieisite. Parašysit numerį ir paspausit Enter, kad judėti toliau.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Funkcijos\+:}{Funkcijos\+:}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Nuskaito duomenis ir tikrina ar teisingi
+\item Leidžia pasirinkti tarp penkių įvedimo būdų, vieno generavimo ir vieno testavimo
+\item Testuojant failus apskaičiuoja laiką
+\item Dinamiškai paskiria atmintį
+\item Generuoja failus 5 skirtingų dydžių.
+\item Generuojant kartu ir testuoja kiek laiko kiekvienas failas užima kiekvienam etape.
+\item Jei išvedami rezultatai į failus, failai rūšiuojami pagal pažymius.
+\item Yra 4 konteinerio tipai (vector, deque ir list, my\+Vector) ir 3 skirtingos strategijos duomenų skirstymui
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Valymas}{Valymas}}\label{md__r_e_a_d_m_e_autotoc_md5}
+
+\begin{DoxyItemize}
+\item clean išvalo objektus (.o), o distclean išvalo visus sukurtus failus 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clean}
+\DoxyCodeLine{make\ distclean}
+
+\end{DoxyCode}
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Efektyvumo analizė std\+::vector ir my\+Vector}{Efektyvumo analizė std\+::vector ir my\+Vector}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item Visi testavimai atliekami buvo naudojant O2 flagą ir kur priklauso trečią strategiją.
+\end{DoxyItemize}
+
+  
+
+
+
+{\bfseries{Rule of Five + I/O }}\begin{adjustwidth}{1em}{0em}
+
+
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Rule of Five ir I/O}{Rule of Five ir I/O}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item C++ kalbos konceptas, apimantis komponentus reikalingus objektų valdymui\+: destruktorius, kopijavimo konstruktorius, kopijavimo priskyrimo operatorius, perkeliamasis konstruktorius ir perkeliamasis priskyrimo operatorius. Testus galima atlikti per meniu.
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Destruktorius\+: Išvalo objektą kai jis nereikalingas
+\item Kopijavimo konstruktorius\+: Sukuria naują nukopijuodamas seną objektą
+\item Kopijavimo priskyrimo operatorius\+: Kopijuoja vertę ir priskiria kitam objektui
+\item Perkeliamasis konstruktorius\+: Perkelia vertes vietoj kopijavimo, naudojamas kai reik laikino objekto.
+\item Perkeliamasis priskyrimo operatorius\+: Perkelia vertes iš vieno objekto į kitą.
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item I -\/ įvesties operatorius, naudojamas nuskaitant duomenis į objektą. pvz\+: cin ar istringstream
+\item O -\/ Išvesties operatorius, naudojamas rašant duomenis į srautą iš objekto. Pvz\+: cout ar ostringstream 
+\end{DoxyItemize}
+
+
+
+{\bfseries{Optimizacija }}\begin{adjustwidth}{1em}{0em}
+
+
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Optimizavimas}{Optimizavimas}}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Be optimizacijos, šie rezultatai bus naudojami kaip pagrindas su kuo lyginama.
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endhead
+Class   &13.\+2770   &156.\+2178   &642KB   \\\cline{1-4}
+\end{longtabu}
+
+
+ 
+
+
+\begin{DoxyItemize}
+\item O1 optimizacija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endhead
+Class   &5.\+03360   &51.\+12527   &328KB   \\\cline{1-4}
+\end{longtabu}
+
+
+ 
+
+
+\begin{DoxyItemize}
+\item O1 žymiai pagreitino programos veikimą (tarp 2 ir 3 kartų, žiūrint pagal operacijos dydį) ir perpus sumažino failo dydį.
+\item O2 optimizacija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endhead
+Class   &4.\+36167   &50.\+75928   &309KB   \\\cline{1-4}
+\end{longtabu}
+
+
+ 
+
+
+\begin{DoxyItemize}
+\item O2 pagreitino procesą, bet nežymiai daugiau nei O1, kartu ir failo dydis sumažėjo, bet per labai mažą procentą. Nematau tikslo naudoti O2 vietoje O1
+\item O3 optimizacija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(1mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Greitis(10mln.)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis    }\\\cline{1-4}
+\endhead
+Class   &4.\+87037   &52.\+20442   &314KB   \\\cline{1-4}
+\end{longtabu}
+
+
+\begin{DoxyVerb}![Class](./images/O3.png)
+![Class](./images/O3EXE.png)
+\end{DoxyVerb}
+
+\begin{DoxyItemize}
+\item O3 suveikė net lėčiau, nei O2 ir O1 (O1 jeigu lyginame didesnius skaičiavimus). Tikrai neverta naudoti vietoje O1 ar O2, nes kartu ir turi šansą sugadinti programą jei kodas blogai parašytas.
+\end{DoxyItemize}
+
+
+
+{\bfseries{Strategijos }}\begin{adjustwidth}{1em}{0em}
+
+
+\end{adjustwidth}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysubsection{\texorpdfstring{Rezultatai}{Rezultatai}}\label{md__r_e_a_d_m_e_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Vector 1 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0036   &0.\+0042   &0.\+0005    \\\cline{1-4}
+10 000   &0.\+0353   &0.\+0526   &0.\+0056    \\\cline{1-4}
+100 000   &0.\+3860   &0.\+7453   &0.\+0603    \\\cline{1-4}
+1 000 000   &3.\+9041   &9.\+6643   &0.\+7174    \\\cline{1-4}
+10 000 000   &35.\+0132   &111.\+360   &8.\+5941   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item Vector 2 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0038   &0.\+0043   &0.\+0006    \\\cline{1-4}
+10 000   &0.\+0351   &0.\+0871   &0.\+0074    \\\cline{1-4}
+100 000   &0.\+3732   &0.\+7692   &0.\+0927    \\\cline{1-4}
+1 000 000   &3.\+5262   &9.\+1534   &0.\+7031    \\\cline{1-4}
+10 000 000   &35.\+3850   &117.\+234   &8.\+3022   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item Vector 3 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0035   &0.\+0043   &0.\+0007    \\\cline{1-4}
+10 000   &0.\+0353   &0.\+0525   &0.\+0067    \\\cline{1-4}
+100 000   &0.\+3817   &0.\+7121   &0.\+0744    \\\cline{1-4}
+1 000 000   &3.\+4521   &8.\+5524   &0.\+8672    \\\cline{1-4}
+10 000 000   &36.\+4035   &105.\+653   &9.\+3462   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item Deque 1 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0037   &0.\+0044   &0.\+0005    \\\cline{1-4}
+10 000   &0.\+0344   &0.\+0543   &0.\+0048    \\\cline{1-4}
+100 000   &0.\+3447   &0.\+7113   &0.\+0608    \\\cline{1-4}
+1 000 000   &3.\+4821   &8.\+8966   &0.\+6684    \\\cline{1-4}
+10 000 000   &34.\+6972   &108.\+312   &8.\+0477   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item Deque 2 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0036   &0.\+0047   &0.\+0006    \\\cline{1-4}
+10 000   &0.\+0503   &0.\+0585   &0.\+0056    \\\cline{1-4}
+100 000   &0.\+3594   &0.\+8200   &0.\+0690    \\\cline{1-4}
+1 000 000   &3.\+5770   &9.\+8510   &0.\+7259    \\\cline{1-4}
+10 000 000   &35.\+2041   &121.\+844   &7.\+9257   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+-\/Deque 3 strategija
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0036   &0.\+0043   &0.\+0006    \\\cline{1-4}
+10 000   &0.\+0343   &0.\+5357   &0.\+0059    \\\cline{1-4}
+100 000   &0.\+3508   &0.\+6994   &0.\+7697    \\\cline{1-4}
+1 000 000   &3.\+4591   &8.\+9712   &0.\+8492    \\\cline{1-4}
+10 000 000   &36.\+0661   &109.\+312   &10.\+231   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item List 1 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0037   &0.\+0030   &0.\+0006    \\\cline{1-4}
+10 000   &0.\+0356   &0.\+0423   &0.\+0058    \\\cline{1-4}
+100 000   &0.\+3780   &0.\+6128   &0.\+0897    \\\cline{1-4}
+1 000 000   &3.\+6181   &8.\+3617   &0.\+9696    \\\cline{1-4}
+10 000 000   &34.\+4123   &94.\+2010   &10.\+058   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item List 2 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0036   &0.\+0029   &0.\+0006    \\\cline{1-4}
+10 000   &0.\+0354   &0.\+0446   &0.\+0063    \\\cline{1-4}
+100 000   &0.\+3553   &0.\+6185   &0.\+0906    \\\cline{1-4}
+1 000 000   &3.\+4843   &8.\+3737   &0.\+9306    \\\cline{1-4}
+10 000 000   &34.\+9684   &99.\+9578   &10.\+216   \\\cline{1-4}
+\end{longtabu}
+
+
+
+
+
+\begin{DoxyItemize}
+\item List 3 strategija
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo dydis   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Skaitymo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Rūšiavimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Išvedimo laikas    }\\\cline{1-4}
+\endhead
+1 000   &0.\+0035   &0.\+0030   &0.\+0007    \\\cline{1-4}
+10 000   &0.\+0347   &0.\+0429   &0.\+0069    \\\cline{1-4}
+100 000   &0.\+3545   &0.\+6006   &0.\+1130    \\\cline{1-4}
+1 000 000   &3.\+4999   &7.\+5365   &1.\+2169    \\\cline{1-4}
+10 000 000   &147.\+641   &97.\+7937   &14.\+651   \\\cline{1-4}
+\end{longtabu}
+
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Apibendrinimas}{Apibendrinimas}}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyItemize}
+\item Tarp trijų konteinerių skirtumo itin didelio nebuvo, išskyrus list su 3 strategija skaitymo laiko. List ir Deque rūšiavo per mažą skirtumą (\texorpdfstring{$<$}{<}10\%) greičiau ir 3 strategija bendrai pagreitino darbo laiką, nors ir ne per didelį kiekį. Pagal šiuos duomenis galima teigti, kad strategija ir konteinerio tipas gali paveikti programos veikimo laiką, tačiau tai nebus itin didelis pokytis.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{Visų versijų aprašymas}{Visų versijų aprašymas}}\label{md__r_e_a_d_m_e_autotoc_md11}
+-\/NOTE\+: versijos turi visą funkcionalumą praeitos versijos, tai nekartosiu kiekvieno dalyko.
+
+-\/v.\+pradinė\+: Nuskaito įvestį, leidžia vartotojui pasirinkti tarp medianos ir vidurkio skaičiuojant galutinį balą.
+
+-\/v0.\+1\+: Dinamiškai paskiria atmintį, atsiranda daugiau būdų įvesti/generuoti duomenis.
+
+-\/v0.\+2\+: Nuskaito ne tik įvestį, bet ir failus. Atidaro testavimo failus ir skaičiuoja laiką, išveda duomenis ir failuose.
+
+-\/v0.\+3\+: Klaidų gaudymas įvedime, projektas išskaidytas į daug failų.
+
+-\/v0.\+4\+: Galimybė generuoti penkis failus 1000-\/10000000 įrašų dydžio. Atlieka tyrimus su failais. Surūšiuoja studentus į du failus pagal balus.
+
+-\/v1\+: Vector, Deque ir List konteinerio tipai.
+
+-\/v1.\+1\+: Klasės su destrukotriais ir konstruktoriais vietoj struktūrų
+
+-\/v1.\+2\+: rule of five + IO
+
+-\/v1.\+5\+: Abstrakti klasė person.
+
+-\/v2\+: Doxygen dokumentacija, bandyta googletests (failed) 
